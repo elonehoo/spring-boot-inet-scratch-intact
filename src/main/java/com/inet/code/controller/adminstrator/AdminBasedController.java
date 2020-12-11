@@ -1,6 +1,7 @@
 package com.inet.code.controller.adminstrator;
 
 import com.inet.code.entity.dto.label.LabelAppendDoMain;
+import com.inet.code.entity.dto.type.TypeAppendDoMain;
 import com.inet.code.realize.AdminBasedService;
 import com.inet.code.utils.Result;
 import io.swagger.annotations.Api;
@@ -37,12 +38,12 @@ public class AdminBasedController {
     @PostMapping("/appendLabel")
     @RequiresRoles(value = {"admin"})
     public Result postAppendLabel(@RequestBody LabelAppendDoMain labelAppendDoMain){
-        return adminBasedService.getAppendLabel(labelAppendDoMain,"/scratch/based/login");
+        return adminBasedService.getAppendLabel(labelAppendDoMain,"/scratch/based/appendLabel");
     }
 
     @PostMapping("/appendType")
-    public Result postAppendType(){
-        return null;
+    public Result postAppendType(@RequestBody TypeAppendDoMain typeAppendDoMain){
+        return adminBasedService.getAppendType(typeAppendDoMain,"/scratch/based/appendType");
     }
 
 
