@@ -6,6 +6,8 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.extra.mail.MailAccount;
 import cn.hutool.extra.mail.MailUtil;
+import com.inet.code.entity.attention.dto.AttentionFocusDomain;
+import com.inet.code.entity.attention.po.Attention;
 import com.inet.code.entity.cipher.dto.CipherAmendDomain;
 import com.inet.code.entity.cipher.po.Cipher;
 import com.inet.code.entity.portrait.po.Portrait;
@@ -241,7 +243,7 @@ public class UserBasedServiceImpl implements UserBasedService {
     }
 
     /**
-     * 关注或者取消关注的用户邮箱
+     * 关注或者取消关注
      *
      * @author HCY
      * @since 2020/12/12 下午 09:43
@@ -260,8 +262,28 @@ public class UserBasedServiceImpl implements UserBasedService {
             return focusOperations;
         }
         //进行关注或者取消关注的操作
-
-        return null;
+        Attention attention = attentionService.getByUserFocus(
+                 userBaseDomain.getUserEmail()
+                ,focusEmail);
+        //判断是否已经关注了
+        if (attention == null){
+            //关注操作
+            AttentionFocusDomain attentionFocusDomain = new AttentionFocusDomain(
+                     userBaseDomain.getUserEmail()
+                    ,focusEmail);
+            if (attentionService.save(CloneUtil.clone(attentionFocusDomain , Attention.class))) {
+                return new Result().result200("关注成功！",path);
+            }else {
+                return new Result().result500("关注失败！",path);
+            }
+        }else {
+            //取消关注操作
+            if (attentionService.removeById(attention.getAttentionUuid())) {
+                return new Result().result200("取消关注成功",path);
+            }else {
+                return new Result().result500("取消关注失败",path);
+            }
+        }
     }
 
     /**

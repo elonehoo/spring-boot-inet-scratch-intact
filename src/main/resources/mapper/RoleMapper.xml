@@ -5,7 +5,10 @@
     <!--通过权限名字查找到权限的实体类-->
     <select id="getRoleName" resultType="com.inet.code.entity.role.po.Role">
         SELECT
-            *
+            role.role_uuid AS roleUuid,
+	        role.role_name AS roleName,
+	        role.gmt_create AS gmtCreate,
+	        role.gmt_modified AS gmtModified
         FROM
             tbl_role AS role
         WHERE
