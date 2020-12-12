@@ -8,6 +8,7 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
@@ -21,6 +22,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@NoArgsConstructor
 @TableName("tbl_cipher")
 public class Cipher implements Serializable {
 
@@ -58,4 +60,8 @@ public class Cipher implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date gmtModified;
 
+    public Cipher(String cipherEmail, String cipherPassword) {
+        this.cipherEmail = cipherEmail;
+        this.cipherPassword = cipherPassword;
+    }
 }

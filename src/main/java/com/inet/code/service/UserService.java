@@ -34,4 +34,5 @@ public interface UserService extends IService<User> {
      * @return com.inet.code.entity.user.po.User
     */
     User getEmailRepeat(String email);
+
 }

@@ -2,4 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.inet.code.mapper.RoleMapper">
 
+    <!--通过权限名字查找到权限的实体类-->
+    <select id="getRoleName" resultType="com.inet.code.entity.role.po.Role">
+        SELECT
+            *
+        FROM
+            tbl_role AS role
+        WHERE
+            role.role_name = #{roleName}
+            LIMIT 1;
+    </select>
 </mapper>

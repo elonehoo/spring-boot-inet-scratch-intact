@@ -54,26 +54,26 @@ public class BasedServiceImpl implements BasedService {
     @Override
     public Result getLogin(UserLoginDomain userLoginDomain, String path) {
         //将密码进行加密处理,在进行登录的查找
-        UserBaseDomain userDomain = userService.getLogin(
+        UserBaseDomain userBaseDomain = userService.getLogin(
                   userLoginDomain.getAccount()
                 , DigestUtil.md5Hex(userLoginDomain.getPassword()));
         //账号或者密码产生了错误
-        if (userDomain == null){
+        if (userBaseDomain == null){
             return new Result().result404("您的账号或者密码错误",path);
         }
         //设置产生token的条件
         Map<String, String> map = new HashMap<>(2);
-        map.put("userName",userDomain.getUserName());
-        map.put("roleName",userDomain.getRoleName());
+        map.put("userName",userBaseDomain.getUserName());
+        map.put("roleName",userBaseDomain.getRoleName());
         //产生token
         String token = JwtUtils.getToken(map);
         //存入Redis,存储时间为7天
-        redisTemplate.opsForValue().set(token,userDomain,7, TimeUnit.DAYS);
+        redisTemplate.opsForValue().set(token,userBaseDomain,7, TimeUnit.DAYS);
         //设置返回值
         Map<String, Object> results = new HashMap<>(3);
         results.put("info","登录成功");
         results.put("token",token);
-        results.put("user",userDomain);
+        results.put("user",userBaseDomain);
         return new Result().result200(results,path);
     }
 

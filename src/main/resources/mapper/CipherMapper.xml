@@ -2,4 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.inet.code.mapper.CipherMapper">
 
+    <!--通过邮箱(账号)查找用户的密码-->
+    <select id="getByEmail" resultType="com.inet.code.entity.cipher.po.Cipher">
+        SELECT
+            cipher.cipher_uuid AS cipherUuid,
+            cipher.cipher_email AS cipherEmail,
+            cipher.cipher_password AS cipherPassword,
+            cipher.gmt_create AS gmtCreate,
+            cipher.gmt_modified AS gmtModified
+        FROM
+            tbl_cipher AS cipher
+        WHERE
+            cipher.cipher_email = "2414776185@qq.com"
+        LIMIT 1;
+    </select>
 </mapper>
