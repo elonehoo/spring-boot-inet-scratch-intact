@@ -1,14 +1,15 @@
 package com.inet.code.realize.Impl;
 
 import cn.hutool.crypto.digest.DigestUtil;
-import com.inet.code.entity.dto.user.UserBaseDomain;
-import com.inet.code.entity.dto.user.UserLoginDomain;
-import com.inet.code.entity.vo.label.LabelBaseView;
-import com.inet.code.entity.vo.type.TypeBaseView;
+import com.inet.code.entity.user.dto.UserBaseDomain;
+import com.inet.code.entity.user.dto.UserLoginDomain;
+import com.inet.code.entity.label.vo.LabelBaseView;
+import com.inet.code.entity.type.vo.TypeBaseView;
 import com.inet.code.mapper.UserMapper;
 import com.inet.code.realize.BasedService;
 import com.inet.code.service.LabelService;
 import com.inet.code.service.TypeService;
+import com.inet.code.service.UserService;
 import com.inet.code.utils.CloneUtil;
 import com.inet.code.utils.JwtUtils;
 import com.inet.code.utils.Result;
@@ -30,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 public class BasedServiceImpl implements BasedService {
 
     @Resource
-    private UserMapper userMapper;
+    private UserService userService;
 
     @Resource
     private TypeService typeService;
@@ -53,7 +54,7 @@ public class BasedServiceImpl implements BasedService {
     @Override
     public Result getLogin(UserLoginDomain userLoginDomain, String path) {
         //将密码进行加密处理,在进行登录的查找
-        UserBaseDomain userDomain = userMapper.getLogin(
+        UserBaseDomain userDomain = userService.getLogin(
                   userLoginDomain.getAccount()
                 , DigestUtil.md5Hex(userLoginDomain.getPassword()));
         //账号或者密码产生了错误

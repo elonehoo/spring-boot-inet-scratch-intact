@@ -1,6 +1,6 @@
 package com.inet.code.mapper;
 
-import com.inet.code.entity.po.Label;
+import com.inet.code.entity.label.po.Label;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

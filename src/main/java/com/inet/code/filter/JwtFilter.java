@@ -1,6 +1,6 @@
 package com.inet.code.filter;
 
-import com.inet.code.entity.po.JwtToken;
+import com.inet.code.entity.tool.JwtToken;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 import org.slf4j.Logger;

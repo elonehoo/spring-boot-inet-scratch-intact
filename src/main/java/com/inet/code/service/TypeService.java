@@ -1,6 +1,6 @@
 package com.inet.code.service;
 
-import com.inet.code.entity.po.Type;
+import com.inet.code.entity.type.po.Type;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

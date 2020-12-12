@@ -1,7 +1,7 @@
 package com.inet.code.mapper;
 
-import com.inet.code.entity.dto.user.UserBaseDomain;
-import com.inet.code.entity.po.User;
+import com.inet.code.entity.user.dto.UserBaseDomain;
+import com.inet.code.entity.user.po.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -24,4 +24,14 @@ public interface UserMapper extends BaseMapper<User> {
      * @return com.inet.code.entity.domain.user.UserDomain
     */
     UserBaseDomain getLogin(String account, String password);
+
+    /**
+     * 查找该邮箱的用户
+     *
+     * @author HCY
+     * @since 2020/12/12 下午 03:14
+     * @param email: 邮箱
+     * @return com.inet.code.entity.user.po.User
+     */
+    User getByEmail(String email);
 }

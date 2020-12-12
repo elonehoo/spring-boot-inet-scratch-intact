@@ -1,6 +1,6 @@
 package com.inet.code.service.impl;
 
-import com.inet.code.entity.po.Role;
+import com.inet.code.entity.role.po.Role;
 import com.inet.code.mapper.RoleMapper;
 import com.inet.code.service.RoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

@@ -1,6 +1,6 @@
 package com.inet.code.mapper;
 
-import com.inet.code.entity.po.Role;
+import com.inet.code.entity.role.po.Role;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

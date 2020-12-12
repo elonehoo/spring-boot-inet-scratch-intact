@@ -1,6 +1,6 @@
 package com.inet.code.service.impl;
 
-import com.inet.code.entity.po.Attention;
+import com.inet.code.entity.attention.po.Attention;
 import com.inet.code.mapper.AttentionMapper;
 import com.inet.code.service.AttentionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

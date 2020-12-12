@@ -1,6 +1,6 @@
 package com.inet.code.service;
 
-import com.inet.code.entity.po.Portrait;
+import com.inet.code.entity.portrait.po.Portrait;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -13,4 +13,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface PortraitService extends IService<Portrait> {
 
+    /**
+     * 随机产生头像
+     * @author HCY
+     * @since 2020/12/12 下午 05:14
+     * @return com.inet.code.entity.portrait.po.Portrait
+    */
+    Portrait getRandomImagesUrl();
 }

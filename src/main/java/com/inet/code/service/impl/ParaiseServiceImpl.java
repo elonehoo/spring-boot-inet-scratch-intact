@@ -1,6 +1,6 @@
 package com.inet.code.service.impl;
 
-import com.inet.code.entity.po.Paraise;
+import com.inet.code.entity.paraise.po.Paraise;
 import com.inet.code.mapper.ParaiseMapper;
 import com.inet.code.service.ParaiseService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

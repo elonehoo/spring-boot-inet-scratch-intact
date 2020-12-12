@@ -1,6 +1,6 @@
 package com.inet.code.mapper;
 
-import com.inet.code.entity.po.Power;
+import com.inet.code.entity.power.po.Power;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

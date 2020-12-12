@@ -1,6 +1,6 @@
 package com.inet.code.realm;
-import com.inet.code.entity.dto.user.UserBaseDomain;
-import com.inet.code.entity.po.JwtToken;
+import com.inet.code.entity.user.dto.UserBaseDomain;
+import com.inet.code.entity.tool.JwtToken;
 import com.inet.code.service.UserService;
 import com.inet.code.utils.JwtUtils;
 import org.apache.logging.log4j.LogManager;

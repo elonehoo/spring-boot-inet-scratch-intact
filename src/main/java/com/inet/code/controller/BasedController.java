@@ -1,6 +1,6 @@
 package com.inet.code.controller;
 
-import com.inet.code.entity.dto.user.UserLoginDomain;
+import com.inet.code.entity.user.dto.UserLoginDomain;
 import com.inet.code.realize.BasedService;
 import com.inet.code.utils.Result;
 import io.swagger.annotations.Api;

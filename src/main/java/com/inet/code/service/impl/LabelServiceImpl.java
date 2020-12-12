@@ -1,6 +1,6 @@
 package com.inet.code.service.impl;
 
-import com.inet.code.entity.po.Label;
+import com.inet.code.entity.label.po.Label;
 import com.inet.code.mapper.LabelMapper;
 import com.inet.code.service.LabelService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

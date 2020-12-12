@@ -1,6 +1,6 @@
 package com.inet.code.service;
 
-import com.inet.code.entity.po.Paraise;
+import com.inet.code.entity.paraise.po.Paraise;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

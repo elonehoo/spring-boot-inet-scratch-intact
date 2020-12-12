@@ -1,6 +1,6 @@
 package com.inet.code.service;
 
-import com.inet.code.entity.po.Cipher;
+import com.inet.code.entity.cipher.po.Cipher;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

@@ -1,6 +1,6 @@
 package com.inet.code.mapper;
 
-import com.inet.code.entity.po.Production;
+import com.inet.code.entity.production.po.Production;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

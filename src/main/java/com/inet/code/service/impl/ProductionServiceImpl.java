@@ -1,6 +1,6 @@
 package com.inet.code.service.impl;
 
-import com.inet.code.entity.po.Production;
+import com.inet.code.entity.production.po.Production;
 import com.inet.code.mapper.ProductionMapper;
 import com.inet.code.service.ProductionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

@@ -2,4 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.inet.code.mapper.EditorMapper">
 
+    <!--删除属于该类别的所有项目的该标签-->
+    <delete id="removeByLabelUuid">
+        DELETE
+        FROM
+            tbl_editor AS editor
+        WHERE
+            editor.editor_label_uuid = #{labelUuid};
+    </delete>
+
+    <!--通过标签的序号查询有多少项目属于它-->
+    <select id="getByLabelUuidCount" resultType="java.lang.Integer">
+        SELECT
+            COUNT(*)
+        FROM
+            tbl_editor AS editor
+        WHERE
+            editor.editor_label_uuid = #{labelUuid};
+    </select>
 </mapper>

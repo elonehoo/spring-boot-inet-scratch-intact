@@ -1,6 +1,6 @@
 package com.inet.code.mapper;
 
-import com.inet.code.entity.po.Paraise;
+import com.inet.code.entity.paraise.po.Paraise;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

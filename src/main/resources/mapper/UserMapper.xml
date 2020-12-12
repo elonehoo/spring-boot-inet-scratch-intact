@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.inet.code.mapper.UserMapper">
 
-    <select id="getLogin" resultType="com.inet.code.entity.dto.user.UserBaseDomain">
+    <!--登录操作-->
+    <select id="getLogin" resultType="com.inet.code.entity.user.dto.UserBaseDomain">
         SELECT
             user.user_buddha AS userBuddha,
             user.user_name AS userName,
@@ -18,5 +19,25 @@
             LEFT JOIN tbl_role AS role ON role.role_uuid = power.power_role
             LEFT JOIN tbl_cipher AS cipher ON cipher.cipher_email = user.user_email
         WHERE cipher.cipher_email = #{account} AND cipher_password = #{password};
+    </select>
+
+    <!--查找该邮箱的用户-->
+    <select id="getByEmail" resultType="com.inet.code.entity.user.po.User">
+        SELECT
+            user.user_uuid AS userUuid,
+            user.user_buddha AS userBuddha,
+            user.user_name AS userName,
+            user.user_email AS userEmail,
+            user.user_sex AS userSex,
+            user.user_birthday AS userBirthday,
+            user.user_city AS userCity,
+            user.user_signature AS userSignature,
+            user.gmt_create AS gmtCreate,
+            user.gmt_modified AS gmtModified
+        FROM
+            tbl_user AS user
+        WHERE
+            user.user_email = #{email}
+        LIMIT 1;
     </select>
 </mapper>
