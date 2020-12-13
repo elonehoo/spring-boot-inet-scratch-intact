@@ -3,6 +3,7 @@ package com.inet.code.mapper;
 import com.inet.code.entity.user.dto.UserBaseDomain;
 import com.inet.code.entity.user.po.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.inet.code.entity.user.vo.UserFanView;
 
 /**
  * <p>
@@ -34,4 +35,15 @@ public interface UserMapper extends BaseMapper<User> {
      * @return com.inet.code.entity.user.po.User
      */
     User getByEmail(String email);
+
+    /**
+     * 查看粉丝
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 02:57
+     * @param userEmail: 用户的邮箱
+     * @param pages: 页数
+     * @return com.inet.code.entity.user.vo.UserFanView
+     */
+    UserFanView getCheckFan(String userEmail, int pages);
 }

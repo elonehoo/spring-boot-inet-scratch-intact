@@ -3,6 +3,7 @@ package com.inet.code.service;
 import com.inet.code.entity.user.dto.UserBaseDomain;
 import com.inet.code.entity.user.po.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.inet.code.entity.user.vo.UserFanView;
 
 /**
  * <p>
@@ -35,4 +36,14 @@ public interface UserService extends IService<User> {
     */
     User getEmailRepeat(String email);
 
+    /**
+     * 查看粉丝
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 02:57
+     * @param userEmail: 用户的邮箱
+     * @param pages: 页数
+     * @return com.inet.code.entity.user.vo.UserFanView
+    */
+    UserFanView getCheckFan(String userEmail, Integer pages);
 }

@@ -121,4 +121,12 @@ public class UserBasedController {
                 ,focusEmail
                 ,"/scratch/user/focus");
     }
+
+    @ApiOperation("查看自己的粉丝")
+    @GetMapping("/checkFan")
+    @RequiresRoles(value = {"member"})
+    public Result getCheckFan(@RequestHeader(value = "Token",defaultValue = "") String token,
+                              @RequestParam(value = "pages",defaultValue = "") Integer pages){
+        return userBasedService.getCheckFan(token,pages,"/scratch/user/focus");
+    }
 }

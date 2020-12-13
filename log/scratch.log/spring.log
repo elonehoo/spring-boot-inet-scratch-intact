@@ -1,35 +1,35 @@
-2020-12-12 21:13:25.364  INFO 4620 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 4620 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-12 21:13:25.379 DEBUG 4620 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-12 21:13:25.381  INFO 4620 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-12 21:13:30.038  WARN 4620 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-12 21:13:30.072  WARN 4620 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-12 21:13:30.167  WARN 4620 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-12 21:13:30.202  INFO 4620 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 5.222 seconds (JVM running for 7.035)
-2020-12-12 21:14:31.752  INFO 6400 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 6400 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-12 21:14:31.753 DEBUG 6400 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-12 21:14:31.755  INFO 6400 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-12 21:14:35.094  WARN 6400 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-12 21:14:35.120  WARN 6400 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-12 21:14:35.208  WARN 6400 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-12 21:14:35.233  INFO 6400 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 3.739 seconds (JVM running for 4.451)
-2020-12-12 21:14:46.557  INFO 10112 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 10112 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-12 21:14:46.558 DEBUG 10112 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-12 21:14:46.559  INFO 10112 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-12 21:14:49.843  WARN 10112 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-12 21:14:49.865  WARN 10112 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-12 21:14:49.951  WARN 10112 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-12 21:14:49.980  INFO 10112 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 3.654 seconds (JVM running for 4.361)
-2020-12-12 21:15:03.266  INFO 14644 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 14644 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-12 21:15:03.267 DEBUG 14644 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-12 21:15:03.269  INFO 14644 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-12 21:15:06.579  WARN 14644 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-12 21:15:06.601  WARN 14644 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-12 21:15:06.690  WARN 14644 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-12 21:15:06.718  INFO 14644 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 3.685 seconds (JVM running for 4.399)
-2020-12-12 21:16:17.523  INFO 13968 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 13968 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-12 21:16:17.524 DEBUG 13968 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-12 21:16:17.525  INFO 13968 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-12 21:16:20.782  WARN 13968 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-12 21:16:20.804  WARN 13968 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-12 21:16:20.894  WARN 13968 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-12 21:16:20.919  INFO 13968 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 3.637 seconds (JVM running for 4.345)
+2020-12-13 14:09:52.627  INFO 7272 --- [main] com.inet.InetApplication                 : Starting InetApplication using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 7272 (D:\8.items\spring-boot-inet-scratch-intact\target\classes started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
+2020-12-13 14:09:52.639 DEBUG 7272 --- [main] com.inet.InetApplication                 : Running with Spring Boot v2.4.0, Spring v5.3.1
+2020-12-13 14:09:52.639  INFO 7272 --- [main] com.inet.InetApplication                 : No active profile set, falling back to default profiles: default
+2020-12-13 14:09:56.857  WARN 7272 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-13 14:09:56.875  WARN 7272 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-13 14:09:56.982  WARN 7272 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-13 14:09:56.989  WARN 7272 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-13 14:09:57.022  INFO 7272 --- [main] com.inet.InetApplication                 : Started InetApplication in 4.871 seconds (JVM running for 6.113)
+2020-12-13 14:10:21.949 DEBUG 7272 --- [http-nio-6060-exec-1] c.i.code.mapper.UserMapper.getByEmail    : ==>  Preparing: SELECT user.user_uuid AS userUuid, user.user_buddha AS userBuddha, user.user_name AS userName, user.user_email AS userEmail, user.user_sex AS userSex, user.user_birthday AS userBirthday, user.user_city AS userCity, user.user_signature AS userSignature, user.gmt_create AS gmtCreate, user.gmt_modified AS gmtModified FROM tbl_user AS user WHERE user.user_email = ? LIMIT 1;
+2020-12-13 14:10:21.961 DEBUG 7272 --- [http-nio-6060-exec-1] c.i.code.mapper.UserMapper.getByEmail    : ==> Parameters: 2414776185@qq.com(String)
+2020-12-13 14:10:21.982 DEBUG 7272 --- [http-nio-6060-exec-1] c.i.code.mapper.UserMapper.getByEmail    : <==      Total: 1
+2020-12-13 14:10:32.275 DEBUG 7272 --- [http-nio-6060-exec-2] c.i.code.mapper.UserMapper.getByEmail    : ==>  Preparing: SELECT user.user_uuid AS userUuid, user.user_buddha AS userBuddha, user.user_name AS userName, user.user_email AS userEmail, user.user_sex AS userSex, user.user_birthday AS userBirthday, user.user_city AS userCity, user.user_signature AS userSignature, user.gmt_create AS gmtCreate, user.gmt_modified AS gmtModified FROM tbl_user AS user WHERE user.user_email = ? LIMIT 1;
+2020-12-13 14:10:32.275 DEBUG 7272 --- [http-nio-6060-exec-2] c.i.code.mapper.UserMapper.getByEmail    : ==> Parameters: huchengyea@163.com(String)
+2020-12-13 14:10:32.285 DEBUG 7272 --- [http-nio-6060-exec-2] c.i.code.mapper.UserMapper.getByEmail    : <==      Total: 0
+2020-12-13 14:11:40.097 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.code.mapper.UserMapper.getByEmail    : ==>  Preparing: SELECT user.user_uuid AS userUuid, user.user_buddha AS userBuddha, user.user_name AS userName, user.user_email AS userEmail, user.user_sex AS userSex, user.user_birthday AS userBirthday, user.user_city AS userCity, user.user_signature AS userSignature, user.gmt_create AS gmtCreate, user.gmt_modified AS gmtModified FROM tbl_user AS user WHERE user.user_email = ? LIMIT 1;
+2020-12-13 14:11:40.098 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.code.mapper.UserMapper.getByEmail    : ==> Parameters: huchengyea@163.com(String)
+2020-12-13 14:11:40.107 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.code.mapper.UserMapper.getByEmail    : <==      Total: 0
+2020-12-13 14:11:40.185 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.c.mapper.PortraitMapper.selectCount  : ==>  Preparing: SELECT COUNT( 1 ) FROM tbl_portrait
+2020-12-13 14:11:40.185 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.c.mapper.PortraitMapper.selectCount  : ==> Parameters: 
+2020-12-13 14:11:40.195 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.c.mapper.PortraitMapper.selectCount  : <==      Total: 1
+2020-12-13 14:11:40.196 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.c.m.PortraitMapper.getRandomImages   : ==>  Preparing: SELECT portrait.portrait_uuid AS portraitUuid, portrait.portrait_src AS portraitSrc, portrait.gmt_create AS gmtCreate, portrait.gmt_modified AS gmtModified FROM tbl_portrait AS portrait LIMIT ?,1;
+2020-12-13 14:11:40.196 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.c.m.PortraitMapper.getRandomImages   : ==> Parameters: 2(Integer)
+2020-12-13 14:11:40.206 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.c.m.PortraitMapper.getRandomImages   : <==      Total: 1
+2020-12-13 14:11:40.221 DEBUG 7272 --- [http-nio-6060-exec-7] com.inet.code.mapper.UserMapper.insert   : ==>  Preparing: INSERT INTO tbl_user ( user_uuid, user_city, user_signature, user_sex, gmt_modified, user_email, user_buddha, user_name, gmt_create, user_birthday ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )
+2020-12-13 14:11:40.222 DEBUG 7272 --- [http-nio-6060-exec-7] com.inet.code.mapper.UserMapper.insert   : ==> Parameters: f704b21182d7022bffd2412b8922f665(String), (String), (String), true(Boolean), 2020-12-13 14:11:40.22(Timestamp), huchengyea@163.com(String), https://ss.im5i.com/2020/11/16/2.jpg(String), huchengyea@163.com(String), 2020-12-13 14:11:40.22(Timestamp), 2020-12-13 14:11:40.211(Timestamp)
+2020-12-13 14:11:40.244 DEBUG 7272 --- [http-nio-6060-exec-7] com.inet.code.mapper.UserMapper.insert   : <==    Updates: 1
+2020-12-13 14:11:40.262 DEBUG 7272 --- [http-nio-6060-exec-7] c.inet.code.mapper.CipherMapper.insert   : ==>  Preparing: INSERT INTO tbl_cipher ( cipher_uuid, gmt_modified, cipher_email, cipher_password, gmt_create ) VALUES ( ?, ?, ?, ?, ? )
+2020-12-13 14:11:40.263 DEBUG 7272 --- [http-nio-6060-exec-7] c.inet.code.mapper.CipherMapper.insert   : ==> Parameters: 01881240284b1aec9dcb57393d12e6c1(String), 2020-12-13 14:11:40.262(Timestamp), huchengyea@163.com(String), 5c72e3c089d84ad85413d6b6bf59633e(String), 2020-12-13 14:11:40.262(Timestamp)
+2020-12-13 14:11:40.285 DEBUG 7272 --- [http-nio-6060-exec-7] c.inet.code.mapper.CipherMapper.insert   : <==    Updates: 1
+2020-12-13 14:11:40.286 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.code.mapper.RoleMapper.getRoleName   : ==>  Preparing: SELECT role.role_uuid AS roleUuid, role.role_name AS roleName, role.gmt_create AS gmtCreate, role.gmt_modified AS gmtModified FROM tbl_role AS role WHERE role.role_name = ? LIMIT 1;
+2020-12-13 14:11:40.286 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.code.mapper.RoleMapper.getRoleName   : ==> Parameters: member(String)
+2020-12-13 14:11:40.296 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.code.mapper.RoleMapper.getRoleName   : <==      Total: 1
+2020-12-13 14:11:40.300 DEBUG 7272 --- [http-nio-6060-exec-7] com.inet.code.mapper.PowerMapper.insert  : ==>  Preparing: INSERT INTO tbl_power ( power_uuid, power_email, gmt_modified, power_role, gmt_create ) VALUES ( ?, ?, ?, ?, ? )
+2020-12-13 14:11:40.300 DEBUG 7272 --- [http-nio-6060-exec-7] com.inet.code.mapper.PowerMapper.insert  : ==> Parameters: 897ed8fdaefe9f3a4721ed407b390a0e(String), huchengyea@163.com(String), 2020-12-13 14:11:40.299(Timestamp), member(String), 2020-12-13 14:11:40.299(Timestamp)
+2020-12-13 14:11:40.321 DEBUG 7272 --- [http-nio-6060-exec-7] com.inet.code.mapper.PowerMapper.insert  : <==    Updates: 1

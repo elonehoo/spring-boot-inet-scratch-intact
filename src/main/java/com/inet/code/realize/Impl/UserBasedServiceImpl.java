@@ -18,6 +18,7 @@ import com.inet.code.entity.user.dto.UserAmendDomain;
 import com.inet.code.entity.user.dto.UserBaseDomain;
 import com.inet.code.entity.user.dto.UserRegisterDomain;
 import com.inet.code.entity.user.po.User;
+import com.inet.code.entity.user.vo.UserFanView;
 import com.inet.code.realize.UserBasedService;
 import com.inet.code.service.*;
 import com.inet.code.utils.CloneUtil;
@@ -285,6 +286,26 @@ public class UserBasedServiceImpl implements UserBasedService {
             }
         }
     }
+
+    /**
+     * 查看关注自己的用户
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 02:50
+     * @param token: 令牌
+     * @param pages: 页数
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getCheckFan(String token, Integer pages, String path) {
+        //通过token获取用户的基本信息
+        UserBaseDomain userBaseDomain = (UserBaseDomain) redisTemplate.opsForValue().get(token);
+        //获取到关注的用户
+        UserFanView userFanView = userService.getCheckFan(userBaseDomain.getUserEmail(),pages);
+        return null;
+    }
+
 
     /**
      * 判断用户或者关注的用户是否存在

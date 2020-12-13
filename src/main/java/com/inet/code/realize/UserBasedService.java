@@ -69,4 +69,16 @@ public interface UserBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getFocus(String token, String focusEmail, String path);
+
+    /**
+     * 查看关注自己的用户
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 02:50
+     * @param token: 令牌
+     * @param pages: 页数
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getCheckFan(String token, Integer pages, String path);
 }

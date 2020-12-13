@@ -2,6 +2,7 @@ package com.inet.code.service.impl;
 
 import com.inet.code.entity.user.dto.UserBaseDomain;
 import com.inet.code.entity.user.po.User;
+import com.inet.code.entity.user.vo.UserFanView;
 import com.inet.code.mapper.UserMapper;
 import com.inet.code.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -48,5 +49,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public User getEmailRepeat(String email) {
         return userMapper.getByEmail(email);
+    }
+
+    /**
+     * 查看粉丝
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 02:57
+     * @param userEmail: 用户的邮箱
+     * @param pages: 页数
+     * @return com.inet.code.entity.user.vo.UserFanView
+     */
+    @Override
+    public UserFanView getCheckFan(String userEmail, Integer pages) {
+        return userMapper.getCheckFan(userEmail , (pages - 1) * 20 );
     }
 }
