@@ -140,7 +140,7 @@ public class UserBasedController {
         return userBasedService.getCheckFocus(token,pages,"/scratch/user/focus");
     }
 
-    @ApiOperation("查看关注自己的人,如果为true则为双向关注")
+    @ApiOperation("查看关注自己的人,如果为false则为双向关注")
     @ApiImplicitParams({
             @ApiImplicitParam(name="pages",value="页数",dataType="String", paramType = "query",defaultValue = "1"),
     })
