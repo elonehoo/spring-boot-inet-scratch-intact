@@ -39,7 +39,7 @@ public interface UserService extends IService<User> {
     User getEmailRepeat(String email);
 
     /**
-     * 查看自己的粉丝
+     * 查看关注的人
      *
      * @author HCY
      * @since 2020/12/13 下午 03:52
@@ -47,5 +47,36 @@ public interface UserService extends IService<User> {
      * @param pages: 页数
      * @return java.util.List<com.inet.code.entity.user.vo.UserFanView>
      */
-    List<UserFanView> getCheckFan(String userEmail, Integer pages);
+    List<UserFanView> getCheckFocus(String userEmail, Integer pages);
+
+    /**
+     * 查看关注的人条目数
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 09:04
+     * @param userEmail: 用户邮箱
+     * @return java.lang.Integer
+    */
+    Integer getCheckFocusTotal(String userEmail);
+
+    /**
+     * 查看关注自己的用户
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 09:27
+     * @param userEmail: 用户邮箱
+     * @param pages: 页数
+     * @return java.util.List<com.inet.code.entity.user.vo.UserFanView>
+    */
+    List<UserFanView> getCheckFans(String userEmail, Integer pages);
+
+    /**
+     * 查看关注自己的用户的条目数
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 09:32
+     * @param userEmail: 用户邮箱
+     * @return java.lang.Integer
+    */
+    Integer getCheckFansTotal(String userEmail);
 }

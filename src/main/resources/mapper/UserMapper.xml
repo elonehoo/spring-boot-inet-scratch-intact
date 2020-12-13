@@ -41,7 +41,7 @@
         LIMIT 1;
     </select>
     <!--查看自己的粉丝-->
-    <select id="getCheckFan" resultType="com.inet.code.entity.user.vo.UserFanView">
+    <select id="getCheckFocus" resultType="com.inet.code.entity.user.vo.UserFanView">
         SELECT
             users.user_email AS userEmail,
             users.user_name AS userName,
@@ -70,6 +70,91 @@
         WHERE
             aa.email = #{userEmail}
         LIMIT #{pages},20;
+    </select>
+    <!--查看关注的人的条目数-->
+    <select id="getCheckFocusTotal" resultType="java.lang.Integer">
+        SELECT
+            COUNT(*)
+        FROM
+            (
+                SELECT
+                    a.email,
+                    a.concern,
+                IF
+                    ( sum(1) over (partition by feature) > 1, 0 , 1 ) AS is_friend
+                FROM
+                    (
+                        SELECT
+                            attention_email AS email,
+                            attention_concern AS concern,
+                            IF(attention1.attention_email > attention1.attention_concern,
+                                 CONCAT(attention1.attention_concern , attention1.attention_email),
+                                 CONCAT(attention1.attention_email , attention1.attention_concern)
+                            ) AS feature
+                        FROM tbl_attention AS attention1
+                    ) AS a
+            ) AS aa
+        LEFT JOIN tbl_user AS users ON users.user_email = aa.concern
+        WHERE
+            aa.email = #{userEmail} ;
+    </select>
+    <!--查看关注自己的用户-->
+    <select id="getCheckFans" resultType="com.inet.code.entity.user.vo.UserFanView">
+        SELECT
+            users.user_email AS userEmail,
+            users.user_name AS userName,
+            users.user_buddha AS userBuddha,
+            aa.is_friend AS is_friend
+        FROM
+            (
+                SELECT
+                    a.email,
+                    a.concern,
+                IF
+                    ( sum(1) over (partition by feature) > 1, 0 , 1 ) AS is_friend
+                FROM
+                    (
+                        SELECT
+                            attention_email AS email,
+                            attention_concern AS concern,
+                            IF(attention1.attention_email > attention1.attention_concern,
+                                 CONCAT(attention1.attention_concern , attention1.attention_email),
+                                 CONCAT(attention1.attention_email , attention1.attention_concern)
+                            ) AS feature
+                        FROM tbl_attention AS attention1
+                    ) AS a
+            ) AS aa
+        LEFT JOIN tbl_user AS users ON users.user_email = aa.email
+        WHERE
+            aa.concern = #{userEmail}
+        LIMIT #{pages},20;
+    </select>
+    <!--查看关注自己的用户的条目数-->
+    <select id="getCheckFansTotal" resultType="java.lang.Integer">
+        SELECT
+            COUNT(*)
+        FROM
+            (
+                SELECT
+                    a.email,
+                    a.concern,
+                IF
+                    ( sum(1) over (partition by feature) > 1, 0 , 1 ) AS is_friend
+                FROM
+                    (
+                        SELECT
+                            attention_email AS email,
+                            attention_concern AS concern,
+                            IF(attention1.attention_email > attention1.attention_concern,
+                                 CONCAT(attention1.attention_concern , attention1.attention_email),
+                                 CONCAT(attention1.attention_email , attention1.attention_concern)
+                            ) AS feature
+                        FROM tbl_attention AS attention1
+                    ) AS a
+            ) AS aa
+        LEFT JOIN tbl_user AS users ON users.user_email = aa.email
+        WHERE
+            aa.concern = #{userEmail};
     </select>
 
 </mapper>

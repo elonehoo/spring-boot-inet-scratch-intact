@@ -62,8 +62,48 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * @return java.util.List<com.inet.code.entity.user.vo.UserFanView>
     */
     @Override
-    public List<UserFanView> getCheckFan(String userEmail, Integer pages) {
-        return userMapper.getCheckFan(userEmail,(pages - 1) * 20 );
+    public List<UserFanView> getCheckFocus(String userEmail, Integer pages) {
+        return userMapper.getCheckFocus(userEmail,(pages - 1) * 20 );
+    }
+
+    /**
+     * 查看关注的人条目数
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 09:04
+     * @param userEmail: 用户邮箱
+     * @return java.lang.Integer
+     */
+    @Override
+    public Integer getCheckFocusTotal(String userEmail) {
+        return userMapper.getCheckFocusTotal(userEmail);
+    }
+
+    /**
+     * 查看关注自己的用户
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 09:27
+     * @param userEmail: 用户邮箱
+     * @param pages: 页数
+     * @return java.util.List<com.inet.code.entity.user.vo.UserFanView>
+     */
+    @Override
+    public List<UserFanView> getCheckFans(String userEmail, Integer pages) {
+        return userMapper.getCheckFans(userEmail , (pages - 1) * 20);
+    }
+
+    /**
+     * 查看关注自己的用户的条目数
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 09:32
+     * @param userEmail: 用户邮箱
+     * @return java.lang.Integer
+     */
+    @Override
+    public Integer getCheckFansTotal(String userEmail) {
+        return userMapper.getCheckFansTotal(userEmail);
     }
 
 

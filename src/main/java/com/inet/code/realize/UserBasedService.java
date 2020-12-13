@@ -80,5 +80,17 @@ public interface UserBasedService {
      * @param path: URL路径
      * @return com.inet.code.utils.Result
     */
-    Result getCheckFan(String token, Integer pages, String path);
+    Result getCheckFocus(String token, Integer pages, String path);
+
+    /**
+     * 查看关注自己的人
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 09:22
+     * @param token: 令牌
+     * @param pages: 页数
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getCheckFans(String token, Integer pages, String path);
 }

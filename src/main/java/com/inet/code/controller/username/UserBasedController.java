@@ -2,7 +2,6 @@ package com.inet.code.controller.username;
 
 import com.inet.code.entity.cipher.dto.CipherAmendDomain;
 import com.inet.code.entity.user.dto.UserAmendDomain;
-import com.inet.code.entity.user.dto.UserBaseDomain;
 import com.inet.code.entity.user.dto.UserRegisterDomain;
 import com.inet.code.realize.UserBasedService;
 import com.inet.code.utils.Result;
@@ -14,7 +13,6 @@ import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.sql.ResultSet;
 
 /**
  * 用户的基本操作
@@ -122,11 +120,36 @@ public class UserBasedController {
                 ,"/scratch/user/focus");
     }
 
-    @ApiOperation("查看自己的粉丝")
-    @GetMapping("/checkFan")
+    /**
+     * 查看自己的关注的人,如果为true则为双向关注
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 08:04
+     * @param token: 令牌
+     * @param pages: 页数
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("查看自己的关注的人,如果为true则为双向关注")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="pages",value="页数",dataType="String", paramType = "query",defaultValue = "1"),
+    })
+    @GetMapping("/checkFocus")
     @RequiresRoles(value = {"member"})
     public Result getCheckFan(@RequestHeader(value = "Token",defaultValue = "") String token,
-                              @RequestParam(value = "pages",defaultValue = "") Integer pages){
-        return userBasedService.getCheckFan(token,pages,"/scratch/user/focus");
+                              @RequestParam(value = "pages",defaultValue = "1") Integer pages){
+        return userBasedService.getCheckFocus(token,pages,"/scratch/user/focus");
     }
+
+    @ApiOperation("查看关注自己的人,如果为true则为双向关注")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="pages",value="页数",dataType="String", paramType = "query",defaultValue = "1"),
+    })
+    @GetMapping("/checkFans")
+    @RequiresRoles(value = {"member"})
+    public Result getCheckFans(@RequestHeader(value = "Token",defaultValue = "") String token,
+                               @RequestParam(value = "pages",defaultValue = "1") Integer pages){
+        return userBasedService.getCheckFans(token , pages , "/scratch/user/focus");
+    }
+
+
 }

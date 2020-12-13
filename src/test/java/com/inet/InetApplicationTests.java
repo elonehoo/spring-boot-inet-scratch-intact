@@ -29,4 +29,11 @@ class InetApplicationTests {
         System.out.println(StrUtil.isBlank(c));
     }
 
+    @Test
+    void test_2(){
+        int a = 1;
+        int total = a % 5 != 0 ? (a / 5 + 1) : (a / 5);
+        System.out.println(total);
+    }
+
 }

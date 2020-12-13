@@ -1,6 +1,7 @@
 package com.inet.code.realize.Impl;
 
 import cn.hutool.core.lang.Validator;
+import cn.hutool.core.util.PageUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
@@ -14,6 +15,7 @@ import com.inet.code.entity.portrait.po.Portrait;
 import com.inet.code.entity.portrait.vo.PortraitBuddhaView;
 import com.inet.code.entity.power.po.Power;
 import com.inet.code.entity.role.dto.RoleProfileDomain;
+import com.inet.code.entity.tool.PageToll;
 import com.inet.code.entity.user.dto.UserAmendDomain;
 import com.inet.code.entity.user.dto.UserBaseDomain;
 import com.inet.code.entity.user.dto.UserRegisterDomain;
@@ -299,12 +301,43 @@ public class UserBasedServiceImpl implements UserBasedService {
      * @return com.inet.code.utils.Result
      */
     @Override
-    public Result getCheckFan(String token, Integer pages, String path) {
+    public Result getCheckFocus(String token, Integer pages, String path) {
         //通过token获取用户的基本信息
         UserBaseDomain userBaseDomain = (UserBaseDomain) redisTemplate.opsForValue().get(token);
         //获取到关注的用户
-        List<UserFanView> userFanViews = userService.getCheckFan(userBaseDomain.getUserEmail(),pages);
-        return new Result().result200(userFanViews,path);
+        List<UserFanView> userFanViews = userService.getCheckFocus(userBaseDomain.getUserEmail(),pages);
+        //计算出总页数
+        Integer totalPages = userService.getCheckFocusTotal(userBaseDomain.getUserEmail());
+        int total = totalPages % 5 != 0 ? (totalPages / 5 + 1) : (totalPages / 5);
+        //创建Page对象
+        PageToll<UserFanView> userFanViewPageToll =
+                new PageToll<>(pages,20,total,userFanViews);
+        return new Result().result200(userFanViewPageToll,path);
+    }
+
+    /**
+     * 查看关注自己的人
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 09:22
+     * @param token: 令牌
+     * @param pages: 页数
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getCheckFans(String token, Integer pages, String path) {
+        //通过token获取用户的基本信息
+        UserBaseDomain userBaseDomain = (UserBaseDomain) redisTemplate.opsForValue().get(token);
+        //获取到关注我的用户
+        List<UserFanView> userFanViews = userService.getCheckFans(userBaseDomain.getUserEmail(), pages);
+        //计算出总页数
+        Integer totalPages = userService.getCheckFansTotal(userBaseDomain.getUserEmail());
+        int total = totalPages % 5 != 0 ? (totalPages / 5 + 1) : (totalPages / 5);
+        //创建Page对象
+        PageToll<UserFanView> userFanViewPageToll =
+                new PageToll<>(pages,20,total,userFanViews);
+        return new Result().result200(userFanViewPageToll,path);
     }
 
 

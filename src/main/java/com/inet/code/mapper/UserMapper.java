@@ -47,5 +47,36 @@ public interface UserMapper extends BaseMapper<User> {
      * @param pages: 页数
      * @return java.util.List<com.inet.code.entity.user.vo.UserFanView>
     */
-    List<UserFanView> getCheckFan(String userEmail, int pages);
+    List<UserFanView> getCheckFocus(String userEmail, int pages);
+
+    /**
+     * 查看关注的人的条目数
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 09:07
+     * @param userEmail: 用户邮箱
+     * @return java.lang.Integer
+    */
+    Integer getCheckFocusTotal(String userEmail);
+
+    /**
+     * 查看关注自己的用户
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 09:29
+     * @param userEmail: 用户邮箱
+     * @param pages: 页数
+     * @return java.util.List<com.inet.code.entity.user.vo.UserFanView>
+    */
+    List<UserFanView> getCheckFans(String userEmail, int pages);
+
+    /**
+     * 查看关注自己的用户的条目数
+     *
+     * @author HCY
+     * @since 2020/12/13 下午 09:32
+     * @param userEmail: 用户邮箱
+     * @return java.lang.Integer
+     */
+    Integer getCheckFansTotal(String userEmail);
 }
