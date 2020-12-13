@@ -34,7 +34,7 @@ public class BasedController {
      * @param userLoginDomain: 登录的DTO端口 , 含有账号和密码
      * @return com.inet.code.utils.Result
     */
-    @ApiOperation("登录操作")
+    @ApiOperation("登录操作，不需要token")
     @PostMapping("/login")
     public Result postLogin(@RequestBody UserLoginDomain userLoginDomain){
         return basedService.getLogin(userLoginDomain , "/scratch/based/login");
@@ -62,7 +62,9 @@ public class BasedController {
      * @since 2020/12/11 下午 08:02
      * @return com.inet.code.utils.Result
     */
+    @ApiOperation("查看所有类别")
     @GetMapping("/listType")
+    @RequiresRoles(logical = Logical.OR,value = {"admin","member"})
     public Result getListType(){
         return basedService.getListType("/scratch/based/listType");
     }
@@ -73,7 +75,9 @@ public class BasedController {
      * @since 2020/12/11 下午 08:49
      * @return com.inet.code.utils.Result
     */
+    @ApiOperation("查看所有的标签")
     @GetMapping("/listLabel")
+    @RequiresRoles(logical = Logical.OR,value = {"admin","member"})
     public Result getListLabel(){
         return basedService.getListLabel("/scratch/based/listLabel");
     }
