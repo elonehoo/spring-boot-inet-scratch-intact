@@ -5,6 +5,8 @@ import com.inet.code.entity.user.po.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.inet.code.entity.user.vo.UserFanView;
 
+import java.util.List;
+
 /**
  * <p>
  * 用户的基本信息 Mapper 接口
@@ -37,13 +39,13 @@ public interface UserMapper extends BaseMapper<User> {
     User getByEmail(String email);
 
     /**
-     * 查看粉丝
+     * 查看自己的粉丝
      *
      * @author HCY
-     * @since 2020/12/13 下午 02:57
-     * @param userEmail: 用户的邮箱
+     * @since 2020/12/13 下午 03:51
+     * @param userEmail: 用户邮箱
      * @param pages: 页数
-     * @return com.inet.code.entity.user.vo.UserFanView
-     */
-    UserFanView getCheckFan(String userEmail, int pages);
+     * @return java.util.List<com.inet.code.entity.user.vo.UserFanView>
+    */
+    List<UserFanView> getCheckFan(String userEmail, int pages);
 }

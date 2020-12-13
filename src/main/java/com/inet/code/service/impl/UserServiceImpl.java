@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -52,16 +53,18 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     /**
-     * 查看粉丝
+     * 查看自己的粉丝
      *
      * @author HCY
-     * @since 2020/12/13 下午 02:57
-     * @param userEmail: 用户的邮箱
+     * @since 2020/12/13 下午 03:52
+     * @param userEmail: 用户邮箱
      * @param pages: 页数
-     * @return com.inet.code.entity.user.vo.UserFanView
-     */
+     * @return java.util.List<com.inet.code.entity.user.vo.UserFanView>
+    */
     @Override
-    public UserFanView getCheckFan(String userEmail, Integer pages) {
-        return userMapper.getCheckFan(userEmail , (pages - 1) * 20 );
+    public List<UserFanView> getCheckFan(String userEmail, Integer pages) {
+        return userMapper.getCheckFan(userEmail,(pages - 1) * 20 );
     }
+
+
 }

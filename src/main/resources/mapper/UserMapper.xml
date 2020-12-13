@@ -40,7 +40,7 @@
             user.user_email = #{email}
         LIMIT 1;
     </select>
-    <!--查看粉丝-->
+    <!--查看自己的粉丝-->
     <select id="getCheckFan" resultType="com.inet.code.entity.user.vo.UserFanView">
         SELECT
             users.user_email AS userEmail,
@@ -53,7 +53,7 @@
                     a.email,
                     a.concern,
                 IF
-                    ( sum(1) over (partition by feature) > 1, 0 , 1 ) AS is_friend
+                    ( sum(1) over (partition by feature) > 1, 1 , 0 ) AS is_friend
                 FROM
                     (
                         SELECT
@@ -71,4 +71,5 @@
             aa.email = #{userEmail}
         LIMIT #{pages},20;
     </select>
+
 </mapper>

@@ -29,6 +29,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -302,8 +303,8 @@ public class UserBasedServiceImpl implements UserBasedService {
         //通过token获取用户的基本信息
         UserBaseDomain userBaseDomain = (UserBaseDomain) redisTemplate.opsForValue().get(token);
         //获取到关注的用户
-        UserFanView userFanView = userService.getCheckFan(userBaseDomain.getUserEmail(),pages);
-        return null;
+        List<UserFanView> userFanViews = userService.getCheckFan(userBaseDomain.getUserEmail(),pages);
+        return new Result().result200(userFanViews,path);
     }
 
 
