@@ -198,6 +198,11 @@ public class BasedServiceImpl implements BasedService {
                 ,userBaseDomain
                 ,7
                 , TimeUnit.DAYS);
-        return null;
+        //设置返回值
+        Map<String, Object> results = new HashMap<>(3);
+        results.put("info","登录成功");
+        results.put("token",token);
+        results.put("user",userBaseDomain);
+        return new Result().result200(results,path);
     }
 }
