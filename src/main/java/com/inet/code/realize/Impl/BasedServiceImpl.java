@@ -13,6 +13,7 @@ import com.inet.code.entity.user.po.User;
 import com.inet.code.mapper.UserMapper;
 import com.inet.code.realize.BasedService;
 import com.inet.code.service.LabelService;
+import com.inet.code.service.SlideshowService;
 import com.inet.code.service.TypeService;
 import com.inet.code.service.UserService;
 import com.inet.code.utils.CloneUtil;
@@ -44,6 +45,9 @@ public class BasedServiceImpl implements BasedService {
 
     @Resource
     private LabelService labelService;
+
+    @Resource
+    private SlideshowService slideshowService;
 
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
@@ -204,5 +208,20 @@ public class BasedServiceImpl implements BasedService {
         results.put("token",token);
         results.put("user",userBaseDomain);
         return new Result().result200(results,path);
+    }
+
+    /**
+     * 分页查看轮播图
+     *
+     * @author HCY
+     * @since 2020/12/14 9:46 下午
+     * @param current: 页数
+     * @param total: 条目数
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getSlideshowPagination(Integer current, Integer total, String path) {
+        return null;
     }
 }
