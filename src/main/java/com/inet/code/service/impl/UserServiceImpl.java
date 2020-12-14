@@ -106,5 +106,18 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return userMapper.getCheckFansTotal(userEmail);
     }
 
+    /**
+     * 通过邮箱继续登陆操作
+     *
+     * @author HCY
+     * @since 2020/12/14 5:20 下午
+     * @param email: 用户邮箱
+     * @return com.inet.code.entity.user.dto.UserBaseDomain
+     */
+    @Override
+    public UserBaseDomain getByRoleEmail(String email) {
+        return userMapper.getByRoleEmail(email);
+    }
+
 
 }

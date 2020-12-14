@@ -1,5 +1,6 @@
 package com.inet.code.realize;
 
+import com.inet.code.entity.user.dto.UserLandingDomain;
 import com.inet.code.entity.user.dto.UserLoginDomain;
 import com.inet.code.utils.Result;
 
@@ -50,4 +51,26 @@ public interface BasedService {
      * @return com.inet.code.utils.Result
     */
     Result getListLabel(String path);
+
+    /**
+     * 通过邮箱发送验证码进行登陆操作
+     *
+     * @author HCY
+     * @since 2020/12/14 4:07 下午
+     * @param email: 邮箱
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getVerificationLanding(String email, String path);
+
+    /**
+     * 通过验证码登陆
+     *
+     * @author HCY
+     * @since 2020/12/14 5:11 下午
+     * @param userLandingDomain: 验证码登陆的实体类
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getLanding(UserLandingDomain userLandingDomain, String path);
 }

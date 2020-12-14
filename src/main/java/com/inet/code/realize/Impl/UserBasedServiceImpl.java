@@ -24,10 +24,12 @@ import com.inet.code.entity.user.vo.UserFanView;
 import com.inet.code.realize.UserBasedService;
 import com.inet.code.service.*;
 import com.inet.code.utils.CloneUtil;
+import com.inet.code.utils.FileUtils;
 import com.inet.code.utils.FromMailUtil;
 import com.inet.code.utils.Result;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -88,7 +90,7 @@ public class UserBasedServiceImpl implements UserBasedService {
         String code = RandomUtil.randomString(5);
         //设置邮箱的内容
         MailUtil.send(
-                this.getMail()
+                FromMailUtil.getMail()
                 , email
                 , "博语编程社区验证码"
                 , "注册验证码为:" + code + ",有效时长为5分钟"
@@ -155,6 +157,8 @@ public class UserBasedServiceImpl implements UserBasedService {
                   roleService.getRoleName("member")
                 , RoleProfileDomain.class);
         powerService.save(new Power(userRegisterDomain.getEmail(),roleProfileDomain.getRoleName()));
+        //删除redis中的验证码
+        redisTemplate.delete(userRegisterDomain.getEmail());
         //设置返回值
         return new Result().result200("注册成功",path);
     }
@@ -340,6 +344,20 @@ public class UserBasedServiceImpl implements UserBasedService {
         return new Result().result200(userFanViewPageToll,path);
     }
 
+    /**
+     * 文件上传，返回的是文件的URL地址
+     *
+     * @author HCY
+     * @since 2020/12/14 1:33 下午
+     * @param file: 上传的文件
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getUploadFiles(MultipartFile file, String path) {
+        return FileUtils.getUploading(file,path);
+    }
+
 
     /**
      * 判断用户或者关注的用户是否存在
@@ -366,23 +384,7 @@ public class UserBasedServiceImpl implements UserBasedService {
         return new Result().result200("成功",path);
     }
 
-    /**
-     * 设置邮箱的配置文件
-     * @author HCY
-     * @since 2020-11-16
-     * @return MailAccount
-     */
-    private MailAccount getMail() {
-        MailAccount account = new MailAccount();
-        account.setHost(FromMailUtil.HOST);
-        account.setPort(FromMailUtil.PORT);
-        account.setAuth(true);
-        account.setFrom(FromMailUtil.FROM);
-        account.setUser(FromMailUtil.USER);
-        account.setPass(FromMailUtil.PASS);
-        account.setSslEnable(FromMailUtil.SSLENABLE);
-        return account;
-    }
+
 
     /**
      * 判断邮箱是否重复

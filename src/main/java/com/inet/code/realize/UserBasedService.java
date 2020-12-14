@@ -4,6 +4,7 @@ import com.inet.code.entity.cipher.dto.CipherAmendDomain;
 import com.inet.code.entity.user.dto.UserAmendDomain;
 import com.inet.code.entity.user.dto.UserRegisterDomain;
 import com.inet.code.utils.Result;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 用户模块的业务控操作
@@ -93,4 +94,15 @@ public interface UserBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getCheckFans(String token, Integer pages, String path);
+
+    /**
+     * 文件上传，返回的是文件的URL地址
+     *
+     * @author HCY
+     * @since 2020/12/14 1:33 下午
+     * @param file: 上传的文件
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getUploadFiles(MultipartFile file, String path);
 }

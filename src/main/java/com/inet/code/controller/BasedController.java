@@ -1,9 +1,12 @@
 package com.inet.code.controller;
 
+import com.inet.code.entity.user.dto.UserLandingDomain;
 import com.inet.code.entity.user.dto.UserLoginDomain;
 import com.inet.code.realize.BasedService;
 import com.inet.code.utils.Result;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
@@ -82,4 +85,27 @@ public class BasedController {
         return basedService.getListLabel("/scratch/based/listLabel");
     }
 
+    /**
+     * 使用验证码登陆时，获取到验证码
+     *
+     * @author HCY
+     * @since 2020/12/14 4:49 下午
+     * @param email: 用户邮箱
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("通过邮箱发送验证码(验证码登陆)，不需要token")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="email",value="邮箱",dataType="String", paramType = "query"),
+    })
+    @GetMapping("/verificationLanding")
+    public Result getVerificationLanding(@RequestParam(value = "email",defaultValue = "") String email){
+        return basedService.getVerificationLanding(email,"/scratch/based/verificationLanding");
+    }
+
+    @PostMapping("/landing")
+    public Result postLanding(@RequestBody UserLandingDomain userLandingDomain){
+        return basedService.getLanding(
+                 userLandingDomain
+                ,"/scratch/based/verificationLanding");
+    }
 }

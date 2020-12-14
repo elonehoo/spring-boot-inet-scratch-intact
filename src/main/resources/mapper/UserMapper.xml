@@ -156,5 +156,22 @@
         WHERE
             aa.concern = #{userEmail};
     </select>
+    <!--通过邮箱继续登陆操作-->
+    <select id="getByRoleEmail" resultType="com.inet.code.entity.user.dto.UserBaseDomain">
+        SELECT
+            users.user_buddha AS userBuddha,
+            users.user_name AS userName,
+            users.user_email AS userEmail,
+            users.user_sex AS userSex,
+            users.user_birthday AS userBirthday,
+            users.user_city AS userCity,
+            users.user_signature AS userSignature,
+            role.role_name AS roleName
+        FROM
+            tbl_user AS users
+            LEFT JOIN tbl_power AS power ON power.power_email = users.user_email
+            LEFT JOIN tbl_role AS role ON role.role_uuid = power.power_role
+        WHERE users.user_email = #{email};
+    </select>
 
 </mapper>

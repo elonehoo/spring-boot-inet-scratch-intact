@@ -1,148 +1,40 @@
-2020-12-13 14:09:52.627  INFO 7272 --- [main] com.inet.InetApplication                 : Starting InetApplication using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 7272 (D:\8.items\spring-boot-inet-scratch-intact\target\classes started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-13 14:09:52.639 DEBUG 7272 --- [main] com.inet.InetApplication                 : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-13 14:09:52.639  INFO 7272 --- [main] com.inet.InetApplication                 : No active profile set, falling back to default profiles: default
-2020-12-13 14:09:56.857  WARN 7272 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 14:09:56.875  WARN 7272 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 14:09:56.982  WARN 7272 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 14:09:56.989  WARN 7272 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 14:09:57.022  INFO 7272 --- [main] com.inet.InetApplication                 : Started InetApplication in 4.871 seconds (JVM running for 6.113)
-2020-12-13 14:10:21.949 DEBUG 7272 --- [http-nio-6060-exec-1] c.i.code.mapper.UserMapper.getByEmail    : ==>  Preparing: SELECT user.user_uuid AS userUuid, user.user_buddha AS userBuddha, user.user_name AS userName, user.user_email AS userEmail, user.user_sex AS userSex, user.user_birthday AS userBirthday, user.user_city AS userCity, user.user_signature AS userSignature, user.gmt_create AS gmtCreate, user.gmt_modified AS gmtModified FROM tbl_user AS user WHERE user.user_email = ? LIMIT 1;
-2020-12-13 14:10:21.961 DEBUG 7272 --- [http-nio-6060-exec-1] c.i.code.mapper.UserMapper.getByEmail    : ==> Parameters: 2414776185@qq.com(String)
-2020-12-13 14:10:21.982 DEBUG 7272 --- [http-nio-6060-exec-1] c.i.code.mapper.UserMapper.getByEmail    : <==      Total: 1
-2020-12-13 14:10:32.275 DEBUG 7272 --- [http-nio-6060-exec-2] c.i.code.mapper.UserMapper.getByEmail    : ==>  Preparing: SELECT user.user_uuid AS userUuid, user.user_buddha AS userBuddha, user.user_name AS userName, user.user_email AS userEmail, user.user_sex AS userSex, user.user_birthday AS userBirthday, user.user_city AS userCity, user.user_signature AS userSignature, user.gmt_create AS gmtCreate, user.gmt_modified AS gmtModified FROM tbl_user AS user WHERE user.user_email = ? LIMIT 1;
-2020-12-13 14:10:32.275 DEBUG 7272 --- [http-nio-6060-exec-2] c.i.code.mapper.UserMapper.getByEmail    : ==> Parameters: huchengyea@163.com(String)
-2020-12-13 14:10:32.285 DEBUG 7272 --- [http-nio-6060-exec-2] c.i.code.mapper.UserMapper.getByEmail    : <==      Total: 0
-2020-12-13 14:11:40.097 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.code.mapper.UserMapper.getByEmail    : ==>  Preparing: SELECT user.user_uuid AS userUuid, user.user_buddha AS userBuddha, user.user_name AS userName, user.user_email AS userEmail, user.user_sex AS userSex, user.user_birthday AS userBirthday, user.user_city AS userCity, user.user_signature AS userSignature, user.gmt_create AS gmtCreate, user.gmt_modified AS gmtModified FROM tbl_user AS user WHERE user.user_email = ? LIMIT 1;
-2020-12-13 14:11:40.098 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.code.mapper.UserMapper.getByEmail    : ==> Parameters: huchengyea@163.com(String)
-2020-12-13 14:11:40.107 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.code.mapper.UserMapper.getByEmail    : <==      Total: 0
-2020-12-13 14:11:40.185 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.c.mapper.PortraitMapper.selectCount  : ==>  Preparing: SELECT COUNT( 1 ) FROM tbl_portrait
-2020-12-13 14:11:40.185 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.c.mapper.PortraitMapper.selectCount  : ==> Parameters: 
-2020-12-13 14:11:40.195 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.c.mapper.PortraitMapper.selectCount  : <==      Total: 1
-2020-12-13 14:11:40.196 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.c.m.PortraitMapper.getRandomImages   : ==>  Preparing: SELECT portrait.portrait_uuid AS portraitUuid, portrait.portrait_src AS portraitSrc, portrait.gmt_create AS gmtCreate, portrait.gmt_modified AS gmtModified FROM tbl_portrait AS portrait LIMIT ?,1;
-2020-12-13 14:11:40.196 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.c.m.PortraitMapper.getRandomImages   : ==> Parameters: 2(Integer)
-2020-12-13 14:11:40.206 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.c.m.PortraitMapper.getRandomImages   : <==      Total: 1
-2020-12-13 14:11:40.221 DEBUG 7272 --- [http-nio-6060-exec-7] com.inet.code.mapper.UserMapper.insert   : ==>  Preparing: INSERT INTO tbl_user ( user_uuid, user_city, user_signature, user_sex, gmt_modified, user_email, user_buddha, user_name, gmt_create, user_birthday ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )
-2020-12-13 14:11:40.222 DEBUG 7272 --- [http-nio-6060-exec-7] com.inet.code.mapper.UserMapper.insert   : ==> Parameters: f704b21182d7022bffd2412b8922f665(String), (String), (String), true(Boolean), 2020-12-13 14:11:40.22(Timestamp), huchengyea@163.com(String), https://ss.im5i.com/2020/11/16/2.jpg(String), huchengyea@163.com(String), 2020-12-13 14:11:40.22(Timestamp), 2020-12-13 14:11:40.211(Timestamp)
-2020-12-13 14:11:40.244 DEBUG 7272 --- [http-nio-6060-exec-7] com.inet.code.mapper.UserMapper.insert   : <==    Updates: 1
-2020-12-13 14:11:40.262 DEBUG 7272 --- [http-nio-6060-exec-7] c.inet.code.mapper.CipherMapper.insert   : ==>  Preparing: INSERT INTO tbl_cipher ( cipher_uuid, gmt_modified, cipher_email, cipher_password, gmt_create ) VALUES ( ?, ?, ?, ?, ? )
-2020-12-13 14:11:40.263 DEBUG 7272 --- [http-nio-6060-exec-7] c.inet.code.mapper.CipherMapper.insert   : ==> Parameters: 01881240284b1aec9dcb57393d12e6c1(String), 2020-12-13 14:11:40.262(Timestamp), huchengyea@163.com(String), 5c72e3c089d84ad85413d6b6bf59633e(String), 2020-12-13 14:11:40.262(Timestamp)
-2020-12-13 14:11:40.285 DEBUG 7272 --- [http-nio-6060-exec-7] c.inet.code.mapper.CipherMapper.insert   : <==    Updates: 1
-2020-12-13 14:11:40.286 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.code.mapper.RoleMapper.getRoleName   : ==>  Preparing: SELECT role.role_uuid AS roleUuid, role.role_name AS roleName, role.gmt_create AS gmtCreate, role.gmt_modified AS gmtModified FROM tbl_role AS role WHERE role.role_name = ? LIMIT 1;
-2020-12-13 14:11:40.286 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.code.mapper.RoleMapper.getRoleName   : ==> Parameters: member(String)
-2020-12-13 14:11:40.296 DEBUG 7272 --- [http-nio-6060-exec-7] c.i.code.mapper.RoleMapper.getRoleName   : <==      Total: 1
-2020-12-13 14:11:40.300 DEBUG 7272 --- [http-nio-6060-exec-7] com.inet.code.mapper.PowerMapper.insert  : ==>  Preparing: INSERT INTO tbl_power ( power_uuid, power_email, gmt_modified, power_role, gmt_create ) VALUES ( ?, ?, ?, ?, ? )
-2020-12-13 14:11:40.300 DEBUG 7272 --- [http-nio-6060-exec-7] com.inet.code.mapper.PowerMapper.insert  : ==> Parameters: 897ed8fdaefe9f3a4721ed407b390a0e(String), huchengyea@163.com(String), 2020-12-13 14:11:40.299(Timestamp), member(String), 2020-12-13 14:11:40.299(Timestamp)
-2020-12-13 14:11:40.321 DEBUG 7272 --- [http-nio-6060-exec-7] com.inet.code.mapper.PowerMapper.insert  : <==    Updates: 1
-2020-12-13 15:43:15.335  INFO 5696 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 5696 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-13 15:43:15.337 DEBUG 5696 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-13 15:43:15.338  INFO 5696 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-13 15:43:19.791  WARN 5696 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 15:43:19.813  WARN 5696 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 15:43:19.900  WARN 5696 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 15:43:19.907  WARN 5696 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 15:43:19.933  INFO 5696 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 4.927 seconds (JVM running for 5.972)
-2020-12-13 15:52:50.256  INFO 9248 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 9248 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-13 15:52:50.257 DEBUG 9248 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-13 15:52:50.258  INFO 9248 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-13 15:52:53.414  WARN 9248 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 15:52:53.435  WARN 9248 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 15:52:53.526  WARN 9248 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 15:52:53.533  WARN 9248 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 15:52:53.559  INFO 9248 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 3.496 seconds (JVM running for 4.084)
-2020-12-13 15:54:19.870  INFO 512 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 512 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-13 15:54:19.871 DEBUG 512 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-13 15:54:19.872  INFO 512 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-13 15:54:23.016  WARN 512 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 15:54:23.039  WARN 512 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 15:54:23.137  WARN 512 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 15:54:23.144  WARN 512 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 15:54:23.167  INFO 512 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 3.49 seconds (JVM running for 4.065)
-2020-12-13 20:57:18.320  INFO 9420 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 9420 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-13 20:57:18.335 DEBUG 9420 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-13 20:57:18.336  INFO 9420 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-13 20:57:22.975  WARN 9420 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 20:57:23.001  WARN 9420 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 20:57:23.106  WARN 9420 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 20:57:23.114  WARN 9420 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 20:57:23.149  INFO 9420 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 5.129 seconds (JVM running for 6.84)
-2020-12-13 21:01:15.612  INFO 560 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 560 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-13 21:01:15.613 DEBUG 560 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-13 21:01:15.615  INFO 560 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-13 21:01:18.757  WARN 560 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:01:18.778  WARN 560 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:01:18.883  WARN 560 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:01:18.890  WARN 560 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:01:18.913  INFO 560 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 3.528 seconds (JVM running for 4.193)
-2020-12-13 21:01:29.800  INFO 5768 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 5768 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-13 21:01:29.802 DEBUG 5768 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-13 21:01:29.803  INFO 5768 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-13 21:01:33.001  WARN 5768 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:01:33.022  WARN 5768 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:01:33.108  WARN 5768 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:01:33.116  WARN 5768 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:01:33.142  INFO 5768 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 3.571 seconds (JVM running for 4.242)
-2020-12-13 21:01:45.452  INFO 3176 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 3176 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-13 21:01:45.453 DEBUG 3176 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-13 21:01:45.454  INFO 3176 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-13 21:01:48.843  WARN 3176 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:01:48.865  WARN 3176 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:01:48.958  WARN 3176 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:01:48.965  WARN 3176 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:01:48.989  INFO 3176 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 3.758 seconds (JVM running for 4.447)
-2020-12-13 21:10:17.936  INFO 2248 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 2248 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-13 21:10:17.937 DEBUG 2248 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-13 21:10:17.939  INFO 2248 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-13 21:10:21.421  WARN 2248 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:10:21.443  WARN 2248 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:10:21.534  WARN 2248 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:10:21.541  WARN 2248 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:10:21.563  INFO 2248 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 3.838 seconds (JVM running for 4.461)
-2020-12-13 21:13:09.039  INFO 7200 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 7200 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-13 21:13:09.040 DEBUG 7200 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-13 21:13:09.042  INFO 7200 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-13 21:13:12.255  WARN 7200 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:13:12.278  WARN 7200 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:13:12.362  WARN 7200 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:13:12.366  WARN 7200 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:13:12.373  WARN 7200 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:13:12.406  INFO 7200 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 3.565 seconds (JVM running for 4.159)
-2020-12-13 21:39:09.447  INFO 16272 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 16272 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-13 21:39:09.449 DEBUG 16272 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-13 21:39:09.450  INFO 16272 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-13 21:39:12.679  WARN 16272 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:39:12.700  WARN 16272 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:39:12.780  WARN 16272 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:39:12.783  WARN 16272 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:39:12.787  WARN 16272 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:39:12.794  WARN 16272 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:39:12.816  INFO 16272 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 3.575 seconds (JVM running for 4.159)
-2020-12-13 21:43:36.403  INFO 2972 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 2972 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-13 21:43:36.404 DEBUG 2972 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-13 21:43:36.406  INFO 2972 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-13 21:43:39.626  WARN 2972 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:43:39.647  WARN 2972 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:43:39.731  WARN 2972 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:43:39.735  WARN 2972 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:43:39.738  WARN 2972 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:43:39.746  WARN 2972 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:43:39.771  INFO 2972 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 3.567 seconds (JVM running for 4.15)
-2020-12-13 21:44:57.937  INFO 3060 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 3060 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-13 21:44:57.938 DEBUG 3060 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-13 21:44:57.940  INFO 3060 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-13 21:45:01.192  WARN 3060 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:45:01.212  WARN 3060 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:45:01.297  WARN 3060 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:45:01.301  WARN 3060 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:45:01.304  WARN 3060 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:45:01.311  WARN 3060 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:45:01.332  INFO 3060 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 3.593 seconds (JVM running for 4.18)
-2020-12-13 21:46:33.180  INFO 15348 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on DESKTOP-TSJVEJ5 with PID 15348 (started by HCY in D:\8.items\spring-boot-inet-scratch-intact)
-2020-12-13 21:46:33.181 DEBUG 15348 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
-2020-12-13 21:46:33.183  INFO 15348 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
-2020-12-13 21:46:36.447  WARN 15348 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:46:36.468  WARN 15348 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:46:36.569  WARN 15348 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:46:36.572  WARN 15348 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:46:36.575  WARN 15348 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:46:36.581  WARN 15348 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
-2020-12-13 21:46:36.607  INFO 15348 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 3.624 seconds (JVM running for 4.209)
+2020-12-14 13:39:54.216  INFO 31423 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on huchengyedeMacBook-Pro.local with PID 31423 (started by huchengye in /Volumes/1/JAVA/spring-boot-inet-scratch-intact)
+2020-12-14 13:39:54.238 DEBUG 31423 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
+2020-12-14 13:39:54.252  INFO 31423 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
+2020-12-14 13:40:02.173  WARN 31423 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:40:02.218  WARN 31423 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:40:02.454  WARN 31423 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:40:02.461  WARN 31423 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:40:02.468  WARN 31423 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:40:02.496  WARN 31423 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:40:02.570  INFO 31423 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 8.894 seconds (JVM running for 11.212)
+2020-12-14 13:41:43.755  INFO 31477 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on huchengyedeMacBook-Pro.local with PID 31477 (started by huchengye in /Volumes/1/JAVA/spring-boot-inet-scratch-intact)
+2020-12-14 13:41:43.759 DEBUG 31477 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
+2020-12-14 13:41:43.763  INFO 31477 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
+2020-12-14 13:41:50.724  WARN 31477 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:41:50.776  WARN 31477 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:41:51.070  WARN 31477 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:41:51.080  WARN 31477 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:41:51.098  WARN 31477 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:41:51.130  WARN 31477 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:41:51.207  INFO 31477 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 7.98 seconds (JVM running for 9.602)
+2020-12-14 13:46:45.063  INFO 31538 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on huchengyedeMacBook-Pro.local with PID 31538 (started by huchengye in /Volumes/1/JAVA/spring-boot-inet-scratch-intact)
+2020-12-14 13:46:45.077 DEBUG 31538 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
+2020-12-14 13:46:45.086  INFO 31538 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
+2020-12-14 13:46:52.456  WARN 31538 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:46:52.498  WARN 31538 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:46:52.732  WARN 31538 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:46:52.741  WARN 31538 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:46:52.760  WARN 31538 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:46:52.783  WARN 31538 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:46:52.845  INFO 31538 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 8.476 seconds (JVM running for 10.491)
+2020-12-14 13:50:18.505  INFO 31599 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on huchengyedeMacBook-Pro.local with PID 31599 (started by huchengye in /Volumes/1/JAVA/spring-boot-inet-scratch-intact)
+2020-12-14 13:50:18.508 DEBUG 31599 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
+2020-12-14 13:50:18.512  INFO 31599 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
+2020-12-14 13:50:25.931  WARN 31599 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:50:25.978  WARN 31599 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:50:26.205  WARN 31599 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:50:26.214  WARN 31599 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:50:26.228  WARN 31599 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:50:26.256  WARN 31599 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-14 13:50:26.306  INFO 31599 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 8.317 seconds (JVM running for 10.148)
