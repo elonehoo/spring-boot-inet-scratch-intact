@@ -102,6 +102,15 @@ public class BasedController {
         return basedService.getVerificationLanding(email,"/scratch/based/verificationLanding");
     }
 
+    /**
+     * 邮箱验证码登陆
+     *
+     * @author HCY
+     * @since 2020/12/14 5:43 下午
+     * @param userLandingDomain: 邮箱验证码登陆
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("邮箱验证码登陆(不需要token)")
     @PostMapping("/landing")
     public Result postLanding(@RequestBody UserLandingDomain userLandingDomain){
         return basedService.getLanding(
