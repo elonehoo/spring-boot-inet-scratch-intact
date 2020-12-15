@@ -6,8 +6,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://47.99.145.161:3306/scratch?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
-    username: hcy
-    password: 901901
+    username: root
+    password: HZPTinet%@(110
     type: com.alibaba.druid.pool.DruidDataSource
   redis:
     host: 47.99.145.161
@@ -20,7 +20,7 @@ spring:
         min-idle: 0
       lettuce:
         shutdown-timeout: 0
-    password: <INETinet>
+    password: HZPTinet%@(110
   session:
     store-type: redis
   servlet:

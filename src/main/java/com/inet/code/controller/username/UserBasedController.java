@@ -109,7 +109,7 @@ public class UserBasedController {
     */
     @ApiOperation("关注某一个用户,如果已经关注过了,则取消关注")
     @ApiImplicitParams({
-            @ApiImplicitParam(name="FocusEmail",value="关注的邮箱",dataType="String", paramType = "query"),
+            @ApiImplicitParam(name="focusEmail",value="关注的邮箱",dataType="String", paramType = "query"),
     })
     @GetMapping("/focus")
     @RequiresRoles(value = {"member"})
@@ -132,7 +132,7 @@ public class UserBasedController {
     */
     @ApiOperation("查看自己的关注的人,如果为true则为双向关注")
     @ApiImplicitParams({
-            @ApiImplicitParam(name="pages",value="页数",dataType="String", paramType = "query",defaultValue = "1"),
+            @ApiImplicitParam(name="pages",value="页数",dataType="String", paramType = "query",defaultValue = "1",example = "0"),
     })
     @GetMapping("/checkFocus")
     @RequiresRoles(value = {"member"})
@@ -151,7 +151,7 @@ public class UserBasedController {
     */
     @ApiOperation("查看关注自己的人,如果为false则为双向关注")
     @ApiImplicitParams({
-            @ApiImplicitParam(name="pages",value="页数",dataType="String", paramType = "query",defaultValue = "1"),
+            @ApiImplicitParam(name="pages",value="页数",dataType="String", paramType = "query",defaultValue = "1",example = "0"),
     })
     @GetMapping("/checkFans")
     @RequiresRoles(value = {"member"})

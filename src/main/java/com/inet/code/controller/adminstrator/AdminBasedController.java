@@ -143,9 +143,9 @@ public class AdminBasedController {
     */
     @ApiOperation("轮播图展示操作")
     @ApiImplicitParams({
-            @ApiImplicitParam(name="current",value="页数",dataType="Integer", paramType = "query"),
+            @ApiImplicitParam(name="current",value="页数",dataType="Integer", paramType = "query",defaultValue = "1",example = "0"),
             @ApiImplicitParam(name="isShow",value="状态，发布状态还是未发布状态",dataType="Boolean", paramType = "query"),
-            @ApiImplicitParam(name="total",value="条目数",dataType="Integer", paramType = "query"),
+            @ApiImplicitParam(name="total",value="条目数",dataType="Integer", paramType = "query",defaultValue = "10",example = "0"),
     })
     @GetMapping("/showSlideshow")
     @RequiresRoles(value = {"admin"})
