@@ -216,30 +216,6 @@ public class BasedServiceImpl implements BasedService {
         return new Result().result200(results,path);
     }
 
-    /**
-     * 分页，查看轮播图(可以通过状态)
-     *
-     * @author HCY
-     * @since 2020/12/15 10:44 上午
-     * @param current: 页数
-     * @param total: 条目数
-     * @param isShow: 图片的状态
-     * @param path: URL路径
-     * @return com.inet.code.utils.Result
-     */
-    @Override
-    public Result getSlideshowPagination(Integer current, Integer total, Boolean isShow, String path) {
-        //设置页数和条目数
-        Page<Slideshow> slideshowPage = new Page<>(current,total);
-        //设置分页的条件
-        QueryWrapper<Slideshow> queryWrapper = new QueryWrapper<>();
-        //如果有状态
-        if (isShow != null){
-            queryWrapper.eq("slideshow_is_show",isShow);
-        }
-        //进行分页操作
-        IPage<Slideshow> slideshowIPage = slideshowService.page(slideshowPage, queryWrapper);
-        return new Result().result200(slideshowIPage,path);
-    }
+
 
 }

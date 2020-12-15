@@ -118,15 +118,5 @@ public class BasedController {
                 ,"/scratch/based/verificationLanding");
     }
 
-    @GetMapping("/showSlideshow")
-    @RequiresRoles(logical = Logical.OR,value = {"admin","member"})
-    public Result getShowSlideshow(@RequestParam(value = "current",defaultValue = "1") Integer current,
-                                   @RequestParam(value = "isShow",defaultValue = "") Boolean isShow,
-                                   @RequestParam(value = "total",defaultValue = "10") Integer total){
-        return basedService.getSlideshowPagination(
-                  current
-                , total
-                , isShow
-                , "/scratch/based/showSlideshow");
-    }
+
 }

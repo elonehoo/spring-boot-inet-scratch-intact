@@ -10,6 +10,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
 
@@ -128,6 +129,34 @@ public class AdminBasedController {
     @RequiresRoles(value = {"admin"})
     public Result putAmendType(@RequestBody TypeAmendDoMain typeAmendDoMain){
         return adminBasedService.getAmendType(typeAmendDoMain,"/scratch/admin/appendType");
+    }
+
+    /**
+     * 分页查看轮播图
+     *
+     * @author HCY
+     * @since 2020/12/15 12:33 下午
+     * @param current: 页数
+     * @param isShow: 状态，发布状态还是未发布状态
+     * @param total: 条目数
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("轮播图展示操作")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="current",value="页数",dataType="Integer", paramType = "query"),
+            @ApiImplicitParam(name="isShow",value="状态，发布状态还是未发布状态",dataType="Boolean", paramType = "query"),
+            @ApiImplicitParam(name="total",value="条目数",dataType="Integer", paramType = "query"),
+    })
+    @GetMapping("/showSlideshow")
+    @RequiresRoles(value = {"admin"})
+    public Result getShowSlideshow(@RequestParam(value = "current",defaultValue = "1") Integer current,
+                                   @RequestParam(value = "isShow",defaultValue = "") Boolean isShow,
+                                   @RequestParam(value = "total",defaultValue = "10") Integer total){
+        return adminBasedService.getSlideshowPagination(
+                current
+                , total
+                , isShow
+                , "/scratch/based/showSlideshow");
     }
 
 }

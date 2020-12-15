@@ -78,4 +78,17 @@ public interface AdminBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getAmendType(TypeAmendDoMain typeAmendDoMain, String path);
+
+    /**
+     * 分页，查看轮播图(可以通过状态)
+     *
+     * @author HCY
+     * @since 2020/12/15 10:44 上午
+     * @param current: 页数
+     * @param total: 条目数
+     * @param isShow: 图片的状态
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    Result getSlideshowPagination(Integer current, Integer total, Boolean isShow, String path);
 }

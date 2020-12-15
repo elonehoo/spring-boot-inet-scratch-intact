@@ -1,7 +1,11 @@
 package com.inet.code.realize.Impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.inet.code.entity.label.dto.LabelAmendDoMain;
 import com.inet.code.entity.label.dto.LabelAppendDoMain;
+import com.inet.code.entity.slideshow.po.Slideshow;
 import com.inet.code.entity.type.dto.TypeAmendDoMain;
 import com.inet.code.entity.type.dto.TypeAppendDoMain;
 import com.inet.code.entity.label.po.Label;
@@ -9,6 +13,7 @@ import com.inet.code.entity.type.po.Type;
 import com.inet.code.realize.AdminBasedService;
 import com.inet.code.service.EditorService;
 import com.inet.code.service.LabelService;
+import com.inet.code.service.SlideshowService;
 import com.inet.code.service.TypeService;
 import com.inet.code.utils.CloneUtil;
 import com.inet.code.utils.Result;
@@ -34,6 +39,8 @@ public class AdminBasedServiceImpl implements AdminBasedService {
     @Resource
     private EditorService editorService;
 
+    @Resource
+    private SlideshowService slideshowService;
     /**
      * 标签的添加
      *
@@ -182,5 +189,31 @@ public class AdminBasedServiceImpl implements AdminBasedService {
         return new Result().result500(
                 "未能将" + typeName + "修改成" + typeAmendDoMain.getTypeName()
                 ,path);
+    }
+
+    /**
+     * 分页，查看轮播图(可以通过状态)
+     *
+     * @author HCY
+     * @since 2020/12/15 10:44 上午
+     * @param current: 页数
+     * @param total: 条目数
+     * @param isShow: 图片的状态
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getSlideshowPagination(Integer current, Integer total, Boolean isShow, String path) {
+        //设置页数和条目数
+        Page<Slideshow> slideshowPage = new Page<>(current,total);
+        //设置分页的条件
+        QueryWrapper<Slideshow> queryWrapper = new QueryWrapper<>();
+        //如果有状态
+        if (isShow != null){
+            queryWrapper.eq("slideshow_is_show",isShow);
+        }
+        //进行分页操作
+        IPage<Slideshow> slideshowIPage = slideshowService.page(slideshowPage, queryWrapper);
+        return new Result().result200(slideshowIPage,path);
     }
 }
