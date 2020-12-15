@@ -36,4 +36,14 @@ class InetApplicationTests {
         System.out.println(total);
     }
 
+    @Test
+    void test_3(){
+        Boolean a = true;
+        if (a != null){
+            System.out.println("1");
+        }else {
+            System.out.println("2");
+        }
+    }
+
 }

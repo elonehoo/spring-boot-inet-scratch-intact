@@ -120,8 +120,13 @@ public class BasedController {
 
     @GetMapping("/showSlideshow")
     @RequiresRoles(logical = Logical.OR,value = {"admin","member"})
-    public Result getShowSlideshow(@RequestParam(value = "current",defaultValue = "") Integer current,
-                                   @RequestParam(value = "total",defaultValue = "") Integer total){
-        return basedService.getSlideshowPagination(current,total,"/scratch/based/showSlideshow");
+    public Result getShowSlideshow(@RequestParam(value = "current",defaultValue = "1") Integer current,
+                                   @RequestParam(value = "isShow",defaultValue = "") Boolean isShow,
+                                   @RequestParam(value = "total",defaultValue = "10") Integer total){
+        return basedService.getSlideshowPagination(
+                  current
+                , total
+                , isShow
+                , "/scratch/based/showSlideshow");
     }
 }
