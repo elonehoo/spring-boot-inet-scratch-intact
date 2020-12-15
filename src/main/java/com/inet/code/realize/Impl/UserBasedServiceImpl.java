@@ -156,7 +156,7 @@ public class UserBasedServiceImpl implements UserBasedService {
         RoleProfileDomain roleProfileDomain = CloneUtil.clone(
                   roleService.getRoleName("member")
                 , RoleProfileDomain.class);
-        powerService.save(new Power(userRegisterDomain.getEmail(),roleProfileDomain.getRoleName()));
+        powerService.save(new Power(userRegisterDomain.getEmail(),roleProfileDomain.getRoleUuid()));
         //删除redis中的验证码
         redisTemplate.delete(userRegisterDomain.getEmail());
         //设置返回值
