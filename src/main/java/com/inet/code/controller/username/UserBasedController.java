@@ -90,7 +90,7 @@ public class UserBasedController {
      * @param userAmendDomain: 修改的用户的实体类 , 包含 : 头像,名字,性别,生日,地址,个性签名
      * @return com.inet.code.utils.Result
     */
-    @ApiOperation("修改密码,输入旧密码和新密码")
+    @ApiOperation("用户修改自己的个人信息")
     @PutMapping("/amendUser")
     @RequiresRoles(value = {"member"})
     public Result putAmendUser(@RequestHeader(value = "Token",defaultValue = "") String token,

@@ -2,6 +2,7 @@ package com.inet.code.realize;
 
 import com.inet.code.entity.label.dto.LabelAmendDoMain;
 import com.inet.code.entity.label.dto.LabelAppendDoMain;
+import com.inet.code.entity.slideshow.dto.SlideshowAmendDomain;
 import com.inet.code.entity.slideshow.dto.SlideshowIncreaseDomain;
 import com.inet.code.entity.type.dto.TypeAmendDoMain;
 import com.inet.code.entity.type.dto.TypeAppendDoMain;
@@ -103,4 +104,15 @@ public interface AdminBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getIncreaseSlideshow(SlideshowIncreaseDomain slideshowIncreaseDomain, String path);
+
+    /**
+     * 修改轮播图
+     *
+     * @author HCY
+     * @since 2020/12/16 下午 03:40
+     * @param slideshowAmendDomain: 修改轮播图的状态
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getAmendSlideshow(SlideshowAmendDomain slideshowAmendDomain, String path);
 }

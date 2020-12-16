@@ -1,10 +1,12 @@
 package com.inet.code.realize.Impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.inet.code.entity.label.dto.LabelAmendDoMain;
 import com.inet.code.entity.label.dto.LabelAppendDoMain;
+import com.inet.code.entity.slideshow.dto.SlideshowAmendDomain;
 import com.inet.code.entity.slideshow.dto.SlideshowIncreaseDomain;
 import com.inet.code.entity.slideshow.po.Slideshow;
 import com.inet.code.entity.type.dto.TypeAmendDoMain;
@@ -236,5 +238,37 @@ public class AdminBasedServiceImpl implements AdminBasedService {
             return new Result().result200("新增轮播图成功",path);
         }
         return new Result().result500("新增轮播图失败",path);
+    }
+
+    /**
+     * 修改轮播图
+     *
+     * @author HCY
+     * @since 2020/12/16 下午 03:40
+     * @param slideshowAmendDomain: 修改轮播图的实体类
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getAmendSlideshow(SlideshowAmendDomain slideshowAmendDomain, String path) {
+        //通过轮播图的uuid查找轮播图的实体类
+        Slideshow slideshow = slideshowService.getById(slideshowAmendDomain.getSlideshowUuid());
+        //判断轮播图是否找到
+        if (slideshow == null){
+            return  new Result().result404("未找到轮播图",path);
+        }
+        //判断是否需要修改图片的URL路径
+        if (!StrUtil.isBlank(slideshowAmendDomain.getSlideshowUrl())){
+            slideshow.setSlideshowUrl(slideshowAmendDomain.getSlideshowUrl());
+        }
+        //判断是否需要修改轮播图的状态
+        if (slideshowAmendDomain.getSlideshowIsShow() != null){
+            slideshow.setSlideshowIsShow(slideshowAmendDomain.getSlideshowIsShow());
+        }
+        //进行修改
+        if (slideshowService.updateById(slideshow)) {
+            return new Result().result200("修改轮播图成功",path);
+        }
+        return new Result().result500("修改轮播图失败",path);
     }
 }

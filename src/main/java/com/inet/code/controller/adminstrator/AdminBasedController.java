@@ -2,6 +2,7 @@ package com.inet.code.controller.adminstrator;
 
 import com.inet.code.entity.label.dto.LabelAmendDoMain;
 import com.inet.code.entity.label.dto.LabelAppendDoMain;
+import com.inet.code.entity.slideshow.dto.SlideshowAmendDomain;
 import com.inet.code.entity.slideshow.dto.SlideshowIncreaseDomain;
 import com.inet.code.entity.type.dto.TypeAmendDoMain;
 import com.inet.code.entity.type.dto.TypeAppendDoMain;
@@ -177,10 +178,18 @@ public class AdminBasedController {
                 ,"/scratch/based/increaseSlideshow");
     }
 
+    /**
+     * 修改轮播图
+     *
+     * @author HCY
+     * @since 2020/12/16 下午 09:57
+     * @param slideshowAmendDomain: 修改轮播图的实体类 含有 uuid 轮播图的URL 轮播图的展示状态
+     * @return com.inet.code.utils.Result
+    */
     @ApiOperation("修改轮播图的地址或者状态")
     @PutMapping("/amendSlideshow")
     @RequiresRoles(value = {"admin"})
-    public Result putAmendSlideshow(){
-        return null;
+    public Result putAmendSlideshow(@RequestBody SlideshowAmendDomain slideshowAmendDomain){
+        return adminBasedService.getAmendSlideshow(slideshowAmendDomain,"/scratch/based/increaseSlideshow");
     }
 }

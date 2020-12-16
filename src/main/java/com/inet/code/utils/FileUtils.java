@@ -21,8 +21,8 @@ public class FileUtils {
     * @author HCY
     * @since 2020/11/22 下午 12:12
     */
-    private static final String UPLOAD_SB3_FILE_PATH = "/usr/local/apache-tomcat-9.0.39/webapps/sb3";
-    private static final String UPLOAD_REST_FILE_PATH = "/usr/local/apache-tomcat-9.0.39/webapps/images";
+    private static final String UPLOAD_SB3_FILE_PATH = "/home/inet/soft/tomcat/apache-tomcat-8.5.31/webapps/sb3";
+    private static final String UPLOAD_REST_FILE_PATH = "/home/inet/soft/tomcat/apache-tomcat-8.5.31/webapps/images";
 
     private static final String SB3_URL = "http://47.99.145.161:8080/sb3/";
     private static final String REST_URL = "http://47.99.145.161:8080/images/";
