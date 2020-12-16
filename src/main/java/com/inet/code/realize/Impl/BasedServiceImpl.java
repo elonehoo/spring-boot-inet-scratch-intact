@@ -21,12 +21,10 @@ import com.inet.code.service.LabelService;
 import com.inet.code.service.SlideshowService;
 import com.inet.code.service.TypeService;
 import com.inet.code.service.UserService;
-import com.inet.code.utils.CloneUtil;
-import com.inet.code.utils.FromMailUtil;
-import com.inet.code.utils.JwtUtils;
-import com.inet.code.utils.Result;
+import com.inet.code.utils.*;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -216,6 +214,19 @@ public class BasedServiceImpl implements BasedService {
         return new Result().result200(results,path);
     }
 
+    /**
+     * 文件上传，返回的是文件的URL地址
+     *
+     * @author HCY
+     * @since 2020/12/14 1:33 下午
+     * @param file: 上传的文件
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getUploadFiles(MultipartFile file, String path) {
+        return FileUtils.getUploading(file,path);
+    }
 
 
 }

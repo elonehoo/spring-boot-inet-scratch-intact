@@ -2,6 +2,7 @@ package com.inet.code.realize;
 
 import com.inet.code.entity.label.dto.LabelAmendDoMain;
 import com.inet.code.entity.label.dto.LabelAppendDoMain;
+import com.inet.code.entity.slideshow.dto.SlideshowIncreaseDomain;
 import com.inet.code.entity.type.dto.TypeAmendDoMain;
 import com.inet.code.entity.type.dto.TypeAppendDoMain;
 import com.inet.code.utils.Result;
@@ -91,4 +92,15 @@ public interface AdminBasedService {
      * @return com.inet.code.utils.Result
      */
     Result getSlideshowPagination(Integer current, Integer total, Boolean isShow, String path);
+
+    /**
+     * 新增轮播图
+     *
+     * @author HCY
+     * @since 2020/12/16 9:52 上午
+     * @param slideshowIncreaseDomain: 轮播图新增的实体类 含有 轮播图的URL 和 轮播图的展示状态
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getIncreaseSlideshow(SlideshowIncreaseDomain slideshowIncreaseDomain, String path);
 }

@@ -29,3 +29,31 @@
 2020-12-16 07:50:02.396  WARN 36998 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
 2020-12-16 07:50:02.424  WARN 36998 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
 2020-12-16 07:50:02.617  INFO 36998 --- [main] com.inet.InetApplication                 : Started InetApplication in 6.974 seconds (JVM running for 8.472)
+2020-12-16 09:23:44.429  INFO 37475 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on huchengyedeMacBook-Pro.local with PID 37475 (started by huchengye in /Volumes/1/JAVA/spring-boot-inet-scratch-intact)
+2020-12-16 09:23:44.433 DEBUG 37475 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
+2020-12-16 09:23:44.437  INFO 37475 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
+2020-12-16 09:23:53.742  WARN 37475 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-16 09:23:53.787  WARN 37475 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-16 09:23:53.817  WARN 37475 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: Integer, dataTypeClass: class java.lang.Void
+2020-12-16 09:23:53.818  WARN 37475 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: Boolean, dataTypeClass: class java.lang.Void
+2020-12-16 09:23:53.819  WARN 37475 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: Integer, dataTypeClass: class java.lang.Void
+2020-12-16 09:23:54.016  WARN 37475 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-16 09:23:54.170  WARN 37475 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-16 09:23:54.178  WARN 37475 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-16 09:23:54.185  WARN 37475 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-16 09:23:54.253  WARN 37475 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-16 09:23:54.327  INFO 37475 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 10.873 seconds (JVM running for 13.22)
+2020-12-16 09:28:18.995  INFO 37618 --- [main] com.inet.InetApplicationTests            : Starting InetApplicationTests using Java 15.0.1 on huchengyedeMacBook-Pro.local with PID 37618 (started by huchengye in /Volumes/1/JAVA/spring-boot-inet-scratch-intact)
+2020-12-16 09:28:18.998 DEBUG 37618 --- [main] com.inet.InetApplicationTests            : Running with Spring Boot v2.4.0, Spring v5.3.1
+2020-12-16 09:28:19.003  INFO 37618 --- [main] com.inet.InetApplicationTests            : No active profile set, falling back to default profiles: default
+2020-12-16 09:28:29.490  WARN 37618 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-16 09:28:29.547  WARN 37618 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-16 09:28:29.561  WARN 37618 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: Integer, dataTypeClass: class java.lang.Void
+2020-12-16 09:28:29.562  WARN 37618 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: Boolean, dataTypeClass: class java.lang.Void
+2020-12-16 09:28:29.563  WARN 37618 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: Integer, dataTypeClass: class java.lang.Void
+2020-12-16 09:28:29.766  WARN 37618 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-16 09:28:29.993  WARN 37618 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-16 09:28:30.030  WARN 37618 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-16 09:28:30.043  WARN 37618 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-16 09:28:30.081  WARN 37618 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: String, dataTypeClass: class java.lang.Void
+2020-12-16 09:28:30.164  INFO 37618 --- [main] com.inet.InetApplicationTests            : Started InetApplicationTests in 11.994 seconds (JVM running for 14.549)

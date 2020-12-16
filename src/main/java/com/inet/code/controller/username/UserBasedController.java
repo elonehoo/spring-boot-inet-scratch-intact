@@ -161,18 +161,6 @@ public class UserBasedController {
     }
 
 
-    /**
-     * 上传文件
-     * @author HCY
-     * @since 2020/12/14 1:35 下午
-     * @param file: 文件
-     * @return com.inet.code.utils.Result
-    */
-    @ApiOperation("文件上传，返回URL地址，不会进入数据库")
-    @PostMapping(value = "/uploadFiles",headers = "content-type=multipart/form-data")
-    @RequiresRoles(value = {"member"})
-    public Result getUploadFiles(@RequestParam(value = "file") @RequestPart MultipartFile file){
-        return userBasedService.getUploadFiles(file,"/scratch/user/uploadFiles");
-    }
+
 
 }

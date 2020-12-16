@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.inet.code.entity.label.dto.LabelAmendDoMain;
 import com.inet.code.entity.label.dto.LabelAppendDoMain;
+import com.inet.code.entity.slideshow.dto.SlideshowIncreaseDomain;
 import com.inet.code.entity.slideshow.po.Slideshow;
 import com.inet.code.entity.type.dto.TypeAmendDoMain;
 import com.inet.code.entity.type.dto.TypeAppendDoMain;
@@ -215,5 +216,25 @@ public class AdminBasedServiceImpl implements AdminBasedService {
         //进行分页操作
         IPage<Slideshow> slideshowIPage = slideshowService.page(slideshowPage, queryWrapper);
         return new Result().result200(slideshowIPage,path);
+    }
+
+    /**
+     * 新增轮播图
+     *
+     * @author HCY
+     * @since 2020/12/16 9:52 上午
+     * @param slideshowIncreaseDomain: 轮播图新增的实体类 含有 轮播图的URL 和 轮播图的展示状态
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getIncreaseSlideshow(SlideshowIncreaseDomain slideshowIncreaseDomain, String path) {
+        //将实体类进行转变
+        Slideshow slideshow = CloneUtil.clone(slideshowIncreaseDomain, Slideshow.class);
+        //进行存储
+        if (slideshowService.save(slideshow)) {
+            return new Result().result200("新增轮播图成功",path);
+        }
+        return new Result().result500("新增轮播图失败",path);
     }
 }

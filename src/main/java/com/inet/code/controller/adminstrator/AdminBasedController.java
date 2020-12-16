@@ -2,6 +2,7 @@ package com.inet.code.controller.adminstrator;
 
 import com.inet.code.entity.label.dto.LabelAmendDoMain;
 import com.inet.code.entity.label.dto.LabelAppendDoMain;
+import com.inet.code.entity.slideshow.dto.SlideshowIncreaseDomain;
 import com.inet.code.entity.type.dto.TypeAmendDoMain;
 import com.inet.code.entity.type.dto.TypeAppendDoMain;
 import com.inet.code.realize.AdminBasedService;
@@ -159,4 +160,20 @@ public class AdminBasedController {
                 , "/scratch/based/showSlideshow");
     }
 
+    /**
+     * 增加轮播图
+     *
+     * @author HCY
+     * @since 2020/12/16 10:31 上午
+     * @param slideshowIncreaseDomain: 新增轮播图的实体类 ， 含有 URL地址 和 显示状态
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("增加轮播图")
+    @PostMapping("/increaseSlideshow")
+    @RequiresRoles(value = {"admin"})
+    public Result postIncreaseSlideshow(@RequestBody SlideshowIncreaseDomain slideshowIncreaseDomain){
+        return adminBasedService.getIncreaseSlideshow(
+                 slideshowIncreaseDomain
+                ,"/scratch/based/increaseSlideshow");
+    }
 }

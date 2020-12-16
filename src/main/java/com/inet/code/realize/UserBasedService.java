@@ -95,14 +95,5 @@ public interface UserBasedService {
     */
     Result getCheckFans(String token, Integer pages, String path);
 
-    /**
-     * 文件上传，返回的是文件的URL地址
-     *
-     * @author HCY
-     * @since 2020/12/14 1:33 下午
-     * @param file: 上传的文件
-     * @param path: URL路径
-     * @return com.inet.code.utils.Result
-    */
-    Result getUploadFiles(MultipartFile file, String path);
+
 }

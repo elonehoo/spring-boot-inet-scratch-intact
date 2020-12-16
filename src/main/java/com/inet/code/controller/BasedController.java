@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 
@@ -116,6 +117,20 @@ public class BasedController {
         return basedService.getLanding(
                  userLandingDomain
                 ,"/scratch/based/verificationLanding");
+    }
+
+    /**
+     * 上传文件
+     * @author HCY
+     * @since 2020/12/14 1:35 下午
+     * @param file: 文件
+     * @return com.inet.code.utils.Result
+     */
+    @ApiOperation("文件上传，返回URL地址，不会进入数据库")
+    @PostMapping(value = "/uploadFiles",headers = "content-type=multipart/form-data")
+    @RequiresRoles(logical = Logical.OR,value = {"admin","member"})
+    public Result getUploadFiles(@RequestParam(value = "file") @RequestPart MultipartFile file){
+        return basedService.getUploadFiles(file,"/scratch/user/uploadFiles");
     }
 
 
