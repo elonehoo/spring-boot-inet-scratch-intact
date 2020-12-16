@@ -176,4 +176,11 @@ public class AdminBasedController {
                  slideshowIncreaseDomain
                 ,"/scratch/based/increaseSlideshow");
     }
+
+    @ApiOperation("修改轮播图的地址或者状态")
+    @PutMapping("/amendSlideshow")
+    @RequiresRoles(value = {"admin"})
+    public Result putAmendSlideshow(){
+        return null;
+    }
 }
