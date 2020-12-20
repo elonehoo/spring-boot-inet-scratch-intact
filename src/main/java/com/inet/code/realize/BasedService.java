@@ -85,4 +85,15 @@ public interface BasedService {
      * @return com.inet.code.utils.Result
      */
     Result getUploadFiles(MultipartFile file, String path);
+
+    /**
+     * 通过token返回用户的信息
+     *
+     * @author HCY
+     * @since 2020/12/19 下午 05:50
+     * @param token: 令牌
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getInteraction(String token, String path);
 }

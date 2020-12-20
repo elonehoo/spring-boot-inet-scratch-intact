@@ -228,5 +228,26 @@ public class BasedServiceImpl implements BasedService {
         return FileUtils.getUploading(file,path);
     }
 
+    /**
+     * 通过token返回用户的信息
+     *
+     * @author HCY
+     * @since 2020/12/19 下午 05:50
+     * @param token: 令牌
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getInteraction(String token, String path) {
+        //通过token寻找到用户的信息
+        UserBaseDomain userBaseDomain = (UserBaseDomain) redisTemplate.opsForValue().get(token);
+        //判断用户是否存在
+        if (userBaseDomain == null){
+            return new Result().result500("登录过期,重新登录",path);
+        }else {
+            return new Result().result200(userBaseDomain,path);
+        }
+    }
+
 
 }

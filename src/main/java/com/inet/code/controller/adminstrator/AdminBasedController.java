@@ -192,4 +192,19 @@ public class AdminBasedController {
     public Result putAmendSlideshow(@RequestBody SlideshowAmendDomain slideshowAmendDomain){
         return adminBasedService.getAmendSlideshow(slideshowAmendDomain,"/scratch/based/increaseSlideshow");
     }
+
+    /**
+     * 删除轮播图
+     *
+     * @author HCY
+     * @since 2020/12/17 下午 06:23
+     * @param slideshowUuid: 轮播图的uuid
+     * @return com.inet.code.utils.Result
+    */
+    @DeleteMapping("/removeSlideshow")
+    public Result deleteRemoveSlideshow(@RequestParam(value = "slideshowUuid",defaultValue = "") String slideshowUuid){
+        return adminBasedService.getRemoveSlideshow(
+                 slideshowUuid
+                ,"/scratch/based/removeSlideshow");
+    }
 }

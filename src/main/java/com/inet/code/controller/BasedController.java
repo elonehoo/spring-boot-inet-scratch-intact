@@ -133,5 +133,20 @@ public class BasedController {
         return basedService.getUploadFiles(file,"/scratch/user/uploadFiles");
     }
 
+    /**
+     * 通过token返回用户的信息
+     *
+     * @author HCY
+     * @since 2020/12/19 下午 05:53
+     * @param token: 令牌
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("通过token返回用户的信息")
+    @GetMapping("/interaction")
+    @RequiresRoles(logical = Logical.OR,value = {"admin","member"})
+    public Result getInteraction(@RequestHeader(value = "Token",defaultValue = "") String token){
+        return basedService.getInteraction(token,"/scratch/user/interaction");
+    }
+
 
 }

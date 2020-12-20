@@ -115,4 +115,15 @@ public interface AdminBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getAmendSlideshow(SlideshowAmendDomain slideshowAmendDomain, String path);
+
+    /**
+     * 删除轮播图的序号
+     *
+     * @author HCY
+     * @since 2020/12/17 下午 06:53
+     * @param slideshowUuid: 删除轮播图的序号
+     * @param path:URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getRemoveSlideshow(String slideshowUuid, String path);
 }

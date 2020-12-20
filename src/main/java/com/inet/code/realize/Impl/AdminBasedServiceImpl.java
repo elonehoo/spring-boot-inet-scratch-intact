@@ -271,4 +271,22 @@ public class AdminBasedServiceImpl implements AdminBasedService {
         }
         return new Result().result500("修改轮播图失败",path);
     }
+
+    /**
+     * 删除轮播图的序号
+     *
+     * @author HCY
+     * @since 2020/12/17 下午 06:53
+     * @param slideshowUuid: 删除轮播图的序号
+     * @param path:URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getRemoveSlideshow(String slideshowUuid, String path) {
+        if (slideshowService.removeById(slideshowUuid)) {
+            return new Result().result200("删除轮播图成功",path);
+        }else {
+            return new Result().result500("删除轮播图失败",path);
+        }
+    }
 }

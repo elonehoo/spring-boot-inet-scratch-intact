@@ -1,6 +1,7 @@
 package com.inet;
 
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.crypto.digest.DigestUtil;
 import com.inet.code.entity.user.dto.UserBaseDomain;
 import com.inet.code.entity.user.po.User;
 import com.inet.code.utils.CloneUtil;
@@ -65,5 +66,10 @@ class InetApplicationTests {
             x /= 10;
         }
         return ans;
+    }
+
+    @Test
+    void test_5(){
+        System.out.println(DigestUtil.md5Hex("hcy05080901"));
     }
 }
