@@ -12,7 +12,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
 
@@ -155,7 +154,7 @@ public class AdminBasedController {
                                    @RequestParam(value = "isShow",defaultValue = "") Boolean isShow,
                                    @RequestParam(value = "total",defaultValue = "10") Integer total){
         return adminBasedService.getSlideshowPagination(
-                current
+                  current
                 , total
                 , isShow
                 , "/scratch/based/showSlideshow");
