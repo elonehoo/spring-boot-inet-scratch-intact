@@ -1,6 +1,8 @@
 package com.inet.code.utils;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
 
@@ -9,10 +11,12 @@ import java.util.Date;
  * @author HCY
  * @since 2020-10-29
  */
+@ApiModel
 public class Result {
     /**
      * 时间
      */
+    @ApiModelProperty("调用方法的时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date timestamp;
     /**
@@ -23,6 +27,7 @@ public class Result {
      * 404 - 未找到
      * 500 - 错误
      */
+    @ApiModelProperty("状态的信息码")
     private Integer status;
 
     public static final Integer STATUS_OK_200 = 200;
@@ -34,6 +39,7 @@ public class Result {
     /**
      * 信息
      */
+    @ApiModelProperty("调用的信息提示")
     private String info;
 
     public static final String INFO_OK_200 = "OK";
@@ -44,6 +50,7 @@ public class Result {
     /**
      * 详情
      */
+    @ApiModelProperty("调用的信息详情")
     private String details;
 
     public static final String DETAILS_OK_200 = "成功";
@@ -55,10 +62,12 @@ public class Result {
     /**
      * 返回信息
      */
+    @ApiModelProperty("返回信息")
     private Object message;
     /**
      * 调用URL
      */
+    @ApiModelProperty("调用的URL路径")
     private String path;
 
     /**

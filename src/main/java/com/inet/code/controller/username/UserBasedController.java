@@ -161,6 +161,16 @@ public class UserBasedController {
         return userBasedService.getCheckFans(token , pages , "/scratch/user/focus");
     }
 
+    /**
+     * 用户上传项目
+     *
+     * @author HCY
+     * @since 2020/12/22 10:50 上午
+     * @param token: 令牌
+     * @param productionInsertDomain: 上传项目的实体类
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("用户上传项目")
     @PostMapping("/insertProduction")
     public Result postInsertProduction(@RequestHeader(value = "Token",defaultValue = "") String token,
                                        @RequestBody ProductionInsertDomain productionInsertDomain){
