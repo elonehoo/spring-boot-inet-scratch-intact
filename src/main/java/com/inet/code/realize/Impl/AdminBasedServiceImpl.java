@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.inet.code.entity.label.dto.LabelAmendDoMain;
 import com.inet.code.entity.label.dto.LabelAppendDoMain;
+import com.inet.code.entity.portrait.dto.PortraitIncreaseDomain;
+import com.inet.code.entity.portrait.po.Portrait;
 import com.inet.code.entity.slideshow.dto.SlideshowAmendDomain;
 import com.inet.code.entity.slideshow.dto.SlideshowIncreaseDomain;
 import com.inet.code.entity.slideshow.po.Slideshow;
@@ -14,11 +16,8 @@ import com.inet.code.entity.type.dto.TypeAppendDoMain;
 import com.inet.code.entity.label.po.Label;
 import com.inet.code.entity.type.po.Type;
 import com.inet.code.realize.AdminBasedService;
-import com.inet.code.service.EditorService;
-import com.inet.code.service.LabelService;
-import com.inet.code.service.SlideshowService;
-import com.inet.code.service.TypeService;
-import com.inet.code.utils.CloneUtil;
+import com.inet.code.service.*;
+import com.inet.code.utils.BeanUtil;
 import com.inet.code.utils.Result;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +43,10 @@ public class AdminBasedServiceImpl implements AdminBasedService {
 
     @Resource
     private SlideshowService slideshowService;
+
+    @Resource
+    private PortraitService portraitService;
+
     /**
      * 标签的添加
      *
@@ -56,7 +59,7 @@ public class AdminBasedServiceImpl implements AdminBasedService {
     @Override
     public Result getAppendLabel(LabelAppendDoMain labelAppendDoMain, String path) {
         //进行实体类的转换
-        Label label = CloneUtil.clone(labelAppendDoMain , Label.class);
+        Label label = BeanUtil.copy(labelAppendDoMain , Label.class);
         //进行存储操作
         if (labelService.save(label)){
             return new Result().result200(label.getLabelName() + "标签,新增成功",path);
@@ -76,7 +79,7 @@ public class AdminBasedServiceImpl implements AdminBasedService {
     @Override
     public Result getAppendType(TypeAppendDoMain typeAppendDoMain, String path) {
         //进行实体类的转换
-        Type type = CloneUtil.clone(typeAppendDoMain,Type.class);
+        Type type = BeanUtil.copy(typeAppendDoMain,Type.class);
         //进行存储操作
         if (typeService.save(type)){
             return new Result().result200(type.getTypeName() + "标签,新增成功",path);
@@ -232,7 +235,7 @@ public class AdminBasedServiceImpl implements AdminBasedService {
     @Override
     public Result getIncreaseSlideshow(SlideshowIncreaseDomain slideshowIncreaseDomain, String path) {
         //将实体类进行转变
-        Slideshow slideshow = CloneUtil.clone(slideshowIncreaseDomain, Slideshow.class);
+        Slideshow slideshow = BeanUtil.copy(slideshowIncreaseDomain, Slideshow.class);
         //进行存储
         if (slideshowService.save(slideshow)) {
             return new Result().result200("新增轮播图成功",path);
@@ -288,5 +291,45 @@ public class AdminBasedServiceImpl implements AdminBasedService {
         }else {
             return new Result().result500("删除轮播图失败",path);
         }
+    }
+
+    /**
+     * 分页查看默认头像
+     *
+     * @author HCY
+     * @since 2020/12/21 1:27 下午
+     * @param current: 页数
+     * @param size: 条目数
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getShowPortrait(Integer current, Integer size, String path) {
+        //设置分页的条件
+        Page<Portrait> paging = new Page<>(current,size);
+        //设置分页的条件
+        return new Result().result200(
+                 portraitService.page(paging)
+                ,path);
+    }
+
+    /**
+     * 新增默认头像
+     *
+     * @author HCY
+     * @since 2020/12/21 2:07 下午
+     * @param portraitIncreaseDomain: 新增默认头像
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getIncreasePortrait(PortraitIncreaseDomain portraitIncreaseDomain, String path) {
+        //将头像进行copy
+        Portrait portrait = BeanUtil.copy(portraitIncreaseDomain, Portrait.class);
+        //进行存储
+        if (portraitService.save(portrait)) {
+            return new Result().result200("新增默认头像成功",path);
+        }
+        return new Result().result500("新增默认头像失败",path);
     }
 }

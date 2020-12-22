@@ -2,6 +2,7 @@ package com.inet.code.controller.adminstrator;
 
 import com.inet.code.entity.label.dto.LabelAmendDoMain;
 import com.inet.code.entity.label.dto.LabelAppendDoMain;
+import com.inet.code.entity.portrait.dto.PortraitIncreaseDomain;
 import com.inet.code.entity.slideshow.dto.SlideshowAmendDomain;
 import com.inet.code.entity.slideshow.dto.SlideshowIncreaseDomain;
 import com.inet.code.entity.type.dto.TypeAmendDoMain;
@@ -200,10 +201,56 @@ public class AdminBasedController {
      * @param slideshowUuid: 轮播图的uuid
      * @return com.inet.code.utils.Result
     */
+    @ApiOperation("删除轮播图")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="slideshowUuid",value="轮播图的uuid",dataType="String", paramType = "query",defaultValue = "",example = "0"),
+    })
     @DeleteMapping("/removeSlideshow")
+    @RequiresRoles(value = {"admin"})
     public Result deleteRemoveSlideshow(@RequestParam(value = "slideshowUuid",defaultValue = "") String slideshowUuid){
         return adminBasedService.getRemoveSlideshow(
                  slideshowUuid
+                ,"/scratch/based/removeSlideshow");
+    }
+
+    /**
+     * 分页查看默认头像
+     *
+     * @author HCY
+     * @since 2020/12/21 1:12 下午
+     * @param current: 页数
+     * @param size: 条目数
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("分页查看默认头像")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="current",value="页数",dataType="String", paramType = "query",defaultValue = "1",example = "0"),
+            @ApiImplicitParam(name="size",value="条目数",dataType="String", paramType = "query",defaultValue = "10",example = "0"),
+    })
+    @GetMapping("/showPortrait")
+    @RequiresRoles(value = {"admin"})
+    public Result getShowPortrait(@RequestParam(value = "current",defaultValue = "1") Integer current,
+                                  @RequestParam(value = "size",defaultValue = "10") Integer size){
+        return adminBasedService.getShowPortrait(
+                 current
+                ,size
+                ,"/scratch/based/removeSlideshow");
+    }
+
+    /**
+     * 新增默认头像
+     *
+     * @author HCY
+     * @since 2020/12/21 4:35 下午
+     * @param portraitIncreaseDomain: 新增默认头像的实体类
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("新增默认头像")
+    @PostMapping("/increasePortrait")
+    @RequiresRoles(value = {"admin"})
+    public Result postIncreasePortrait(@RequestBody PortraitIncreaseDomain portraitIncreaseDomain){
+        return adminBasedService.getIncreasePortrait(
+                 portraitIncreaseDomain
                 ,"/scratch/based/removeSlideshow");
     }
 }

@@ -11,7 +11,7 @@ import java.util.List;
  * @author HCY
  * @since 2020/12/11 下午 08:37
 */
-public class CloneUtil {
+public class BeanUtil {
     /**
      * 对象之间的拷贝
      *
@@ -21,7 +21,7 @@ public class CloneUtil {
      * @param classType: 接收
      * @return E
     */
-    public static <T, E> E clone(T source, Class<E> classType) {
+    public static <T, E> E copy(T source, Class<E> classType) {
 
         if (source == null) {
             return null;
@@ -46,14 +46,14 @@ public class CloneUtil {
      * @param classType: 接收
      * @return java.util.List<E>
     */
-    public static <T, E> List<E> batchClone(List<T> sourceList, Class<E> classType) {
+    public static <T, E> List<E> batchCopy(List<T> sourceList, Class<E> classType) {
         if (sourceList == null) {
             return null;
         }
         List<E> result = new ArrayList<E>();
         int size = sourceList.size();
         for (int i = 0; i < size; i++) {
-            result.add(clone(sourceList.get(i), classType));
+            result.add(copy(sourceList.get(i), classType));
         }
         return result;
     }

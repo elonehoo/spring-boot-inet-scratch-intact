@@ -1,10 +1,13 @@
 package com.inet.code.realize;
 
 import com.inet.code.entity.cipher.dto.CipherAmendDomain;
+import com.inet.code.entity.production.dto.ProductionInsertDomain;
 import com.inet.code.entity.user.dto.UserAmendDomain;
 import com.inet.code.entity.user.dto.UserRegisterDomain;
 import com.inet.code.utils.Result;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.security.ProtectionDomain;
 
 /**
  * 用户模块的业务控操作
@@ -95,5 +98,15 @@ public interface UserBasedService {
     */
     Result getCheckFans(String token, Integer pages, String path);
 
-
+    /**
+     * 新增用户的项目
+     *
+     * @author HCY
+     * @since 2020/12/21 6:16 下午
+     * @param token: 令牌
+     * @param productionInsertDomain: 新增项目的实体类
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getInsertProduction(String token, ProductionInsertDomain productionInsertDomain, String path);
 }

@@ -2,6 +2,7 @@ package com.inet.code.realize;
 
 import com.inet.code.entity.label.dto.LabelAmendDoMain;
 import com.inet.code.entity.label.dto.LabelAppendDoMain;
+import com.inet.code.entity.portrait.dto.PortraitIncreaseDomain;
 import com.inet.code.entity.slideshow.dto.SlideshowAmendDomain;
 import com.inet.code.entity.slideshow.dto.SlideshowIncreaseDomain;
 import com.inet.code.entity.type.dto.TypeAmendDoMain;
@@ -126,4 +127,27 @@ public interface AdminBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getRemoveSlideshow(String slideshowUuid, String path);
+
+    /**
+     * 分页查看默认头像
+     *
+     * @author HCY
+     * @since 2020/12/21 1:27 下午
+     * @param current: 页数
+     * @param size: 条目数
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getShowPortrait(Integer current, Integer size, String path);
+
+    /**
+     * 新增默认头像
+     *
+     * @author HCY
+     * @since 2020/12/21 2:07 下午
+     * @param portraitIncreaseDomain: 新增默认头像
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getIncreasePortrait(PortraitIncreaseDomain portraitIncreaseDomain, String path);
 }

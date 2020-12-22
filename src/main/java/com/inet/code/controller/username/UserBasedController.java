@@ -1,6 +1,7 @@
 package com.inet.code.controller.username;
 
 import com.inet.code.entity.cipher.dto.CipherAmendDomain;
+import com.inet.code.entity.production.dto.ProductionInsertDomain;
 import com.inet.code.entity.user.dto.UserAmendDomain;
 import com.inet.code.entity.user.dto.UserRegisterDomain;
 import com.inet.code.realize.UserBasedService;
@@ -13,6 +14,7 @@ import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.security.ProtectionDomain;
 
 /**
  * 用户的基本操作
@@ -159,7 +161,14 @@ public class UserBasedController {
         return userBasedService.getCheckFans(token , pages , "/scratch/user/focus");
     }
 
-
+    @PostMapping("/insertProduction")
+    public Result postInsertProduction(@RequestHeader(value = "Token",defaultValue = "") String token,
+                                       @RequestBody ProductionInsertDomain productionInsertDomain){
+        return userBasedService.getInsertProduction(
+                 token
+                ,productionInsertDomain
+                ,"/scratch/user/insertProduction");
+    }
 
 
 }

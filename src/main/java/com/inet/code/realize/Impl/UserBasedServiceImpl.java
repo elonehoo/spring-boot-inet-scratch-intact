@@ -1,11 +1,9 @@
 package com.inet.code.realize.Impl;
 
 import cn.hutool.core.lang.Validator;
-import cn.hutool.core.util.PageUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
-import cn.hutool.extra.mail.MailAccount;
 import cn.hutool.extra.mail.MailUtil;
 import com.inet.code.entity.attention.dto.AttentionFocusDomain;
 import com.inet.code.entity.attention.po.Attention;
@@ -14,6 +12,8 @@ import com.inet.code.entity.cipher.po.Cipher;
 import com.inet.code.entity.portrait.po.Portrait;
 import com.inet.code.entity.portrait.vo.PortraitBuddhaView;
 import com.inet.code.entity.power.po.Power;
+import com.inet.code.entity.production.dto.ProductionInsertDomain;
+import com.inet.code.entity.production.po.Production;
 import com.inet.code.entity.role.dto.RoleProfileDomain;
 import com.inet.code.entity.tool.PageToll;
 import com.inet.code.entity.user.dto.UserAmendDomain;
@@ -23,13 +23,11 @@ import com.inet.code.entity.user.po.User;
 import com.inet.code.entity.user.vo.UserFanView;
 import com.inet.code.realize.UserBasedService;
 import com.inet.code.service.*;
-import com.inet.code.utils.CloneUtil;
-import com.inet.code.utils.FileUtils;
+import com.inet.code.utils.BeanUtil;
 import com.inet.code.utils.FromMailUtil;
 import com.inet.code.utils.Result;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -65,6 +63,9 @@ public class UserBasedServiceImpl implements UserBasedService {
 
     @Resource
     private AttentionService attentionService;
+
+    @Resource
+    private ProductionService productionService;
 
     /**
      * 通过邮箱发送验证码
@@ -140,7 +141,7 @@ public class UserBasedServiceImpl implements UserBasedService {
         //进行用户的注册
         //存储
         userService.save(new User(
-                CloneUtil.clone(portrait,PortraitBuddhaView.class).getPortraitSrc()
+                BeanUtil.copy(portrait,PortraitBuddhaView.class).getPortraitSrc()
                 , userRegisterDomain.getEmail()
                 , userRegisterDomain.getEmail()
                 ,true
@@ -153,7 +154,7 @@ public class UserBasedServiceImpl implements UserBasedService {
                 userRegisterDomain.getEmail()
                 , DigestUtil.md5Hex(userRegisterDomain.getPassword())));
         //设置权限为member
-        RoleProfileDomain roleProfileDomain = CloneUtil.clone(
+        RoleProfileDomain roleProfileDomain = BeanUtil.copy(
                   roleService.getRoleName("member")
                 , RoleProfileDomain.class);
         powerService.save(new Power(userRegisterDomain.getEmail(),roleProfileDomain.getRoleUuid()));
@@ -242,7 +243,7 @@ public class UserBasedServiceImpl implements UserBasedService {
             redisTemplate.delete(token);
             redisTemplate.opsForValue().set(
                      token
-                    ,CloneUtil.clone(user,UserBaseDomain.class)
+                    , BeanUtil.copy(user,UserBaseDomain.class)
                     ,7
                     , TimeUnit.DAYS);
             return new Result().result200("用户信息更新成功",path);
@@ -279,7 +280,7 @@ public class UserBasedServiceImpl implements UserBasedService {
             AttentionFocusDomain attentionFocusDomain = new AttentionFocusDomain(
                      userBaseDomain.getUserEmail()
                     ,focusEmail);
-            if (attentionService.save(CloneUtil.clone(attentionFocusDomain , Attention.class))) {
+            if (attentionService.save(BeanUtil.copy(attentionFocusDomain , Attention.class))) {
                 return new Result().result200("关注成功！",path);
             }else {
                 return new Result().result500("关注失败！",path);
@@ -344,7 +345,30 @@ public class UserBasedServiceImpl implements UserBasedService {
         return new Result().result200(userFanViewPageToll,path);
     }
 
-
+    /**
+     * 新增用户的项目
+     *
+     * @author HCY
+     * @since 2020/12/21 6:16 下午
+     * @param token: 令牌
+     * @param productionInsertDomain: 新增项目的实体类
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getInsertProduction(String token, ProductionInsertDomain productionInsertDomain, String path) {
+        //通过token获取用户的信息
+        UserBaseDomain userBaseDomain = (UserBaseDomain) redisTemplate.opsForValue().get(token);
+        //进行项目的拷贝
+        Production production = BeanUtil.copy(productionInsertDomain, Production.class);
+        //设置用户的邮箱信息
+        production.setProductionUserEmail(userBaseDomain.getUserEmail());
+        //进行存储
+        if (productionService.save(production)) {
+            return new Result().result200("保存成功",path);
+        }
+        return new Result().result500("保存失败",path);
+    }
 
 
     /**
