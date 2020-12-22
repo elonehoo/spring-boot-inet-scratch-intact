@@ -18,7 +18,7 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@ApiModel
+@ApiModel("类别的新增类")
 public class TypeAppendDoMain {
     /**
      * 类别的名称

@@ -22,7 +22,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel
+@ApiModel("修改类别的实体类")
 public class TypeAmendDoMain {
 
     /**

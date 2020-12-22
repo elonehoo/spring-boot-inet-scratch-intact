@@ -19,7 +19,7 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @NoArgsConstructor
 @Accessors(chain = true)
-@ApiModel
+@ApiModel("登录的DO层")
 public class UserLoginDomain {
 
     /**

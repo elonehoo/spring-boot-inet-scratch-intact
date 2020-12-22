@@ -19,7 +19,7 @@ import java.util.Date;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel
+@ApiModel("user实体类的DO,用于控制业务实体")
 public class UserBaseDomain implements Serializable {
     /**
      * 用户的头像

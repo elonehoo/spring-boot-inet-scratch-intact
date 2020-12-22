@@ -19,7 +19,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel
+@ApiModel("用户使用验证码登陆的实体类")
 public class UserLandingDomain {
 
     /**

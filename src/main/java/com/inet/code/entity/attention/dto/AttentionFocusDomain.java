@@ -20,7 +20,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel
+@ApiModel("进行关注的实体类")
 public class AttentionFocusDomain {
 
     /**

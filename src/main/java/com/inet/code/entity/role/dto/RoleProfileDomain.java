@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
+ * 修改权限的实体类
  *
  * @author HCY
  * @since 2020/12/12 下午 07:26
@@ -19,7 +20,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @NoArgsConstructor
-@ApiModel
+@ApiModel("修改权限的实体类")
 public class RoleProfileDomain {
 
     /**

@@ -20,7 +20,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @NoArgsConstructor
-@ApiModel
+@ApiModel("修改轮播图的地址或者状态")
 public class SlideshowAmendDomain {
 
     /**

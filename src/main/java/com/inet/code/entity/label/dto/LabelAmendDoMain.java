@@ -13,6 +13,7 @@ import lombok.experimental.Accessors;
 
 /**
  * 修改的标签的实体类
+ *
  * @author HCY
  * @since 2020/12/12 上午 09:37
 */
@@ -21,7 +22,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel
+@ApiModel("修改的标签的实体类")
 public class LabelAmendDoMain {
     /**
      * 标签的uuid

@@ -21,7 +21,7 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @NoArgsConstructor
-@ApiModel
+@ApiModel("修改用户的实体类")
 public class UserAmendDomain {
     /**
      * 用户的头像

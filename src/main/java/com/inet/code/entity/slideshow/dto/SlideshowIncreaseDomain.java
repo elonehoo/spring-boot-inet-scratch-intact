@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @NoArgsConstructor
-@ApiModel
+@ApiModel("增加轮播图的实体类")
 public class SlideshowIncreaseDomain {
 
     @ApiModelProperty("轮播图的URL地址")

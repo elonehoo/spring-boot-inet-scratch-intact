@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@ApiModel
+@ApiModel("标签的基础DTO")
 public class LabelAppendDoMain {
 
     /**
