@@ -21,11 +21,11 @@ public class FileUtils {
     * @author HCY
     * @since 2020/11/22 下午 12:12
     */
-    private static final String UPLOAD_SB3_FILE_PATH = "/home/inet/soft/tomcat/apache-tomcat-9.0.41/webapps/sb3";
-    private static final String UPLOAD_REST_FILE_PATH = "/home/inet/soft/tomcat/apache-tomcat-9.0.41/webapps/images";
+    public static final String UPLOAD_SB3_FILE_PATH = "/home/inet/soft/tomcat/apache-tomcat-9.0.41/webapps/sb3";
+    public static final String UPLOAD_REST_FILE_PATH = "/home/inet/soft/tomcat/apache-tomcat-9.0.41/webapps/images";
 
-    private static final String SB3_URL = "http://47.99.145.161:8080/sb3/";
-    private static final String REST_URL = "http://47.99.145.161:8080/images/";
+    public static final String SB3_URL = "http://47.99.145.161:8080/sb3/";
+    public static final String REST_URL = "http://47.99.145.161:8080/images/";
 
     /**
     * 上传文件
@@ -65,11 +65,11 @@ public class FileUtils {
             Map<String, String> map = new HashMap<>(2);
             map.put("info","上传成功");
             map.put("url",network);
-            return new Result().result200(map,path);
+            return new Result().result200(map,pathUrl);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return new Result().result500("上传失败",path);
+        return new Result().result500("上传失败",pathUrl);
     }
 }

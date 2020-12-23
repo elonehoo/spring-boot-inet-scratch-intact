@@ -96,4 +96,6 @@ public interface BasedService {
      * @return com.inet.code.utils.Result
     */
     Result getInteraction(String token, String path);
+
+
 }

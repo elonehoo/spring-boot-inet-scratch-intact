@@ -3,6 +3,7 @@ package com.inet.code.controller;
 import com.inet.code.entity.user.dto.UserLandingDomain;
 import com.inet.code.entity.user.dto.UserLoginDomain;
 import com.inet.code.realize.BasedService;
+import com.inet.code.utils.FileUtils;
 import com.inet.code.utils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -14,6 +15,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * 基本操作,管理员和用户都需要的操作
@@ -126,11 +132,42 @@ public class BasedController {
      * @param file: 文件
      * @return com.inet.code.utils.Result
      */
-    @ApiOperation("文件上传，返回URL地址，不会进入数据库")
-    @PostMapping(value = "/uploadFiles",headers = "content-type=multipart/form-data")
+    @ApiOperation("只能上传sb3文件，不进入数据库")
+    @PostMapping(value = "/uploadFiles")
     @RequiresRoles(logical = Logical.OR,value = {"admin","member"})
-    public Result getUploadFiles(@RequestParam(value = "file") @RequestPart MultipartFile file){
-        return basedService.getUploadFiles(file,"/scratch/user/uploadFiles");
+    public Result getUploadFiles(@RequestParam MultipartFile file){
+        String pathUrl = "/scratch/based/uploadFiles";
+        //判断文件是否不存在
+        if (file.isEmpty()){
+            return new Result().result404("文件未找到",pathUrl);
+        }
+        //文件名
+        String fileName = file.getOriginalFilename();
+        //后缀名
+        String suffixName = ".sb3";
+        //设置文件的上传位置
+        String path = FileUtils.UPLOAD_SB3_FILE_PATH;
+        String url = FileUtils.SB3_URL;
+        //设置新的文件名字
+        fileName = UUID.randomUUID().toString() + suffixName;
+        File dest = new File(path + "/" + fileName);
+        if (!dest.getParentFile().exists()) {
+            dest.getParentFile().mkdirs();
+        }
+        //判断是否上传成功
+        String network = null;
+        try {
+            file.transferTo(dest);
+            network = url + fileName;
+            Map<String, String> map = new HashMap<>(2);
+            map.put("info","上传成功");
+            map.put("url",network);
+            return new Result().result200(map,pathUrl);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new Result().result500("上传失败",pathUrl);
     }
 
     /**
@@ -147,6 +184,5 @@ public class BasedController {
     public Result getInteraction(@RequestHeader(value = "Token",defaultValue = "") String token){
         return basedService.getInteraction(token,"/scratch/user/interaction");
     }
-
 
 }

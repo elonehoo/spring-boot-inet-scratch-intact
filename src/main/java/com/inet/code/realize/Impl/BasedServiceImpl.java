@@ -129,6 +129,8 @@ public class BasedServiceImpl implements BasedService {
      */
     @Override
     public Result getListLabel(String path) {
+
+
         return new Result().result200(
                  BeanUtil.batchCopy(labelService.list(), LabelBaseView.class)
                 ,path);
@@ -240,6 +242,8 @@ public class BasedServiceImpl implements BasedService {
             return new Result().result200(userBaseDomain,path);
         }
     }
+
+
 
 
 }

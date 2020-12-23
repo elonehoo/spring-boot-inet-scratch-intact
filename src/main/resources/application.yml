@@ -26,13 +26,14 @@ spring:
   servlet:
     multipart:
       max-file-size: 200MB
-      max-request-size: 60MB
+      max-request-size: 200MB
+      location: /home/inet/soft/tomcat/apache-tomcat-9.0.41/webapps/cache
+      enabled: true
 logging:
   level:
     root: warn
     com.inet: debug
   file:
     path: log/scratch.log
-
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*.xml
