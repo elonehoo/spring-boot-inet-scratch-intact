@@ -5,10 +5,7 @@ import com.inet.code.entity.user.dto.UserLoginDomain;
 import com.inet.code.realize.BasedService;
 import com.inet.code.utils.FileUtils;
 import com.inet.code.utils.Result;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
@@ -127,12 +124,13 @@ public class BasedController {
 
     /**
      * 上传文件
+     *
      * @author HCY
      * @since 2020/12/14 1:35 下午
      * @param file: 文件
      * @return com.inet.code.utils.Result
      */
-    @ApiOperation("只能上传sb3文件，不进入数据库")
+    @ApiOperation("只能在 scratch 编译页面进行上传操作")
     @PostMapping(value = "/uploadFiles")
     @RequiresRoles(logical = Logical.OR,value = {"admin","member"})
     public Result getUploadFiles(@RequestParam MultipartFile file){
@@ -166,8 +164,24 @@ public class BasedController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return new Result().result500("上传失败",pathUrl);
+    }
+
+    /**
+     * 上传文件
+     *
+     * @author HCY
+     * @since 2020/12/23 5:51 下午
+     * @param file: 上传文件
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("上传文件")
+    @PostMapping("/uploadImages")
+    @RequiresRoles(logical = Logical.OR,value = {"admin","member"})
+    public Result postUploadImages(@RequestParam MultipartFile file){
+        return basedService.getUploadFiles(
+                 file
+                ,"/scratch/based/uploadImages");
     }
 
     /**
