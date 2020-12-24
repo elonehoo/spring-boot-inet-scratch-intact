@@ -171,7 +171,7 @@ public class UserBasedController {
      * @param productionInsertDomain: 上传项目的实体类
      * @return com.inet.code.utils.Result
     */
-    @ApiOperation("用户上传项目")
+    @ApiOperation("用户发布项目")
     @PostMapping("/insertProduction")
     @RequiresRoles(value = {"member"})
     public Result postInsertProduction(@RequestHeader(value = "Token",defaultValue = "") String token,
@@ -202,5 +202,14 @@ public class UserBasedController {
                 ,"/scratch/user/saveProduction");
     }
 
-
+    @ApiOperation("正在修改中。。。")
+    @GetMapping("/listProduction")
+    @RequiresRoles(value = {"member"})
+    public Result getListProduction(@RequestHeader(value = "Token",defaultValue = "") String token,
+                                    @RequestParam(value = "current",defaultValue = "1") Integer current,
+                                    @RequestParam(value = "size",defaultValue = "10") Integer size,
+                                    @RequestParam(value = "issue",defaultValue = "") Boolean issue){
+//        return userBasedService.getListProduction();
+        return null;
+    }
 }
