@@ -202,6 +202,16 @@ public class UserBasedController {
                 ,"/scratch/user/saveProduction");
     }
 
+    /**
+     * 查看自己的上传的文件
+     * @author HCY
+     * @since 2020/12/24 5:53 下午
+     * @param token: 令牌
+     * @param current: 页数
+     * @param size: 条目数
+     * @param issue: 状态
+     * @return com.inet.code.utils.Result
+    */
     @ApiOperation("正在修改中。。。")
     @GetMapping("/listProduction")
     @RequiresRoles(value = {"member"})
@@ -209,7 +219,11 @@ public class UserBasedController {
                                     @RequestParam(value = "current",defaultValue = "1") Integer current,
                                     @RequestParam(value = "size",defaultValue = "10") Integer size,
                                     @RequestParam(value = "issue",defaultValue = "") Boolean issue){
-//        return userBasedService.getListProduction();
-        return null;
+        return userBasedService.getListProduction(
+                 token
+                ,current
+                ,size
+                ,issue
+                ,"/scratch/user/listProduction");
     }
 }

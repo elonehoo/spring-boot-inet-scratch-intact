@@ -68,11 +68,19 @@ class InetApplicationTests {
 
     @Test
     void test_6(){
-        NotIf(1);
+        NotIf(1000);
     }
 
     private Integer NotIf(Integer i) {
         System.out.println(i);
-        return i < 1000 ? NotIf(++i) : 1000;
+        i--;
+        int x;
+        try{
+            x = 1 / i;
+        }catch (Exception e){
+            return null;
+        }
+        NotIf(i);
+        return x;
     }
 }

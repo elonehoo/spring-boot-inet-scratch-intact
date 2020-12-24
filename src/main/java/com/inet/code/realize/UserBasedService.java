@@ -122,4 +122,18 @@ public interface UserBasedService {
      * @return com.inet.code.utils.Result 
     */
     Result getSaveProduction(String token, ProductionSaveDomain productionSaveDomain, String path);
+
+    /**
+     * 用户查看自己上传的项目
+     *
+     * @author HCY
+     * @since 2020/12/24 5:55 下午
+     * @param token: 令牌
+     * @param current: 页数
+     * @param size: 条目数
+     * @param issue: 状态
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getListProduction(String token, Integer current, Integer size, Boolean issue, String path);
 }

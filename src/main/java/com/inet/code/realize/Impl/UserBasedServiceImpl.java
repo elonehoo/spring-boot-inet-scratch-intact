@@ -6,6 +6,9 @@ import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.extra.mail.MailUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.inet.code.entity.attention.dto.AttentionFocusDomain;
 import com.inet.code.entity.attention.po.Attention;
 import com.inet.code.entity.cipher.dto.CipherAmendDomain;
@@ -28,12 +31,16 @@ import com.inet.code.service.*;
 import com.inet.code.utils.BeanUtil;
 import com.inet.code.utils.FromMailUtil;
 import com.inet.code.utils.Result;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -401,6 +408,39 @@ public class UserBasedServiceImpl implements UserBasedService {
             return new Result().result200("保存项目成功",path);
         }
         return new Result().result500("保存项目失败",path);
+    }
+
+    /**
+     * 分页查看用户的项目
+     *
+     * @author HCY
+     * @since 2020/12/24 5:57 下午
+     * @param token: 令牌
+     * @param current: 页数
+     * @param size: 条目数
+     * @param issue: 状态
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    @Override
+    public Result getListProduction(String token, Integer current, Integer size, Boolean issue, String path) {
+        //通过token获取用户信息
+        UserBaseDomain userBaseDomain = (UserBaseDomain) redisTemplate.opsForValue().get(token);
+        //创建条件构造器的map集合
+        Map<String, Object> params = new HashMap<>(2);
+        //设置查找项目的用户邮箱
+        params.put("production_user_email",userBaseDomain.getUserEmail());
+        //判断状态
+        if (issue != null){
+            params.put("production_issue",issue);
+        }
+        //进行分页操作
+        return new Result().result200(
+                 productionService.page(
+                          new Page<>(current, size)
+                        , new QueryWrapper<Production>().allEq(params))
+                ,path
+        );
     }
 
 
