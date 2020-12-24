@@ -212,7 +212,7 @@ public class UserBasedController {
      * @param issue: 状态
      * @return com.inet.code.utils.Result
     */
-    @ApiOperation("正在修改中。。。")
+    @ApiOperation("查看自己的上传的文件")
     @GetMapping("/listProduction")
     @RequiresRoles(value = {"member"})
     public Result getListProduction(@RequestHeader(value = "Token",defaultValue = "") String token,
