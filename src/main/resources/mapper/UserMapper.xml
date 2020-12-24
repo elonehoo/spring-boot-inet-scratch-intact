@@ -174,4 +174,14 @@
         WHERE users.user_email = #{email};
     </select>
 
+    <!--该日期新增多少人数-->
+    <select id="getNewUsers" resultType="java.lang.Integer">
+        SELECT
+            COUNT(*)
+        FROM
+            tbl_user
+        WHERE
+            gmt_create LIKE #{day};
+    </select>
+
 </mapper>

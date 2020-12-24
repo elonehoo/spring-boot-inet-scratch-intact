@@ -119,5 +119,18 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return userMapper.getByRoleEmail(email);
     }
 
+    /**
+     * 该日期新增多少人数
+     *
+     * @author HCY
+     * @since 2020/12/24 9:59 下午
+     * @param day: 日期
+     * @return java.lang.Integer
+     */
+    @Override
+    public Integer getNewUsers(String day) {
+        return userMapper.getNewUsers(day + "%");
+    }
+
 
 }

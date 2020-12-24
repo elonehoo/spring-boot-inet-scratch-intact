@@ -18,10 +18,13 @@ import com.inet.code.entity.type.po.Type;
 import com.inet.code.realize.AdminBasedService;
 import com.inet.code.service.*;
 import com.inet.code.utils.BeanUtil;
+import com.inet.code.utils.DateUtils;
 import com.inet.code.utils.Result;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 管理员的业务控制层
@@ -46,6 +49,9 @@ public class AdminBasedServiceImpl implements AdminBasedService {
 
     @Resource
     private PortraitService portraitService;
+
+    @Resource
+    private UserService userService;
 
     /**
      * 标签的添加
@@ -331,5 +337,26 @@ public class AdminBasedServiceImpl implements AdminBasedService {
             return new Result().result200("新增默认头像成功",path);
         }
         return new Result().result500("新增默认头像失败",path);
+    }
+
+    /**
+     * 查看从今日开始前七天的数据量
+     *
+     * @author HCY
+     * @since 2020/12/24 9:50 下午
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getListNewUser(String path) {
+        //获取当前的日期的前七日日期
+        String[] days = DateUtils.getBeforeSevenDay();
+        //创建返回值的条件
+        Map<String, Integer> map = new HashMap<>();
+        for (String day : days) {
+            Integer count = userService.getNewUsers(day);
+            map.put(day,count);
+        }
+        return new Result().result200(map,path);
     }
 }

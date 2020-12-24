@@ -253,4 +253,18 @@ public class AdminBasedController {
                  portraitIncreaseDomain
                 ,"/scratch/based/removeSlideshow");
     }
+
+    /**
+     * 查看从今日前的一周的每日的新增日期
+     *
+     * @author HCY
+     * @since 2020/12/24 10:02 下午
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("查看从今日前的一周的每日的新增日期")
+    @GetMapping("/listNewUser")
+    @RequiresRoles(value = {"admin"})
+    public Result getListNewUser(){
+        return adminBasedService.getListNewUser("/scratch/based/listNewUser");
+    }
 }

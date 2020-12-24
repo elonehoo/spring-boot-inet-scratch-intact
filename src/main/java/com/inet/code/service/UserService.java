@@ -88,4 +88,14 @@ public interface UserService extends IService<User> {
      * @return com.inet.code.entity.user.dto.UserBaseDomain
     */
     UserBaseDomain getByRoleEmail(String email);
+
+    /**
+     * 该日期新增多少人数
+     *
+     * @author HCY
+     * @since 2020/12/24 9:59 下午
+     * @param day: 日期
+     * @return java.lang.Integer
+    */
+    Integer getNewUsers(String day);
 }

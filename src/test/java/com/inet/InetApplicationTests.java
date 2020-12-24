@@ -2,6 +2,7 @@ package com.inet;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
+import com.inet.code.utils.DateUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -82,5 +83,13 @@ class InetApplicationTests {
         }
         NotIf(i);
         return x;
+    }
+
+    @Test
+    void test_7(){
+        String[] day = DateUtils.getBeforeSevenDay();
+        for (String date : day){
+            System.out.println(date);
+        }
     }
 }
