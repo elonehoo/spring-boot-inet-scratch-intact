@@ -2,6 +2,7 @@ package com.inet.code.realize;
 
 import com.inet.code.entity.cipher.dto.CipherAmendDomain;
 import com.inet.code.entity.production.dto.ProductionInsertDomain;
+import com.inet.code.entity.production.dto.ProductionSaveDomain;
 import com.inet.code.entity.user.dto.UserAmendDomain;
 import com.inet.code.entity.user.dto.UserRegisterDomain;
 import com.inet.code.utils.Result;
@@ -109,4 +110,16 @@ public interface UserBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getInsertProduction(String token, ProductionInsertDomain productionInsertDomain, String path);
+
+    /**
+     * 保存用户的项目
+     *
+     * @author HCY
+     * @since 2020/12/24 9:27 上午
+     * @param token: 令牌
+     * @param productionSaveDomain: 保存项目的实体类
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result 
+    */
+    Result getSaveProduction(String token, ProductionSaveDomain productionSaveDomain, String path);
 }

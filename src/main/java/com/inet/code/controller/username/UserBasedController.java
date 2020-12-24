@@ -2,6 +2,7 @@ package com.inet.code.controller.username;
 
 import com.inet.code.entity.cipher.dto.CipherAmendDomain;
 import com.inet.code.entity.production.dto.ProductionInsertDomain;
+import com.inet.code.entity.production.dto.ProductionSaveDomain;
 import com.inet.code.entity.user.dto.UserAmendDomain;
 import com.inet.code.entity.user.dto.UserRegisterDomain;
 import com.inet.code.realize.UserBasedService;
@@ -172,12 +173,33 @@ public class UserBasedController {
     */
     @ApiOperation("用户上传项目")
     @PostMapping("/insertProduction")
+    @RequiresRoles(value = {"member"})
     public Result postInsertProduction(@RequestHeader(value = "Token",defaultValue = "") String token,
                                        @RequestBody ProductionInsertDomain productionInsertDomain){
         return userBasedService.getInsertProduction(
                  token
                 ,productionInsertDomain
                 ,"/scratch/user/insertProduction");
+    }
+
+    /**
+     * 用户保存项目
+     *
+     * @author HCY
+     * @since 2020/12/24 9:43 上午
+     * @param token: 令牌
+     * @param productionSaveDomain: 用户保存项目的实体类
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("用户保存项目")
+    @PostMapping("/saveProduction")
+    @RequiresRoles(value = {"member"})
+    public Result postSaveProduction(@RequestHeader(value = "Token",defaultValue = "") String token,
+                                     @RequestBody ProductionSaveDomain productionSaveDomain){
+        return userBasedService.getSaveProduction(
+                 token
+                ,productionSaveDomain
+                ,"/scratch/user/saveProduction");
     }
 
 

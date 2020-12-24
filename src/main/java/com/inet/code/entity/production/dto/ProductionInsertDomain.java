@@ -65,10 +65,5 @@ public class ProductionInsertDomain {
     @ApiModelProperty("作品是否允许改编")
     private Boolean productionRecompose;
 
-    /**
-     * 作品是发布还是草稿
-     */
-    @ApiModelProperty("作品是发布还是草稿")
-    private Boolean productionIssue;
 
 }

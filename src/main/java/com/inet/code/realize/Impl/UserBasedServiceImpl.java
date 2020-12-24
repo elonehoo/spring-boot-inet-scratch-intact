@@ -1,5 +1,6 @@
 package com.inet.code.realize.Impl;
 
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
@@ -13,6 +14,7 @@ import com.inet.code.entity.portrait.po.Portrait;
 import com.inet.code.entity.portrait.vo.PortraitBuddhaView;
 import com.inet.code.entity.power.po.Power;
 import com.inet.code.entity.production.dto.ProductionInsertDomain;
+import com.inet.code.entity.production.dto.ProductionSaveDomain;
 import com.inet.code.entity.production.po.Production;
 import com.inet.code.entity.role.dto.RoleProfileDomain;
 import com.inet.code.entity.tool.PageToll;
@@ -363,11 +365,42 @@ public class UserBasedServiceImpl implements UserBasedService {
         Production production = BeanUtil.copy(productionInsertDomain, Production.class);
         //设置用户的邮箱信息
         production.setProductionUserEmail(userBaseDomain.getUserEmail());
+        //设置为上传操作
+        production.setProductionIssue(true);
         //进行存储
         if (productionService.save(production)) {
             return new Result().result200("保存成功",path);
         }
         return new Result().result500("保存失败",path);
+    }
+
+    /**
+     * 保存用户的项目
+     *
+     * @author HCY
+     * @since 2020/12/24 9:27 上午
+     * @param token: 令牌
+     * @param productionSaveDomain: 保存项目的实体类
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getSaveProduction(String token, ProductionSaveDomain productionSaveDomain, String path) {
+        //通过token获取到用户的信息
+        UserBaseDomain userBaseDomain = (UserBaseDomain) redisTemplate.opsForValue().get(token);
+        //进行项目实体类的拷贝
+        Production production = BeanUtil.copy(productionSaveDomain, Production.class);
+        //设置用户的上传邮箱
+        production.setProductionUserEmail(userBaseDomain.getUserEmail());
+        //设置成为保存
+        production.setProductionIssue(false);
+        //设置名字
+        production.setProductionName(DateUtil.now());
+        //存储
+        if (productionService.save(production)) {
+            return new Result().result200("保存项目成功",path);
+        }
+        return new Result().result500("保存项目失败",path);
     }
 
 

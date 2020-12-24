@@ -65,4 +65,14 @@ class InetApplicationTests {
     void test_5(){
         System.out.println(DigestUtil.md5Hex("hcy05080901"));
     }
+
+    @Test
+    void test_6(){
+        NotIf(1);
+    }
+
+    private Integer NotIf(Integer i) {
+        System.out.println(i);
+        return i < 1000 ? NotIf(++i) : 1000;
+    }
 }
