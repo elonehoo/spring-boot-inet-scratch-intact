@@ -268,6 +268,7 @@ public class AdminBasedController {
         return adminBasedService.getListNewUser("/scratch/based/listNewUser");
     }
 
+    @ApiOperation("近七天上传的项目的数据量")
     @GetMapping("/listNewProduction")
     @RequiresRoles(value = {"admin"})
     public Result getListNewProduction(@RequestParam(value = "issue",defaultValue = "") Boolean issue){
