@@ -76,17 +76,6 @@ public interface BasedService {
     Result getLanding(UserLandingDomain userLandingDomain, String path);
 
     /**
-     * 文件上传，返回的是文件的URL地址
-     *
-     * @author HCY
-     * @since 2020/12/14 1:33 下午
-     * @param file: 上传的文件
-     * @param path: URL路径
-     * @return com.inet.code.utils.Result
-     */
-    Result getUploadFiles(MultipartFile file, String path);
-
-    /**
      * 通过token返回用户的信息
      *
      * @author HCY

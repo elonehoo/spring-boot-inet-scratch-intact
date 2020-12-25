@@ -1,5 +1,6 @@
 package com.inet.code.controller;
 
+
 import com.inet.code.entity.user.dto.UserLandingDomain;
 import com.inet.code.entity.user.dto.UserLoginDomain;
 import com.inet.code.realize.BasedService;
@@ -13,7 +14,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -175,13 +179,68 @@ public class BasedController {
      * @param file: 上传文件
      * @return com.inet.code.utils.Result
     */
-    @ApiOperation("上传文件")
-    @PostMapping("/uploadImages")
+    @ApiOperation("上传图片的base64编码格式，仅限 scratch 编译页面上传")
+    @PostMapping(value = "/uploadImages")
     @RequiresRoles(logical = Logical.OR,value = {"admin","member"})
-    public Result postUploadImages(@RequestParam MultipartFile file){
-        return basedService.getUploadFiles(
-                 file
-                ,"/scratch/based/uploadImages");
+    public Result postUploadImages(@RequestParam String file){
+        String path = "/scratch/based/uploadImages";
+        //base64格式前头
+        String dataPrix = "";
+        //实体部分数据
+        String data = "";
+        if(file==null||"".equals(file)){
+            return new Result().result401("上传失败，上传图片数据为空",path);
+        }else {
+            //将字符串分成数组
+            String [] d = file.split("base64,");
+            if(d != null && d.length == 2){
+                dataPrix = d[0];
+                data = d[1];
+            }else {
+                return new Result().result401("上传失败，数据不合法",path);
+            }
+        }
+        //图片后缀，用以识别哪种格式数据
+        String suffix = "";
+        //data:image/jpeg;base64,base64编码的jpeg图片数据
+        if("data:image/jpeg;".equalsIgnoreCase(dataPrix)){
+            suffix = ".jpg";
+        }else if("data:image/x-icon;".equalsIgnoreCase(dataPrix)){
+            //data:image/x-icon;base64,base64编码的icon图片数据
+            suffix = ".ico";
+        }else if("data:image/gif;".equalsIgnoreCase(dataPrix)){
+            //data:image/gif;base64,base64编码的gif图片数据
+            suffix = ".gif";
+        }else if("data:image/png;".equalsIgnoreCase(dataPrix)){
+            //data:image/png;base64,base64编码的png图片数据
+            suffix = ".png";
+        }else {
+            return new Result().result401("上传图片格式不合法",path);
+        }
+        String uuid =  UUID.randomUUID().toString();
+        String tempFileName=uuid+suffix;
+        //新生成的图片
+        String imgFilePath = FileUtils.UPLOAD_REST_FILE_PATH + "/" + tempFileName;
+        Base64.Decoder decoder = Base64.getDecoder();
+        try {
+            //Base64解码
+//            byte[] b = Base64.decodeBuffer(data);
+            byte[] b = decoder.decode(data) ;
+            for(int i=0;i<b.length;++i) {
+                if(b[i]<0) {
+                    //调整异常数据
+                    b[i]+=256;
+                }
+            }
+            OutputStream out = new FileOutputStream(imgFilePath);
+            out.write(b);
+            out.flush();
+            out.close();
+            String imgUrl=FileUtils.REST_URL + tempFileName;
+            return new Result().result200(imgUrl,path);
+        } catch (IOException e) {
+            return new Result().result500("错误",path);
+        }
     }
 
     /**
@@ -193,7 +252,7 @@ public class BasedController {
      * @return com.inet.code.utils.Result
     */
     @ApiOperation("通过token返回用户的信息")
-    @GetMapping("/interaction")
+    @GetMapping(value = "/interaction")
     @RequiresRoles(logical = Logical.OR,value = {"admin","member"})
     public Result getInteraction(@RequestHeader(value = "Token",defaultValue = "") String token){
         return basedService.getInteraction(token,"/scratch/user/interaction");

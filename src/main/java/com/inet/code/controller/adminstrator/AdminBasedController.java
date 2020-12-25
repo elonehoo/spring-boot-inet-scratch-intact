@@ -255,16 +255,23 @@ public class AdminBasedController {
     }
 
     /**
-     * 查看从今日前的一周的每日的新增日期
+     * 查看从今日前的一周的每日的新增人数
      *
      * @author HCY
      * @since 2020/12/24 10:02 下午
      * @return com.inet.code.utils.Result
     */
-    @ApiOperation("查看从今日前的一周的每日的新增日期")
+    @ApiOperation("查看从今日开始的前一周每日的新增人数")
     @GetMapping("/listNewUser")
     @RequiresRoles(value = {"admin"})
     public Result getListNewUser(){
         return adminBasedService.getListNewUser("/scratch/based/listNewUser");
+    }
+
+    @GetMapping("/listNewProduction")
+    public Result getListNewProduction(@RequestParam(value = "issue",defaultValue = "") Boolean issue){
+        return adminBasedService.getListNewProduction(
+                  issue
+                , "/scratch/based/listNewProduction");
     }
 }

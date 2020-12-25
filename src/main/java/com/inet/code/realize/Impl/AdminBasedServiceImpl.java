@@ -352,11 +352,28 @@ public class AdminBasedServiceImpl implements AdminBasedService {
         //获取当前的日期的前七日日期
         String[] days = DateUtils.getBeforeSevenDay();
         //创建返回值的条件
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, Integer> map = new HashMap<>(days.length);
         for (String day : days) {
             Integer count = userService.getNewUsers(day);
             map.put(day,count);
         }
         return new Result().result200(map,path);
     }
+
+    /**
+     * 查看从今日开始前七天的项目新增数目
+     * @author HCY
+     * @since 2020/12/25 6:13 下午
+     * @param issue: 发布状态
+     * @param path:
+     * @return com.inet.code.utils.Result
+    */
+    @Override
+    public Result getListNewProduction(Boolean issue, String path) {
+        //获取前今日的日期
+        String[] days = DateUtils.getBeforeSevenDay();
+        Map<String, Integer> map = userService.getListNewProduction(issue,days);
+        return new Result().result200(map,path);
+    }
+
 }

@@ -2,6 +2,8 @@ server:
   port: 6060
   servlet:
     context-path: /scratch
+  tomcat:
+    max-http-form-post-size: 104857600MB
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

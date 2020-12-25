@@ -208,19 +208,6 @@ public class BasedServiceImpl implements BasedService {
         return new Result().result200(results,path);
     }
 
-    /**
-     * 文件上传，返回的是文件的URL地址
-     *
-     * @author HCY
-     * @since 2020/12/14 1:33 下午
-     * @param file: 上传的文件
-     * @param path: URL路径
-     * @return com.inet.code.utils.Result
-     */
-    @Override
-    public Result getUploadFiles(MultipartFile file, String path) {
-        return FileUtils.getUploading(file,path);
-    }
 
     /**
      * 通过token返回用户的信息

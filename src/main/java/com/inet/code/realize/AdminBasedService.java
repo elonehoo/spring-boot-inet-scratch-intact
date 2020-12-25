@@ -152,7 +152,7 @@ public interface AdminBasedService {
     Result getIncreasePortrait(PortraitIncreaseDomain portraitIncreaseDomain, String path);
 
     /**
-     * 查看从今日开始前七天的数据量
+     * 查看从今日开始前七天的新增人数量
      *
      * @author HCY
      * @since 2020/12/24 9:50 下午
@@ -160,4 +160,15 @@ public interface AdminBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getListNewUser(String path);
+
+    /**
+     * 查看从今日起七天的新增项目数量
+     *
+     * @author HCY
+     * @since 2020/12/25 6:09 下午
+     * @param issue: 发布状态
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getListNewProduction(Boolean issue, String path);
 }
