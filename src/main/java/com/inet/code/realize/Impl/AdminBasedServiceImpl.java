@@ -53,6 +53,9 @@ public class AdminBasedServiceImpl implements AdminBasedService {
     @Resource
     private UserService userService;
 
+    @Resource
+    private ProductionService productionService;
+
     /**
      * 标签的添加
      *
@@ -372,7 +375,7 @@ public class AdminBasedServiceImpl implements AdminBasedService {
     public Result getListNewProduction(Boolean issue, String path) {
         //获取前今日的日期
         String[] days = DateUtils.getBeforeSevenDay();
-        Map<String, Integer> map = userService.getListNewProduction(issue,days);
+        Map<String, Integer> map = productionService.getListNewProduction(issue,days);
         return new Result().result200(map,path);
     }
 

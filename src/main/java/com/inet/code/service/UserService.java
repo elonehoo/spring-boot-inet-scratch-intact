@@ -100,14 +100,5 @@ public interface UserService extends IService<User> {
     */
     Integer getNewUsers(String day);
 
-    /**
-     * 查看这前七天的上传项目的数据量
-     *
-     * @author HCY
-     * @since 2020/12/25 6:17 下午
-     * @param issue: 状态
-     * @param days: 日期集合
-     * @return java.util.Map<java.lang.String,java.lang.Integer>
-    */
-    Map<String, Integer> getListNewProduction(Boolean issue, String[] days);
+
 }

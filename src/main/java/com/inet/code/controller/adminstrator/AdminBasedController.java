@@ -269,6 +269,7 @@ public class AdminBasedController {
     }
 
     @GetMapping("/listNewProduction")
+    @RequiresRoles(value = {"admin"})
     public Result getListNewProduction(@RequestParam(value = "issue",defaultValue = "") Boolean issue){
         return adminBasedService.getListNewProduction(
                   issue
