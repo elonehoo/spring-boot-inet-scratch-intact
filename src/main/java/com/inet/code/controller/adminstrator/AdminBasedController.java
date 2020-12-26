@@ -268,6 +268,14 @@ public class AdminBasedController {
         return adminBasedService.getListNewUser("/scratch/based/listNewUser");
     }
 
+    /**
+     * 近七天的上传数据
+     *
+     * @author HCY
+     * @since 2020/12/26 5:25 下午
+     * @param issue: 状态
+     * @return com.inet.code.utils.Result
+    */
     @ApiOperation("近七天上传的项目的数据量")
     @GetMapping("/listNewProduction")
     @RequiresRoles(value = {"admin"})
