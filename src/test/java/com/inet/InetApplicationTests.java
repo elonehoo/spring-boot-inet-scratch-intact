@@ -1,5 +1,6 @@
 package com.inet;
 
+import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
 import com.inet.code.utils.DateUtils;
@@ -91,5 +92,15 @@ class InetApplicationTests {
         for (String date : day){
             System.out.println(date);
         }
+    }
+
+    @Test
+    void test_8(){
+        System.out.println(UUID.randomUUID());
+    }
+
+    @Test
+    void test_9(){
+        System.out.println(2&4);
     }
 }

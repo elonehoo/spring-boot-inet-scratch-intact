@@ -17,7 +17,9 @@ import com.inet.code.entity.portrait.po.Portrait;
 import com.inet.code.entity.portrait.vo.PortraitBuddhaView;
 import com.inet.code.entity.power.po.Power;
 import com.inet.code.entity.production.dto.ProductionInsertDomain;
+import com.inet.code.entity.production.dto.ProductionInsertUploadDomain;
 import com.inet.code.entity.production.dto.ProductionSaveDomain;
+import com.inet.code.entity.production.dto.ProductionSaveUploadDomain;
 import com.inet.code.entity.production.po.Production;
 import com.inet.code.entity.role.dto.RoleProfileDomain;
 import com.inet.code.entity.tool.PageToll;
@@ -31,6 +33,7 @@ import com.inet.code.service.*;
 import com.inet.code.utils.BeanUtil;
 import com.inet.code.utils.FromMailUtil;
 import com.inet.code.utils.Result;
+import org.apache.logging.log4j.message.ReusableMessage;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -443,6 +446,77 @@ public class UserBasedServiceImpl implements UserBasedService {
         );
     }
 
+    /**
+     * 修改保存的项目
+     *
+     * @author HCY
+     * @since 2020/12/27 下午7:26
+     * @param token: 令牌
+     * @param productionSaveUploadDomain: 修改保存的项目的实体类
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getPutSaveProduction(String token, ProductionSaveUploadDomain productionSaveUploadDomain, String path) {
+        //从token中获取到用户的基本数据
+        UserBaseDomain userBaseDomain = (UserBaseDomain) redisTemplate.opsForValue().get(token);
+        //获取到上传的项目的实体类
+        Production production = productionService.getById(productionSaveUploadDomain.getProductionUuid());
+        //判断作品是否属于该用户
+        if (!userBaseDomain.getUserEmail().equals(production.getProductionUserEmail())){
+            return new Result().result401("该项目您无权更改哦！",path);
+        }
+        //修改封面
+        production.setProductionCover(productionSaveUploadDomain.getProductionCover());
+        //修改URL
+        production.setProductionUrl(productionSaveUploadDomain.getProductionUrl());
+        //进行修改
+        if (productionService.updateById(production)) {
+            return new Result().result200("上传成功",path);
+        }
+        return new Result().result500("上传失败",path);
+    }
+
+    /**
+     * 修改上传的项目
+     *
+     * @author HCY
+     * @since 2020/12/27 下午8:02
+     * @param token: 令牌
+     * @param productionInsertUploadDomain:修改上传的项目的实体类
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getUploadInsertProduction(String token, ProductionInsertUploadDomain productionInsertUploadDomain, String path) {
+        //从token中获取到用户的基本数据
+        UserBaseDomain userBaseDomain = (UserBaseDomain) redisTemplate.opsForValue().get(token);
+        //获取到项目
+        Production production = productionService.getById(productionInsertUploadDomain.getProductionUuid());
+        //判断是否属于该用户
+        if (!userBaseDomain.getUserEmail().equals(production.getProductionUserEmail())){
+            return new Result().result401("该项目您无法修改哦！",path);
+        }
+        //修改封面
+        production.setProductionCover(productionInsertUploadDomain.getProductionCover());
+        //修改名字
+        production.setProductionName(productionInsertUploadDomain.getProductionName());
+        //修改项目的地址
+        production.setProductionUrl(productionInsertUploadDomain.getProductionUrl());
+        //修改作品的说明
+        production.setProductionRemark(productionInsertUploadDomain.getProductionRemark());
+        //修改作品的操作说明
+        production.setProductionOi(productionInsertUploadDomain.getProductionOi());
+        //修改作品的类型
+        production.setProductionTypeUuid(productionInsertUploadDomain.getProductionTypeUuid());
+        //作品是否允许改编
+        production.setProductionRecompose(productionInsertUploadDomain.getProductionRecompose());
+        //进行修改
+        if (productionService.updateById(production)){
+            return new Result().result200("上传成功",path);
+        }
+        return new Result().result500("上传失败",path);
+    }
 
     /**
      * 判断用户或者关注的用户是否存在

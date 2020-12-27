@@ -2,7 +2,9 @@ package com.inet.code.realize;
 
 import com.inet.code.entity.cipher.dto.CipherAmendDomain;
 import com.inet.code.entity.production.dto.ProductionInsertDomain;
+import com.inet.code.entity.production.dto.ProductionInsertUploadDomain;
 import com.inet.code.entity.production.dto.ProductionSaveDomain;
+import com.inet.code.entity.production.dto.ProductionSaveUploadDomain;
 import com.inet.code.entity.user.dto.UserAmendDomain;
 import com.inet.code.entity.user.dto.UserRegisterDomain;
 import com.inet.code.utils.Result;
@@ -136,4 +138,28 @@ public interface UserBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getListProduction(String token, Integer current, Integer size, Boolean issue, String path);
+
+    /**
+     * 修改保存的项目
+     *
+     * @author HCY
+     * @since 2020/12/27 下午7:26
+     * @param token: 令牌
+     * @param productionSaveUploadDomain: 修改保存的项目的实体类
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getPutSaveProduction(String token, ProductionSaveUploadDomain productionSaveUploadDomain, String path);
+
+    /**
+     * 修改上传的项目
+     *
+     * @author HCY
+     * @since 2020/12/27 下午8:02
+     * @param token: 令牌
+     * @param productionInsertUploadDomain:修改上传的项目的实体类
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getUploadInsertProduction(String token, ProductionInsertUploadDomain productionInsertUploadDomain, String path);
 }

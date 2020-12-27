@@ -224,7 +224,6 @@ public class BasedController {
         Base64.Decoder decoder = Base64.getDecoder();
         try {
             //Base64解码
-//            byte[] b = Base64.decodeBuffer(data);
             byte[] b = decoder.decode(data) ;
             for(int i=0;i<b.length;++i) {
                 if(b[i]<0) {
