@@ -60,8 +60,8 @@ public class CodeGenerator {
          */
         dsc.setUrl("jdbc:mysql://47.99.145.161:3306/scratch?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
-        dsc.setUsername("hcy");
-        dsc.setPassword("901901");
+        dsc.setUsername("root");
+        dsc.setPassword("Inet%@(HZPT");
         mpg.setDataSource(dsc);
 
         // 包配置
