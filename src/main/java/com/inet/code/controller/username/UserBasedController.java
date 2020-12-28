@@ -230,6 +230,15 @@ public class UserBasedController {
                 ,"/scratch/user/listProduction");
     }
 
+    /**
+     * 修改保存的项目
+     *
+     * @author HCY
+     * @since 2020/12/28 8:53 上午
+     * @param token: 令牌
+     * @param productionSaveUploadDomain: 媳妇爱保存的项目的实体类
+     * @return com.inet.code.utils.Result
+    */
     @ApiOperation("修改保存的项目")
     @PutMapping("/saveProduction")
     @RequiresRoles(value = {"member"})
@@ -241,6 +250,15 @@ public class UserBasedController {
                 ,"/scratch/user/saveProduction");
     }
 
+    /**
+     * 修改上传的项目
+     *
+     * @author HCY
+     * @since 2020/12/28 8:54 上午
+     * @param token: 令牌
+     * @param productionInsertUploadDomain: 修改上传的项目的实体类
+     * @return com.inet.code.utils.Result
+    */
     @ApiOperation("修改上传的项目")
     @PutMapping("/insertProduction")
     @RequiresRoles(value = {"member"})
