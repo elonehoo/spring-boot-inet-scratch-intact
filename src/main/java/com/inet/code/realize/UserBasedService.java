@@ -1,5 +1,6 @@
 package com.inet.code.realize;
 
+import com.inet.code.entity.assist.dto.AssistLikeDomain;
 import com.inet.code.entity.cipher.dto.CipherAmendDomain;
 import com.inet.code.entity.production.dto.ProductionInsertDomain;
 import com.inet.code.entity.production.dto.ProductionInsertUploadDomain;
@@ -162,4 +163,16 @@ public interface UserBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getUploadInsertProduction(String token, ProductionInsertUploadDomain productionInsertUploadDomain, String path);
+
+    /**
+     * 点赞，如果已经点赞了，则取消点赞
+     *
+     * @author HCY
+     * @since 2020/12/28 10:42 下午
+     * @param token: 令牌
+     * @param assistLikeDomain: 点赞项目的实体类
+     * @param path：URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getLikeProduction(String token, AssistLikeDomain assistLikeDomain,String path);
 }

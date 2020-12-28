@@ -9,6 +9,8 @@ import cn.hutool.extra.mail.MailUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.inet.code.entity.assist.dto.AssistLikeDomain;
+import com.inet.code.entity.assist.po.Assist;
 import com.inet.code.entity.attention.dto.AttentionFocusDomain;
 import com.inet.code.entity.attention.po.Attention;
 import com.inet.code.entity.cipher.dto.CipherAmendDomain;
@@ -78,6 +80,9 @@ public class UserBasedServiceImpl implements UserBasedService {
 
     @Resource
     private ProductionService productionService;
+
+    @Resource
+    private AssistService assistService;
 
     /**
      * 通过邮箱发送验证码
@@ -516,6 +521,44 @@ public class UserBasedServiceImpl implements UserBasedService {
             return new Result().result200("上传成功",path);
         }
         return new Result().result500("上传失败",path);
+    }
+
+    /**
+     * 点赞，如果已经点赞了，则取消点赞
+     *
+     * @author HCY
+     * @since 2020/12/28 10:42 下午
+     * @param token: 令牌
+     * @param assistLikeDomain: 点赞项目的实体类
+     * @param path：URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getLikeProduction(String token, AssistLikeDomain assistLikeDomain,String path) {
+        //从token中获取到用户的基本数据
+        UserBaseDomain userBaseDomain = (UserBaseDomain) redisTemplate.opsForValue().get(token);
+        //通过项目的序号判断项目是否存在
+        if (assistService.getById(assistLikeDomain.getAssistProductionId()) == null){
+            return new Result().result404("项目为找到",path);
+        }
+        //判断是点赞还是取消点赞
+        Assist judge = assistService.getByProductionIdAndUserEmail(assistLikeDomain.getAssistProductionId(),userBaseDomain.getUserEmail());
+        if (judge == null){
+            //拷贝实体类
+            Assist assist = BeanUtil.copy(assistLikeDomain, Assist.class);
+            //设置点赞的用户邮箱
+            assist.setAssistUserEmail(userBaseDomain.getUserEmail());
+            //进行存储
+            if (assistService.save(assist)) {
+                return new Result().result200("点赞成功",path);
+            }
+            return new Result().result500("点赞失败",path);
+        }else {
+            if (assistService.removeById(judge.getAssistUuid())) {
+                return new Result().result200("取消点赞成功",path);
+            }
+            return new Result().result500("取消点赞失败",path);
+        }
     }
 
     /**

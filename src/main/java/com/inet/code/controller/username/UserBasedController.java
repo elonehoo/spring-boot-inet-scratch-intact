@@ -1,5 +1,6 @@
 package com.inet.code.controller.username;
 
+import com.inet.code.entity.assist.dto.AssistLikeDomain;
 import com.inet.code.entity.cipher.dto.CipherAmendDomain;
 import com.inet.code.entity.production.dto.ProductionInsertDomain;
 import com.inet.code.entity.production.dto.ProductionInsertUploadDomain;
@@ -268,5 +269,25 @@ public class UserBasedController {
                  token
                 ,productionInsertUploadDomain
                 ,"/scratch/user/insertProduction");
+    }
+
+    /**
+     * 点赞项目，如果已经点赞了，则取消点赞
+     *
+     * @author HCY
+     * @since 2020/12/28 11:04 下午
+     * @param token: 令牌
+     * @param assistLikeDomain: 点赞的实体类
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("点赞项目，如果已经点赞了，则取消点赞")
+    @PostMapping("/likeProduction")
+    @RequiresRoles(value = {"member"})
+    public Result postLikeProduction(@RequestHeader(value = "Token",defaultValue = "") String token,
+                                     @RequestBody AssistLikeDomain assistLikeDomain){
+        return userBasedService.getLikeProduction(
+                 token
+                ,assistLikeDomain
+                ,"/scratch/user/likeProduction");
     }
 }

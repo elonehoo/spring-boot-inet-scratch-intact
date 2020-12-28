@@ -2,4 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.inet.code.mapper.AssistMapper">
 
+    <select id="getByProductionIdAndUserEmail" resultType="com.inet.code.entity.assist.po.Assist">
+        SELECT
+            assist_uuid AS assistUuid,
+            assist_production_id AS assistProductionId,
+            assist_user_email AS assistUserEmail,
+            gmt_create AS gmtCreate,
+            gmt_modified AS gmtModified
+        FROM
+            tbl_assist
+        WHERE
+            assist_production_id = #{productionId}
+          AND assist_user_email = #{userEmail}
+            LIMIT 1;
+    </select>
 </mapper>
