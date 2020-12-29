@@ -1,8 +1,12 @@
 package com.inet.code.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.inet.code.entity.production.po.Production;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.inet.code.entity.production.vo.ProductionUsersView;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,4 +29,16 @@ public interface ProductionService extends IService<Production> {
      * @return java.util.Map<java.lang.String,java.lang.Integer>
     */
     Map<String, Integer> getListNewProduction(Boolean issue, String[] days);
+
+    /**
+     * 分页查看项目的状态
+     *
+     * @author HCY
+     * @since 2020/12/29 11:22 下午
+     * @param page: 分页条件
+     * @param userEmail: 用户邮箱
+     * @param issue: 状态
+     * @return com.baomidou.mybatisplus.core.metadata.IPage<com.inet.code.entity.production.vo.ProductionUsersView>
+    */
+    IPage<ProductionUsersView> getPageView(Page<ProductionUsersView> page, String userEmail, Boolean issue);
 }

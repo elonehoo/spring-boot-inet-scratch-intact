@@ -2,6 +2,7 @@ package com.inet.code.realize.Impl;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.Validator;
+import cn.hutool.core.util.PageUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
@@ -23,6 +24,7 @@ import com.inet.code.entity.production.dto.ProductionInsertUploadDomain;
 import com.inet.code.entity.production.dto.ProductionSaveDomain;
 import com.inet.code.entity.production.dto.ProductionSaveUploadDomain;
 import com.inet.code.entity.production.po.Production;
+import com.inet.code.entity.production.vo.ProductionUsersView;
 import com.inet.code.entity.role.dto.RoleProfileDomain;
 import com.inet.code.entity.tool.PageToll;
 import com.inet.code.entity.user.dto.UserAmendDomain;
@@ -434,19 +436,14 @@ public class UserBasedServiceImpl implements UserBasedService {
     public Result getListProduction(String token, Integer current, Integer size, Boolean issue, String path) {
         //通过token获取用户信息
         UserBaseDomain userBaseDomain = (UserBaseDomain) redisTemplate.opsForValue().get(token);
-        //创建条件构造器的map集合
-        Map<String, Object> params = new HashMap<>(2);
-        //设置查找项目的用户邮箱
-        params.put("production_user_email",userBaseDomain.getUserEmail());
-        //判断状态
-        if (issue != null){
-            params.put("production_issue",issue);
-        }
+        //获取到分页的数据
+       IPage<ProductionUsersView> records = productionService.getPageView(
+                 new Page<>(current,size)
+                ,userBaseDomain.getUserEmail()
+                ,issue);
         //进行分页操作
         return new Result().result200(
-                 productionService.page(
-                          new Page<>(current, size)
-                        , new QueryWrapper<Production>().allEq(params))
+                "productionIPage"
                 ,path
         );
     }

@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.inet.code.mapper.ProductionMapper">
-
+    <!--分页查看项目的状态-->
+    <select id="getUserPage" resultType="com.inet.code.entity.production.vo.ProductionUsersView">
+        SELECT
+            production.production_uuid AS productionUuid,
+            production.production_cover AS productionCover,
+            production.production_url AS productionUrl,
+            production.production_name AS productionName,
+	        (SELECT COUNT(*) FROM tbl_assist AS assist WHERE assist.assist_production_id = production_uuid) AS likeTotal
+        FROM
+            tbl_production AS production
+            LEFT JOIN tbl_user AS users ON production.production_user_email = users.user_email
+        WHERE users.user_email = #{userEmail}
+        <if test="issue != null">
+            AND production.production_issue = 0
+        </if>
+        ORDER BY production.gmt_create DESC
+    </select>
 </mapper>

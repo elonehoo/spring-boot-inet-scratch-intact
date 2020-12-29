@@ -3,12 +3,21 @@ package com.inet;
 import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.inet.code.entity.production.vo.ProductionUsersView;
+import com.inet.code.mapper.ProductionMapper;
 import com.inet.code.utils.DateUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.annotation.Resource;
+
 @SpringBootTest
 class InetApplicationTests {
+
+    @Resource
+    private ProductionMapper productionMapper;
 
     @Test
     void test_1(){
@@ -102,5 +111,15 @@ class InetApplicationTests {
     @Test
     void test_9(){
         System.out.println(2&4);
+    }
+
+    @Test
+    void test_10(){
+        IPage<ProductionUsersView> iPage = productionMapper.getUserPage(new Page<>(1, 5), "1945489676@qq.com", false);
+        System.out.println(iPage.getRecords());
+        System.out.println(iPage.getPages());
+        System.out.println(iPage.getTotal());
+        System.out.println(iPage.getSize());
+        System.out.println(iPage.getCurrent());
     }
 }
