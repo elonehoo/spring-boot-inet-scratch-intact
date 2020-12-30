@@ -33,6 +33,7 @@ import com.inet.code.entity.user.dto.UserBaseDomain;
 import com.inet.code.entity.user.dto.UserRegisterDomain;
 import com.inet.code.entity.user.po.User;
 import com.inet.code.entity.user.vo.UserFanView;
+import com.inet.code.entity.user.vo.UserFiveLikeView;
 import com.inet.code.realize.UserBasedService;
 import com.inet.code.service.*;
 import com.inet.code.utils.BeanUtil;
@@ -565,6 +566,17 @@ public class UserBasedServiceImpl implements UserBasedService {
     @Override
     public Result getListTenProduction(String path) {
         return new Result().result200(productionService.getListTenProduction(),path);
+    }
+
+    /**
+     * 访客项目，在访客模式下可以查看十个点赞数目多的用户
+     *
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getListTenUser(String path) {
+        return new Result().result200(userService.getListTenUser(),path);
     }
 
     /**

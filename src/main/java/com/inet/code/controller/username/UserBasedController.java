@@ -298,11 +298,26 @@ public class UserBasedController {
      * @since 2020/12/30 下午2:59
      * @return com.inet.code.utils.Result
     */
-    @ApiOperation("访客项目，在访客模式下可以查看十个点赞数目多的项目")
+    @ApiOperation("访客项目，在访客模式下可以查看十个点赞数目多的项目,不需要token")
     @GetMapping("/listTenProduction")
     public Result getListTenProduction(){
         return userBasedService.getListTenProduction(
                 "/scratch/user/listTenProduction"
+        );
+    }
+
+    /**
+     * 访客项目，在访客模式下可以查看十个点赞数目多的用户
+     *
+     * @author HCY
+     * @since 2020/12/30 下午3:44
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("访客项目，在访客模式下可以查看十个点赞数目多的用户,不需要token")
+    @GetMapping("/listTenUser")
+    public Result getListTenUser(){
+        return userBasedService.getListTenUser(
+                "/scratch/user/listTenUser"
         );
     }
 

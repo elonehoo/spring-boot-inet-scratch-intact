@@ -185,4 +185,12 @@ public interface UserBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getListTenProduction(String path);
+
+    /**
+     * 访客项目，在访客模式下可以查看十个点赞数目多的用户
+     *
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getListTenUser(String path);
 }

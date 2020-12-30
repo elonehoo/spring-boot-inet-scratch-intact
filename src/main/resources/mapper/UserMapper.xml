@@ -207,5 +207,27 @@
         ORDER BY likeTotal DESC , users.gmt_create DESC
         LIMIT 5;
     </select>
+    <select id="getListTenUser" resultType="com.inet.code.entity.user.vo.UserFiveLikeView">
+        SELECT
+            users.user_uuid AS userUuid,
+            users.user_buddha AS userBuddha,
+            users.user_name AS userName,
+            (
+                SELECT
+                    COUNT(*)
+                FROM
+                    tbl_assist AS assists
+                        LEFT JOIN tbl_production AS production ON assists.assist_production_id = production.production_uuid
+                WHERE
+                    production.production_user_email = users.user_email
+            ) AS likeTotal
+        FROM
+            tbl_user AS users
+                LEFT JOIN tbl_power AS powers ON powers.power_email = users.user_email
+                LEFT JOIN tbl_role AS role ON role.role_uuid = powers.power_role
+        WHERE role.role_name = "member"
+        ORDER BY likeTotal DESC , users.gmt_create DESC
+            LIMIT 10;
+    </select>
 
 </mapper>

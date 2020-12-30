@@ -146,5 +146,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return userMapper.getListFiveUsers();
     }
 
+    /**
+     * 访客项目，在访客模式下可以查看十个点赞数目多的用户
+     *
+     * @author HCY
+     * @since 2020/12/30 下午3:51
+     * @return java.util.List<com.inet.code.entity.user.vo.UserFiveLikeView>
+     */
+    @Override
+    public List<UserFiveLikeView> getListTenUser() {
+        return userMapper.getListTenUser();
+    }
+
 
 }
