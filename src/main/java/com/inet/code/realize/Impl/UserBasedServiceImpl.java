@@ -24,6 +24,7 @@ import com.inet.code.entity.production.dto.ProductionInsertUploadDomain;
 import com.inet.code.entity.production.dto.ProductionSaveDomain;
 import com.inet.code.entity.production.dto.ProductionSaveUploadDomain;
 import com.inet.code.entity.production.po.Production;
+import com.inet.code.entity.production.vo.ProductionUserLikeFiveView;
 import com.inet.code.entity.production.vo.ProductionUsersView;
 import com.inet.code.entity.role.dto.RoleProfileDomain;
 import com.inet.code.entity.tool.PageToll;
@@ -44,10 +45,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -554,6 +552,19 @@ public class UserBasedServiceImpl implements UserBasedService {
             }
             return new Result().result500("取消点赞失败",path);
         }
+    }
+
+    /**
+     * 访客项目，在访客模式下可以查看十个点赞数目多的项目
+     *
+     * @author HCY
+     * @since 2020/12/30 下午3:04
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    @Override
+    public Result getListTenProduction(String path) {
+        return new Result().result200(productionService.getListTenProduction(),path);
     }
 
     /**

@@ -291,4 +291,19 @@ public class UserBasedController {
                 ,"/scratch/user/likeProduction");
     }
 
+    /**
+     * 访客项目，在访客模式下可以查看十个点赞数目多的项目
+     *
+     * @author HCY
+     * @since 2020/12/30 下午2:59
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("访客项目，在访客模式下可以查看十个点赞数目多的项目")
+    @GetMapping("/listTenProduction")
+    public Result getListTenProduction(){
+        return userBasedService.getListTenProduction(
+                "/scratch/user/listTenProduction"
+        );
+    }
+
 }

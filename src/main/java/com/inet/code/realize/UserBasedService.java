@@ -175,4 +175,14 @@ public interface UserBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getLikeProduction(String token, AssistLikeDomain assistLikeDomain,String path);
+
+    /**
+     * 访客项目，在访客模式下可以查看十个点赞数目多的项目
+     *
+     * @author HCY
+     * @since 2020/12/30 下午3:00
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getListTenProduction(String path);
 }

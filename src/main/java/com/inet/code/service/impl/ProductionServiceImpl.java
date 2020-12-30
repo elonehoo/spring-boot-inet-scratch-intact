@@ -79,4 +79,16 @@ public class ProductionServiceImpl extends ServiceImpl<ProductionMapper, Product
     public List<ProductionUserLikeFiveView> getListFiveProduction() {
         return productionMapper.getListFive();
     }
+
+    /**
+     * 访客项目，在访客模式下可以查看十个点赞数目多的项目
+     *
+     * @author HCY
+     * @since 2020/12/30 下午3:21
+     * @return java.util.List<com.inet.code.entity.production.vo.ProductionUserLikeFiveView>
+     */
+    @Override
+    public List<ProductionUserLikeFiveView> getListTenProduction() {
+        return productionMapper.getLIstTen();
+    }
 }
