@@ -301,9 +301,7 @@ public class UserBasedController {
     @ApiOperation("访客项目，在访客模式下可以查看十个点赞数目多的项目,不需要token")
     @GetMapping("/listTenProduction")
     public Result getListTenProduction(){
-        return userBasedService.getListTenProduction(
-                "/scratch/user/listTenProduction"
-        );
+        return userBasedService.getListTenProduction("/scratch/user/listTenProduction");
     }
 
     /**
@@ -316,9 +314,7 @@ public class UserBasedController {
     @ApiOperation("访客项目，在访客模式下可以查看十个点赞数目多的用户,不需要token")
     @GetMapping("/listTenUser")
     public Result getListTenUser(){
-        return userBasedService.getListTenUser(
-                "/scratch/user/listTenUser"
-        );
+        return userBasedService.getListTenUser("/scratch/user/listTenUser");
     }
 
 }
