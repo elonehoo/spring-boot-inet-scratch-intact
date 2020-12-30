@@ -285,4 +285,18 @@ public class AdminBasedController {
                 , "/scratch/based/listNewProduction");
     }
 
+    /**
+     * 查看点赞数最高的五个项目
+     *
+     * @author HCY
+     * @since 2020/12/30 上午10:06
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("查看点赞数最高的五个项目")
+    @GetMapping("/listFiveProduction")
+    @RequiresRoles(value = {"admin"})
+    public Result getListFiveProduction(){
+        return adminBasedService.getListFiveProduction("/scratch/based/listFiveProduction");
+    }
+
 }

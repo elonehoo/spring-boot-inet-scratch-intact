@@ -436,14 +436,12 @@ public class UserBasedServiceImpl implements UserBasedService {
     public Result getListProduction(String token, Integer current, Integer size, Boolean issue, String path) {
         //通过token获取用户信息
         UserBaseDomain userBaseDomain = (UserBaseDomain) redisTemplate.opsForValue().get(token);
-        //获取到分页的数据
-       IPage<ProductionUsersView> records = productionService.getPageView(
-                 new Page<>(current,size)
-                ,userBaseDomain.getUserEmail()
-                ,issue);
         //进行分页操作
         return new Result().result200(
-                "productionIPage"
+                productionService.getPageView(
+                         new Page<>(current,size)
+                        ,userBaseDomain.getUserEmail()
+                        ,issue)
                 ,path
         );
     }

@@ -18,4 +18,21 @@
         </if>
         ORDER BY production.gmt_create DESC
     </select>
+
+    <!--展示点赞数排名前五的项目-->
+    <select id="getListFive" resultType="com.inet.code.entity.production.vo.ProductionUserLikeFiveView">
+        SELECT
+            production.production_uuid AS productionUuid,
+            production.production_cover AS productionCover,
+            production.production_url AS productionUrl,
+            production.production_name AS productionName,
+            users.user_buddha AS userBuddha,
+            users.user_name AS userName,
+            (SELECT COUNT(*) FROM tbl_assist AS assist WHERE assist.assist_production_id = production_uuid) AS likeTotal
+        FROM
+            tbl_production AS production
+            LEFT JOIN tbl_user AS users ON production.production_user_email = users.user_email
+        WHERE production.production_issue = TRUE
+        ORDER BY likeTotal DESC , production.gmt_create DESC LIMIT 5;
+    </select>
 </mapper>

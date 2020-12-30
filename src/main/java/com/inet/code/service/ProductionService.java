@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.inet.code.entity.production.po.Production;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.inet.code.entity.production.vo.ProductionUserLikeFiveView;
 import com.inet.code.entity.production.vo.ProductionUsersView;
 
 import java.util.List;
@@ -41,4 +42,13 @@ public interface ProductionService extends IService<Production> {
      * @return com.baomidou.mybatisplus.core.metadata.IPage<com.inet.code.entity.production.vo.ProductionUsersView>
     */
     IPage<ProductionUsersView> getPageView(Page<ProductionUsersView> page, String userEmail, Boolean issue);
+
+    /**
+     * 展示点赞数排名前五的项目
+     *
+     * @author HCY
+     * @since 2020/12/30 上午10:01
+     * @return java.util.List<com.inet.code.entity.production.vo.ProductionUserLikeFiveView>
+    */
+    List<ProductionUserLikeFiveView> getListFiveProduction();
 }

@@ -8,6 +8,7 @@ import com.inet.code.entity.label.dto.LabelAmendDoMain;
 import com.inet.code.entity.label.dto.LabelAppendDoMain;
 import com.inet.code.entity.portrait.dto.PortraitIncreaseDomain;
 import com.inet.code.entity.portrait.po.Portrait;
+import com.inet.code.entity.production.vo.ProductionUserLikeFiveView;
 import com.inet.code.entity.slideshow.dto.SlideshowAmendDomain;
 import com.inet.code.entity.slideshow.dto.SlideshowIncreaseDomain;
 import com.inet.code.entity.slideshow.po.Slideshow;
@@ -24,6 +25,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -377,6 +379,21 @@ public class AdminBasedServiceImpl implements AdminBasedService {
         String[] days = DateUtils.getBeforeSevenDay();
         Map<String, Integer> map = productionService.getListNewProduction(issue,days);
         return new Result().result200(map,path);
+    }
+
+    /**
+     * 查看点赞数最高的五个项目
+     *
+     * @author HCY
+     * @since 2020/12/30 上午8:59
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getListFiveProduction(String path) {
+        return new Result().result200(
+                 productionService.getListFiveProduction()
+                ,path);
     }
 
 }

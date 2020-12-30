@@ -171,4 +171,14 @@ public interface AdminBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getListNewProduction(Boolean issue, String path);
+
+    /**
+     * 查看点赞数最高的五个项目
+     *
+     * @author HCY
+     * @since 2020/12/30 上午8:59
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getListFiveProduction(String path);
 }

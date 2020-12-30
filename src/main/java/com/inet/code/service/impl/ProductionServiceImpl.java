@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.inet.code.entity.production.po.Production;
+import com.inet.code.entity.production.vo.ProductionUserLikeFiveView;
 import com.inet.code.entity.production.vo.ProductionUsersView;
 import com.inet.code.mapper.ProductionMapper;
 import com.inet.code.service.ProductionService;
@@ -65,5 +66,17 @@ public class ProductionServiceImpl extends ServiceImpl<ProductionMapper, Product
     @Override
     public IPage<ProductionUsersView> getPageView(Page<ProductionUsersView> page, String userEmail, Boolean issue) {
         return productionMapper.getUserPage(page,userEmail,issue);
+    }
+
+    /**
+     * 展示点赞数排名前五的项目
+     *
+     * @author HCY
+     * @since 2020/12/30 上午10:01
+     * @return java.util.List<com.inet.code.entity.production.vo.ProductionUserLikeFiveView>
+     */
+    @Override
+    public List<ProductionUserLikeFiveView> getListFiveProduction() {
+        return productionMapper.getListFive();
     }
 }

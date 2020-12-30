@@ -9,19 +9,18 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
- * 用户展示自己的项目的实体类
+ * 展示前五个点赞数最高的展示实体类
  *
  * @author HCY
- * @since 2020/12/29 10:38 下午
- */
+ * @since 2020/12/30 上午9:48
+*/
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel("用户展示自己的项目的实体类")
-public class ProductionUsersView {
-
+@ApiModel("展示前五个点赞数最高的展示实体类")
+public class ProductionUserLikeFiveView {
     /**
      * 作品uuid
      */
@@ -45,6 +44,18 @@ public class ProductionUsersView {
      */
     @ApiModelProperty("项目的地址")
     private String productionUrl;
+
+    /**
+     * 用户的头像
+     */
+    @ApiModelProperty("用户的头像")
+    private String userBuddha;
+
+    /**
+     * 用户昵称
+     */
+    @ApiModelProperty("用户昵称")
+    private String userName;
 
     /**
      * 点赞数
