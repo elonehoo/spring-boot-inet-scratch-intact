@@ -3,6 +3,7 @@ package com.inet.code.service.impl;
 import com.inet.code.entity.user.dto.UserBaseDomain;
 import com.inet.code.entity.user.po.User;
 import com.inet.code.entity.user.vo.UserFanView;
+import com.inet.code.entity.user.vo.UserFiveLikeView;
 import com.inet.code.mapper.UserMapper;
 import com.inet.code.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -133,7 +134,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return userMapper.getNewUsers(day + "%");
     }
 
-
+    /**
+     * 查看点赞数最高的五个用户
+     *
+     * @author HCY
+     * @since 2020/12/30 上午11:05
+     * @return java.util.List<com.inet.code.entity.user.vo.UserFiveLikeView>
+    */
+    @Override
+    public List<UserFiveLikeView> getListFiveUsers() {
+        return userMapper.getListFiveUsers();
+    }
 
 
 }

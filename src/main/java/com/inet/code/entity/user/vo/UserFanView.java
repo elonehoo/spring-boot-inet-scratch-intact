@@ -19,7 +19,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel
+@ApiModel("显示用户的粉丝的实体类")
 public class UserFanView {
 
     /**

@@ -16,6 +16,7 @@ import com.inet.code.entity.type.dto.TypeAmendDoMain;
 import com.inet.code.entity.type.dto.TypeAppendDoMain;
 import com.inet.code.entity.label.po.Label;
 import com.inet.code.entity.type.po.Type;
+import com.inet.code.entity.user.vo.UserFiveLikeView;
 import com.inet.code.realize.AdminBasedService;
 import com.inet.code.service.*;
 import com.inet.code.utils.BeanUtil;
@@ -393,6 +394,21 @@ public class AdminBasedServiceImpl implements AdminBasedService {
     public Result getListFiveProduction(String path) {
         return new Result().result200(
                  productionService.getListFiveProduction()
+                ,path);
+    }
+
+    /**
+     * 查看点赞数最高的五个用户
+     *
+     * @author HCY
+     * @since 2020/12/30 上午10:54
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getListFiveUsers(String path) {
+        return new Result().result200(
+                 userService.getListFiveUsers()
                 ,path);
     }
 

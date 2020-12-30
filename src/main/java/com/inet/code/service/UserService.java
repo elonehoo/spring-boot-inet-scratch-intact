@@ -4,6 +4,7 @@ import com.inet.code.entity.user.dto.UserBaseDomain;
 import com.inet.code.entity.user.po.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.inet.code.entity.user.vo.UserFanView;
+import com.inet.code.entity.user.vo.UserFiveLikeView;
 
 import java.util.List;
 import java.util.Map;
@@ -100,5 +101,12 @@ public interface UserService extends IService<User> {
     */
     Integer getNewUsers(String day);
 
-
+    /**
+     * 查看点赞数最高的五个用户
+     *
+     * @author HCY
+     * @since 2020/12/30 上午11:04
+     * @return java.util.List<com.inet.code.entity.user.vo.UserFiveLikeView>
+    */
+    List<UserFiveLikeView> getListFiveUsers();
 }

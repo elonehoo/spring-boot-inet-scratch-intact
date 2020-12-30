@@ -181,4 +181,14 @@ public interface AdminBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getListFiveProduction(String path);
+
+    /**
+     * 查看点赞数最高的五个用户
+     *
+     * @author HCY
+     * @since 2020/12/30 上午10:54
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getListFiveUsers(String path);
 }

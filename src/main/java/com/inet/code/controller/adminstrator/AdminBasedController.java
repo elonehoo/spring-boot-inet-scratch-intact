@@ -299,4 +299,18 @@ public class AdminBasedController {
         return adminBasedService.getListFiveProduction("/scratch/based/listFiveProduction");
     }
 
+    /**
+     * 查看点赞数最高的五个用户
+     *
+     * @author HCY
+     * @since 2020/12/30 上午10:50
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("查看点赞数最高的五个用户")
+    @GetMapping("/listFiveUsers")
+    @RequiresRoles(value = {"admin"})
+    public Result getListFiveUsers(){
+        return adminBasedService.getListFiveUsers("/scratch/based/listFiveUsers");
+    }
+
 }
