@@ -37,7 +37,7 @@
     </select>
 
     <!--访客项目，在访客模式下可以查看十个点赞数目多的项目-->
-    <select id="getLIstTen" resultType="com.inet.code.entity.production.vo.ProductionUserLikeFiveView">
+    <select id="getListTen" resultType="com.inet.code.entity.production.vo.ProductionUserLikeFiveView">
         SELECT
             production.production_uuid AS productionUuid,
             production.production_cover AS productionCover,
@@ -52,4 +52,33 @@
         WHERE production.production_issue = TRUE
         ORDER BY likeTotal DESC , production.gmt_create DESC LIMIT 10;
     </select>
+
+    <!--通过项目的序号查询到项目的实体类-->
+    <select id="getViewProduction" resultType="com.inet.code.entity.production.vo.ProductionView">
+        SELECT
+            production.production_uuid AS productionUuid,
+            production.production_name AS productionName,
+            production.production_cover AS productionCover,
+            production.production_url AS productionUrl,
+            production.production_remark AS productionRemark,
+            production.production_oi AS productionOi,
+            production.production_recompose AS productionRecompose,
+            production.gmt_modified AS gmtModified,
+            types.type_name AS productionTypeName,
+            (
+                SELECT
+                    COUNT(*)
+                FROM
+                    tbl_assist AS assist
+                WHERE
+                    assist.assist_production_id = production.production_uuid
+            ) AS likeTotal
+        FROM
+            tbl_production AS production
+                LEFT JOIN tbl_type AS types ON types.type_uuid = production.production_type_uuid
+        WHERE production.production_uuid = #{productionId}
+        LIMIT 1;
+    </select>
+
+
 </mapper>

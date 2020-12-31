@@ -6,6 +6,7 @@ import com.inet.code.entity.production.po.Production;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.inet.code.entity.production.vo.ProductionUserLikeFiveView;
 import com.inet.code.entity.production.vo.ProductionUsersView;
+import com.inet.code.entity.production.vo.ProductionView;
 
 import java.util.List;
 
@@ -47,5 +48,15 @@ public interface ProductionMapper extends BaseMapper<Production> {
      * @since 2020/12/30 下午3:21
      * @return java.util.List<com.inet.code.entity.production.vo.ProductionUserLikeFiveView>
      */
-    List<ProductionUserLikeFiveView> getLIstTen();
+    List<ProductionUserLikeFiveView> getListTen();
+
+    /**
+     * 通过项目的序号查询到项目的实体类
+     *
+     * @author HCY
+     * @since 2020/12/31 上午9:23
+     * @param productionId: 项目的序号
+     * @return com.inet.code.entity.production.vo.ProductionView
+    */
+    ProductionView getViewProduction(String productionId);
 }

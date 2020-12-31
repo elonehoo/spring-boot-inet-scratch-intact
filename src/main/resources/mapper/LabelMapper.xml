@@ -2,4 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.inet.code.mapper.LabelMapper">
 
+    <!--通过项目的序号查找到项目的标签-->
+    <select id="getListLabel" resultType="com.inet.code.entity.label.vo.LabelBaseView">
+        SELECT
+            editor.editor_uuid AS labelUuid,
+            label.label_name AS labelName
+        FROM
+            tbl_editor AS editor
+                LEFT JOIN tbl_label AS label ON editor.editor_label_uuid = label.label_uuid
+                LEFT JOIN tbl_production AS production ON production.production_uuid = editor.editor_production_uuid
+        WHERE production.production_uuid = #{productionId};
+    </select>
 </mapper>

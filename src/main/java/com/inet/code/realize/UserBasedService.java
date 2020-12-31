@@ -193,4 +193,15 @@ public interface UserBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getListTenUser(String path);
+
+    /**
+     * 通过项目的序号查询到项目的实体类
+     *
+     * @author HCY
+     * @since 2020/12/31 上午8:49
+     * @param productionId: 项目的序号(UUID)
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getViewProduction(String productionId, String path);
 }

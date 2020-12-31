@@ -16,6 +16,7 @@ import com.inet.code.entity.attention.dto.AttentionFocusDomain;
 import com.inet.code.entity.attention.po.Attention;
 import com.inet.code.entity.cipher.dto.CipherAmendDomain;
 import com.inet.code.entity.cipher.po.Cipher;
+import com.inet.code.entity.label.vo.LabelBaseView;
 import com.inet.code.entity.portrait.po.Portrait;
 import com.inet.code.entity.portrait.vo.PortraitBuddhaView;
 import com.inet.code.entity.power.po.Power;
@@ -26,6 +27,7 @@ import com.inet.code.entity.production.dto.ProductionSaveUploadDomain;
 import com.inet.code.entity.production.po.Production;
 import com.inet.code.entity.production.vo.ProductionUserLikeFiveView;
 import com.inet.code.entity.production.vo.ProductionUsersView;
+import com.inet.code.entity.production.vo.ProductionView;
 import com.inet.code.entity.role.dto.RoleProfileDomain;
 import com.inet.code.entity.tool.PageToll;
 import com.inet.code.entity.user.dto.UserAmendDomain;
@@ -84,6 +86,9 @@ public class UserBasedServiceImpl implements UserBasedService {
 
     @Resource
     private AssistService assistService;
+
+    @Resource
+    private LabelService labelService;
 
     /**
      * 通过邮箱发送验证码
@@ -571,12 +576,31 @@ public class UserBasedServiceImpl implements UserBasedService {
     /**
      * 访客项目，在访客模式下可以查看十个点赞数目多的用户
      *
+     * @author HCY
+     * @since 2020/12/31 上午9:01
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    @Override
+    public Result getListTenUser(String path) {
+        return new Result().result200(userService.getListTenUser(),path);
+    }
+
+    /**
+     * 通过项目的序号查询到项目的实体类
+     *
+     * @author HCY
+     * @since 2020/12/31 上午8:49
+     * @param productionId: 项目的序号(UUID)
      * @param path: URL路径
      * @return com.inet.code.utils.Result
      */
     @Override
-    public Result getListTenUser(String path) {
-        return new Result().result200(userService.getListTenUser(),path);
+    public Result getViewProduction(String productionId, String path) {
+        return new Result().result200(
+                 productionService.getViewProduction(productionId)
+                                  .setLabelLists(labelService.getListLabel(productionId))
+                ,path);
     }
 
     /**

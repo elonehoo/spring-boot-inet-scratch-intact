@@ -317,4 +317,17 @@ public class UserBasedController {
         return userBasedService.getListTenUser("/scratch/user/listTenUser");
     }
 
+    /**
+     * 通过项目序号查找到该项目的具体信息
+     *
+     * @author HCY
+     * @since 2020/12/31 上午9:21
+     * @param productionId: 项目的序号
+     * @return com.inet.code.utils.Result
+    */
+    @GetMapping("/viewProduction")
+    public Result getViewProduction(@RequestParam(value = "productionId",defaultValue = "1") String productionId){
+        return userBasedService.getViewProduction(productionId,"/scratch/user/viewProduction");
+    }
+
 }

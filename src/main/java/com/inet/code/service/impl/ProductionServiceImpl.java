@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.inet.code.entity.production.po.Production;
 import com.inet.code.entity.production.vo.ProductionUserLikeFiveView;
 import com.inet.code.entity.production.vo.ProductionUsersView;
+import com.inet.code.entity.production.vo.ProductionView;
 import com.inet.code.mapper.ProductionMapper;
 import com.inet.code.service.ProductionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -89,6 +90,19 @@ public class ProductionServiceImpl extends ServiceImpl<ProductionMapper, Product
      */
     @Override
     public List<ProductionUserLikeFiveView> getListTenProduction() {
-        return productionMapper.getLIstTen();
+        return productionMapper.getListTen();
+    }
+
+    /**
+     * 通过项目的序号查询到项目的实体类
+     *
+     * @author HCY
+     * @since 2020/12/31 上午9:22
+     * @param productionId: 项目的序号
+     * @return com.inet.code.entity.production.vo.ProductionView
+    */
+    @Override
+    public ProductionView getViewProduction(String productionId) {
+        return productionMapper.getViewProduction(productionId);
     }
 }
