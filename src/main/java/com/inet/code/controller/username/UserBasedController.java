@@ -325,8 +325,12 @@ public class UserBasedController {
      * @param productionId: 项目的序号
      * @return com.inet.code.utils.Result
     */
+    @ApiOperation("访客项目，通过项目序号查找到该项目的具体信息,不需要token")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="productionId",value="项目的序号",dataType="String", paramType = "query",defaultValue = "",example = "0"),
+    })
     @GetMapping("/viewProduction")
-    public Result getViewProduction(@RequestParam(value = "productionId",defaultValue = "1") String productionId){
+    public Result getViewProduction(@RequestParam(value = "productionId",defaultValue = "") String productionId){
         return userBasedService.getViewProduction(productionId,"/scratch/user/viewProduction");
     }
 
