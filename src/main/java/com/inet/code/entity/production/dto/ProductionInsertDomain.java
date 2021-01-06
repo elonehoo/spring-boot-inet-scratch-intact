@@ -57,6 +57,12 @@ public class ProductionInsertDomain {
      * 作品的类型
      */
     @ApiModelProperty("作品的类型")
+    private String[] editorLabelUuid;
+
+    /**
+     * 作品的类别
+     */
+    @ApiModelProperty("作品的类别")
     private String productionTypeUuid;
 
     /**

@@ -16,6 +16,7 @@ import com.inet.code.entity.attention.dto.AttentionFocusDomain;
 import com.inet.code.entity.attention.po.Attention;
 import com.inet.code.entity.cipher.dto.CipherAmendDomain;
 import com.inet.code.entity.cipher.po.Cipher;
+import com.inet.code.entity.editor.po.Editor;
 import com.inet.code.entity.label.vo.LabelBaseView;
 import com.inet.code.entity.portrait.po.Portrait;
 import com.inet.code.entity.portrait.vo.PortraitBuddhaView;
@@ -89,6 +90,9 @@ public class UserBasedServiceImpl implements UserBasedService {
 
     @Resource
     private LabelService labelService;
+
+    @Resource
+    private EditorService editorService;
 
     /**
      * 通过邮箱发送验证码
@@ -384,12 +388,28 @@ public class UserBasedServiceImpl implements UserBasedService {
         UserBaseDomain userBaseDomain = (UserBaseDomain) redisTemplate.opsForValue().get(token);
         //进行项目的拷贝
         Production production = BeanUtil.copy(productionInsertDomain, Production.class);
+        //通过宣传图和项目路径判断是否有重复上传
+        if (!StrUtil.isBlank(productionService.getByEntity(production))){
+            return new Result().result401("不要重复上传哦！",path);
+        }
         //设置用户的邮箱信息
         production.setProductionUserEmail(userBaseDomain.getUserEmail());
         //设置为上传操作
         production.setProductionIssue(true);
         //进行存储
-        if (productionService.save(production)) {
+        if (!productionService.save(production)) {
+            return new Result().result500("保存失败",path);
+        }
+        String productionId = productionService.getByEntity(production);
+        //设置存储的类型
+        List<Editor> editors = new ArrayList<>();
+        for (String editorLabelUuid : productionInsertDomain.getEditorLabelUuid()){
+            editors.add(new Editor()
+                    .setEditorProductionUuid(productionId)
+                    .setEditorLabelUuid(editorLabelUuid)
+            );
+        }
+        if (editorService.saveBatch(editors)) {
             return new Result().result200("保存成功",path);
         }
         return new Result().result500("保存失败",path);

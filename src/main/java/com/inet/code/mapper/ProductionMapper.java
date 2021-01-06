@@ -59,4 +59,14 @@ public interface ProductionMapper extends BaseMapper<Production> {
      * @return com.inet.code.entity.production.vo.ProductionView
     */
     ProductionView getViewProduction(String productionId);
+
+    /**
+     * 获取新增项目的序号
+     *
+     * @author HCY
+     * @since 2021/1/6 下午4:00
+     * @param production: 新增的项目的实体类
+     * @return java.lang.String
+     */
+    String getByEntity(Production production);
 }

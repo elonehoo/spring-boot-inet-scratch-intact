@@ -122,4 +122,11 @@ class InetApplicationTests {
         System.out.println(iPage.getSize());
         System.out.println(iPage.getCurrent());
     }
+
+    @Test
+    void test_11(){
+        System.out.println(StrUtil.isBlank(""));
+        System.out.println(StrUtil.isBlank(null));
+        System.out.println(StrUtil.isBlank(" "));
+    }
 }

@@ -80,5 +80,18 @@
         LIMIT 1;
     </select>
 
+    <!--获取新增项目的序号-->
+    <select id="getByEntity" resultType="java.lang.String">
+        SELECT
+            production.production_uuid
+        FROM
+            tbl_production AS production
+        WHERE
+            production.production_cover = #{productionCover}
+            AND
+            production.production_url = #{productionUrl}
+        LIMIT 1;
+    </select>
+
 
 </mapper>
