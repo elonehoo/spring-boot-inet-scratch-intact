@@ -536,10 +536,24 @@ public class UserBasedServiceImpl implements UserBasedService {
         //作品是否允许改编
         production.setProductionRecompose(productionInsertUploadDomain.getProductionRecompose());
         //进行修改
-        if (productionService.updateById(production)){
-            return new Result().result200("上传成功",path);
+        if (!productionService.updateById(production)){
+            return new Result().result200("上传失败",path);
         }
-        return new Result().result500("上传失败",path);
+        //删除类别
+        editorService.remove(new QueryWrapper<Editor>().eq("editor_production_uuid",production.getProductionUuid()));
+        //设置存储的类型
+        List<Editor> editors = new ArrayList<>();
+        for (String editorLabelUuid : productionInsertUploadDomain.getEditorLabelUuid()){
+            editors.add(new Editor()
+                    .setEditorProductionUuid(production.getProductionUuid())
+                    .setEditorLabelUuid(editorLabelUuid)
+            );
+        }
+        //存储集合
+        if (editorService.saveBatch(editors)) {
+            return new Result().result200("保存成功",path);
+        }
+        return new Result().result500("保存失败",path);
     }
 
     /**
