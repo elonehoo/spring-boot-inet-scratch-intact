@@ -157,6 +157,18 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public List<UserFiveLikeView> getListTenUser() {
         return userMapper.getListTenUser();
     }
+    /**
+     * 判断用户的账号是否重复
+     *
+     * @author HCY
+     * @since 2021/1/8 下午1:13
+     * @param userEmail: 账号
+     * @return java.lang.Boolean
+     */
+    @Override
+    public User getByEmail(String userEmail) {
+        return userMapper.getByEmail(userEmail);
+    }
 
 
 }

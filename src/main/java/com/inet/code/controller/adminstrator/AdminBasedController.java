@@ -7,6 +7,7 @@ import com.inet.code.entity.slideshow.dto.SlideshowAmendDomain;
 import com.inet.code.entity.slideshow.dto.SlideshowIncreaseDomain;
 import com.inet.code.entity.type.dto.TypeAmendDoMain;
 import com.inet.code.entity.type.dto.TypeAppendDoMain;
+import com.inet.code.entity.user.dto.UserRegisterDTO;
 import com.inet.code.realize.AdminBasedService;
 import com.inet.code.utils.Result;
 import io.swagger.annotations.Api;
@@ -311,6 +312,13 @@ public class AdminBasedController {
     @RequiresRoles(value = {"admin"})
     public Result getListFiveUsers(){
         return adminBasedService.getListFiveUsers("/scratch/based/listFiveUsers");
+    }
+
+    @ApiOperation("注册用户")
+    @PostMapping("/registered")
+    @RequiresRoles(value = {"admin"})
+    public Result postRegistered(@RequestBody UserRegisterDTO userRegisterDTO){
+        return adminBasedService.getSaveRegistered(userRegisterDTO,"/scratch/based/registered");
     }
 
 }

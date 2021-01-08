@@ -44,7 +44,7 @@ public class UserBasedController {
      * @param email: 邮箱
      * @return com.inet.code.utils.Result
     */
-    @ApiOperation("通过邮箱发送验证码(注册的前提操作)，不需要token")
+    @ApiOperation("通过邮箱发送验证码(注册的前提操作)，不需要token，不能使用")
     @ApiImplicitParams({
             @ApiImplicitParam(name="email",value="邮箱",dataType="String", paramType = "query"),
     })
@@ -63,11 +63,13 @@ public class UserBasedController {
      * @param userRegisterDomain: 注册的实体类 含有 邮箱,验证码,密码
      * @return com.inet.code.utils.Result
     */
-    @ApiOperation("完成验证码之后的注册操作,不需要token")
+    @ApiOperation("完成验证码之后的注册操作,不需要token，不能使用")
     @PostMapping("/register")
     public Result getRegister(@RequestBody UserRegisterDomain userRegisterDomain){
         return userBasedService.getRegister(userRegisterDomain,"/scratch/user/register");
     }
+
+
 
     /**
      * 修改密码

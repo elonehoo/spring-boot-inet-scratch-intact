@@ -3,6 +3,7 @@ package com.inet;
 import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
+import cn.hutool.extra.pinyin.PinyinUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.inet.code.entity.production.vo.ProductionUsersView;
@@ -128,5 +129,10 @@ class InetApplicationTests {
         System.out.println(StrUtil.isBlank(""));
         System.out.println(StrUtil.isBlank(null));
         System.out.println(StrUtil.isBlank(" "));
+    }
+
+    @Test
+    void test_12(){
+        System.out.println(PinyinUtil.getPinyin("胡成晔",""));
     }
 }

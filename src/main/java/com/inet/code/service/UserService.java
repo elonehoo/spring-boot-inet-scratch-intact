@@ -118,4 +118,14 @@ public interface UserService extends IService<User> {
      * @return java.util.List<com.inet.code.entity.user.vo.UserFiveLikeView>
     */
     List<UserFiveLikeView> getListTenUser();
+
+    /**
+     * 判断用户的账号是否重复
+     *
+     * @author HCY
+     * @since 2021/1/8 下午1:13
+     * @param userEmail: 账号
+     * @return java.lang.Boolean
+    */
+    User getByEmail(String userEmail);
 }

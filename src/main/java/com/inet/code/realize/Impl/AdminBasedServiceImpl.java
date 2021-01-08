@@ -1,9 +1,12 @@
 package com.inet.code.realize.Impl;
 
+import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.extra.pinyin.PinyinUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.inet.code.entity.cipher.po.Cipher;
 import com.inet.code.entity.label.dto.LabelAmendDoMain;
 import com.inet.code.entity.label.dto.LabelAppendDoMain;
 import com.inet.code.entity.portrait.dto.PortraitIncreaseDomain;
@@ -16,6 +19,8 @@ import com.inet.code.entity.type.dto.TypeAmendDoMain;
 import com.inet.code.entity.type.dto.TypeAppendDoMain;
 import com.inet.code.entity.label.po.Label;
 import com.inet.code.entity.type.po.Type;
+import com.inet.code.entity.user.dto.UserRegisterDTO;
+import com.inet.code.entity.user.po.User;
 import com.inet.code.entity.user.vo.UserFiveLikeView;
 import com.inet.code.realize.AdminBasedService;
 import com.inet.code.service.*;
@@ -58,6 +63,9 @@ public class AdminBasedServiceImpl implements AdminBasedService {
 
     @Resource
     private ProductionService productionService;
+
+    @Resource
+    private CipherService cipherService;
 
     /**
      * 标签的添加
@@ -410,6 +418,47 @@ public class AdminBasedServiceImpl implements AdminBasedService {
         return new Result().result200(
                  userService.getListFiveUsers()
                 ,path);
+    }
+
+    /**
+     * 管理员注册
+     *
+     * @author HCY
+     * @since 2021/1/8 下午12:48
+     * @param userRegisterDTO: 管理员注册的实体类
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getSaveRegistered(UserRegisterDTO userRegisterDTO, String path) {
+        String userName = userRegisterDTO.getUserName();
+        String userEmail = PinyinUtil.getPinyin(userName, "");
+        //判断假邮箱是否重复
+        if (userService.getByEmail(userEmail) != null) {
+            userEmail += RandomUtil.randomNumbers(1);
+        }
+        //创建用户的实体类
+        User user = new User();
+        //设置用户的昵称
+        user.setUserName(userName);
+        //随机产生头像
+        user.setUserBuddha(portraitService.getRandomImagesUrl().getPortraitSrc());
+        //设置用户的假邮箱
+        user.setUserEmail(userEmail);
+        //判断是否注册成功
+        if (userService.save(user)) {
+            //创建密码的实体类
+            Cipher cipher = new Cipher();
+            //设置账号
+            cipher.setCipherEmail(userEmail);
+            //设置密码
+            cipher.setCipherPassword(userEmail);
+            //密码存储
+            if (cipherService.save(cipher)) {
+                return new Result().result200("注册成功，账号名字为：" + userEmail,path);
+            }
+        }
+        return new Result().result500("注册失败",path);
     }
 
 }

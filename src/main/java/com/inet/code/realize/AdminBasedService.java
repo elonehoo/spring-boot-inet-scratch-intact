@@ -7,6 +7,7 @@ import com.inet.code.entity.slideshow.dto.SlideshowAmendDomain;
 import com.inet.code.entity.slideshow.dto.SlideshowIncreaseDomain;
 import com.inet.code.entity.type.dto.TypeAmendDoMain;
 import com.inet.code.entity.type.dto.TypeAppendDoMain;
+import com.inet.code.entity.user.dto.UserRegisterDTO;
 import com.inet.code.utils.Result;
 
 /**
@@ -191,4 +192,15 @@ public interface AdminBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getListFiveUsers(String path);
+
+    /**
+     * 管理员注册
+     *
+     * @author HCY
+     * @since 2021/1/8 下午12:48
+     * @param userRegisterDTO: 管理员注册的实体类
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getSaveRegistered(UserRegisterDTO userRegisterDTO, String path);
 }
