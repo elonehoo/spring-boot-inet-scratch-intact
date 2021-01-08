@@ -355,8 +355,9 @@ public class AdminBasedController {
 
     @ApiOperation("修改用户")
     @PutMapping("/modifyUser")
+    @RequiresRoles(value = {"admin"})
     public Result putModifyUser(@RequestBody UserModifyDTO userModifyDTO){
-        return null;
+        return adminBasedService.getModifyUser(userModifyDTO,"/scratch/based/modifyUser");
     }
 
 }

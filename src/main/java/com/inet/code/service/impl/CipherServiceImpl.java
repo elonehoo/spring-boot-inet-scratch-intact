@@ -34,4 +34,17 @@ public class CipherServiceImpl extends ServiceImpl<CipherMapper, Cipher> impleme
     public Cipher getByEmail(String userEmail) {
         return cipherMapper.getByEmail(userEmail);
     }
+
+    /**
+     * 通过用户的序号查找到用户的密码
+     *
+     * @author HCY
+     * @since 2021/1/8 6:42 下午
+     * @param userUuid: 用户的序号
+     * @return com.inet.code.entity.cipher.po.Cipher
+     */
+    @Override
+    public Cipher getByUserId(String userUuid) {
+        return cipherMapper.getByUserId(userUuid);
+    }
 }

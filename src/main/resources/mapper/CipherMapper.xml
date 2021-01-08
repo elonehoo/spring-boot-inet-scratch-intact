@@ -16,4 +16,19 @@
             cipher.cipher_email = "2414776185@qq.com"
         LIMIT 1;
     </select>
+
+    <!--通过用户的序号查找到用户的密码-->
+    <select id="getByUserId" resultType="com.inet.code.entity.cipher.po.Cipher">
+        SELECT
+            ciphers.cipher_uuid AS cipherUuid,
+            ciphers.cipher_email AS cipherEmail,
+            ciphers.cipher_password AS cipherPassword,
+            ciphers.gmt_create AS gmtCreate,
+            ciphers.gmt_modified AS gmtModified
+        FROM
+            tbl_cipher AS ciphers
+                LEFT JOIN tbl_user AS users ON users.user_email = ciphers.cipher_email
+        WHERE users.user_uuid = #{userUuid}
+            LIMIT 1;
+    </select>
 </mapper>

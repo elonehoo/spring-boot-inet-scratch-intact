@@ -7,6 +7,7 @@ import com.inet.code.entity.slideshow.dto.SlideshowAmendDomain;
 import com.inet.code.entity.slideshow.dto.SlideshowIncreaseDomain;
 import com.inet.code.entity.type.dto.TypeAmendDoMain;
 import com.inet.code.entity.type.dto.TypeAppendDoMain;
+import com.inet.code.entity.user.dto.UserModifyDTO;
 import com.inet.code.entity.user.dto.UserRegisterDTO;
 import com.inet.code.utils.Result;
 
@@ -214,4 +215,14 @@ public interface AdminBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getListUsers(Integer current, Integer size, String path);
+
+    /**
+     * 修改用户的账号和密码
+     * @author HCY
+     * @since 2021/1/8 6:05 下午
+     * @param userModifyDTO: 用户的账号和密码
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getModifyUser(UserModifyDTO userModifyDTO, String path);
 }

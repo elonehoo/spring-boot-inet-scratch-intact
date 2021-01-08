@@ -22,6 +22,7 @@ import com.inet.code.entity.type.dto.TypeAmendDoMain;
 import com.inet.code.entity.type.dto.TypeAppendDoMain;
 import com.inet.code.entity.label.po.Label;
 import com.inet.code.entity.type.po.Type;
+import com.inet.code.entity.user.dto.UserModifyDTO;
 import com.inet.code.entity.user.dto.UserRegisterDTO;
 import com.inet.code.entity.user.po.User;
 import com.inet.code.entity.user.vo.UserFiveLikeView;
@@ -487,6 +488,30 @@ public class AdminBasedServiceImpl implements AdminBasedService {
     @Override
     public Result getListUsers(Integer current, Integer size, String path) {
         return new Result().result200(userService.getPage(new Page<>(current,size)),path);
+    }
+
+    /**
+     * 修改用户的账号和密码
+     * @author HCY
+     * @since 2021/1/8 6:05 下午
+     * @param userModifyDTO: 用户的账号和密码
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getModifyUser(UserModifyDTO userModifyDTO, String path) {
+        //通过用户序号查找用户的基本密码
+        Cipher cipher = cipherService.getByUserId(userModifyDTO.getUserUuid());
+        //判断两次修改的密码是否相等
+        if (userModifyDTO.getCipherPassword().equals(cipher.getCipherPassword())) {
+            return new Result().result403("两次密码一样",path);
+        }
+        cipher.setCipherPassword(DigestUtil.md5Hex(userModifyDTO.getCipherPassword()));
+        //进行修改
+        if (cipherService.updateById(cipher)) {
+            return new Result().result200("密码修改成功",path);
+        }
+        return new Result().result500("密码修改失败",path);
     }
 
 }

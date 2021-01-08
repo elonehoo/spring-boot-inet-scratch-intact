@@ -22,4 +22,14 @@ public interface CipherService extends IService<Cipher> {
      * @return com.inet.code.entity.cipher.po.Cipher
     */
     Cipher getByEmail(String userEmail);
+
+    /**
+     * 通过用户的序号查找到用户的密码
+     *
+     * @author HCY
+     * @since 2021/1/8 6:42 下午
+     * @param userUuid: 用户的序号
+     * @return com.inet.code.entity.cipher.po.Cipher
+    */
+    Cipher getByUserId(String userUuid);
 }

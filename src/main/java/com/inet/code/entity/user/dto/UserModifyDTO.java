@@ -23,10 +23,10 @@ import lombok.experimental.Accessors;
 public class UserModifyDTO {
 
     /**
-     * 用户邮箱
+     * 用户序号
      */
-    @ApiModelProperty("账号")
-    private String userEmail;
+    @ApiModelProperty("用户序号")
+    private String userUuid;
 
     /**
      * 用户密码
