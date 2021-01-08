@@ -257,4 +257,19 @@ public class BasedController {
         return basedService.getInteraction(token,"/scratch/user/interaction");
     }
 
+    /**
+     * 使用上传组件上传图片
+     *
+     * @author HCY
+     * @since 2021/1/8 下午1:48
+     * @param file: 上传的文件
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("使用上传组件上传图片")
+    @PostMapping("/uploading")
+    @RequiresRoles(logical = Logical.OR,value = {"admin","member"})
+    public Result postUploading(@PathVariable MultipartFile file){
+        return FileUtils.getUploading(file,"/scratch/user/uploading");
+    }
+
 }
