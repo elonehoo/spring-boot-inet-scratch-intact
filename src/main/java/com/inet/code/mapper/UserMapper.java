@@ -1,5 +1,7 @@
 package com.inet.code.mapper;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.inet.code.entity.user.dto.UserBaseDomain;
 import com.inet.code.entity.user.po.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -118,4 +120,14 @@ public interface UserMapper extends BaseMapper<User> {
      * @return java.util.List<com.inet.code.entity.user.vo.UserFiveLikeView>
      */
     List<UserFiveLikeView> getListTenUser();
+
+    /**
+     * 分页查看用户
+     *
+     * @author HCY
+     * @since 2021/1/8 下午2:34
+     * @param userPage: 分页条件
+     * @return com.baomidou.mybatisplus.core.metadata.IPage<com.inet.code.entity.user.po.User>
+     */
+    IPage<User> getPage(Page<User> userPage);
 }

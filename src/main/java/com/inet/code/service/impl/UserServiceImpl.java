@@ -1,5 +1,7 @@
 package com.inet.code.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.inet.code.entity.user.dto.UserBaseDomain;
 import com.inet.code.entity.user.po.User;
 import com.inet.code.entity.user.vo.UserFanView;
@@ -168,6 +170,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public User getByEmail(String userEmail) {
         return userMapper.getByEmail(userEmail);
+    }
+
+    /**
+     * 分页查看用户
+     *
+     * @author HCY
+     * @since 2021/1/8 下午2:34
+     * @param userPage: 分页条件
+     * @return com.baomidou.mybatisplus.core.metadata.IPage<com.inet.code.entity.user.po.User>
+     */
+    @Override
+    public IPage<User> getPage(Page<User> userPage) {
+        return userMapper.getPage(userPage);
     }
 
 

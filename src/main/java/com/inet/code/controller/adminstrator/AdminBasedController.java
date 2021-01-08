@@ -328,4 +328,10 @@ public class AdminBasedController {
         return adminBasedService.getSaveRegistered(userRegisterDTO,"/scratch/based/registered");
     }
 
+    @GetMapping("/listUsers")
+    public Result getListUsers(@RequestParam(value = "current",defaultValue = "") Integer current,
+                               @RequestParam(value = "size",defaultValue = "") Integer size){
+        return adminBasedService.getListUsers(current,size,"/scratch/based/listUsers");
+    }
+
 }

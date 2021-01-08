@@ -475,4 +475,18 @@ public class AdminBasedServiceImpl implements AdminBasedService {
         return new Result().result500("注册失败",path);
     }
 
+    /**
+     * 分页查看用户
+     * @author HCY
+     * @since 2021/1/8 下午2:19
+     * @param current: 页数
+     * @param size: 条目数
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result getListUsers(Integer current, Integer size, String path) {
+        return new Result().result200(userService.getPage(new Page<>(current,size)),path);
+    }
+
 }

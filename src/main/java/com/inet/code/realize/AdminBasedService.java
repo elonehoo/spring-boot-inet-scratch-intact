@@ -203,4 +203,15 @@ public interface AdminBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getSaveRegistered(UserRegisterDTO userRegisterDTO, String path);
+
+    /**
+     * 分页查看用户
+     * @author HCY
+     * @since 2021/1/8 下午2:19
+     * @param current: 页数
+     * @param size: 条目数
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getListUsers(Integer current, Integer size, String path);
 }
