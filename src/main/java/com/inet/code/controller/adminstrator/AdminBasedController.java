@@ -355,6 +355,7 @@ public class AdminBasedController {
 
     /**
      * 修改用户的密码
+     *
      * @author HCY
      * @since 2021/1/8 7:45 下午
      * @param userModifyDTO: 修改密码的实体类
@@ -367,7 +368,19 @@ public class AdminBasedController {
         return adminBasedService.getModifyUser(userModifyDTO,"/scratch/based/modifyUser");
     }
 
+    /**
+     * 删除用户
+     * @author HCY
+     * @since 2021/1/8 下午8:02
+     * @param userId: 用户的序号
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("删除用户")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="userId",value="用户的序号",dataType="String", paramType = "query",defaultValue = "",example = "0"),
+    })
     @DeleteMapping("/remove")
+    @RequiresRoles(value = {"admin"})
     public Result deleteRemove(@RequestParam(value = "userId",defaultValue = "") String userId){
         return adminBasedService.removeUser(userId,"/scratch/based/remove");
     }
