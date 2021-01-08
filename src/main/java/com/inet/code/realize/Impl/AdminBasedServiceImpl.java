@@ -444,7 +444,7 @@ public class AdminBasedServiceImpl implements AdminBasedService {
         String userEmail = PinyinUtil.getPinyin(userName, "");
         //判断假邮箱是否重复
         if (userService.getByEmail(userEmail) != null) {
-            userEmail += RandomUtil.randomNumbers(2);
+            userEmail += userService.count() + 1;
         }
         //创建用户的实体类
         User user = new User();

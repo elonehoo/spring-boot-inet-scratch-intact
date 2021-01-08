@@ -133,6 +133,6 @@ class InetApplicationTests {
 
     @Test
     void test_12(){
-        System.out.println(PinyinUtil.getPinyin("胡成晔",""));
+        System.out.println(PinyinUtil.getPinyin("吴诗晴",""));
     }
 }

@@ -7,6 +7,7 @@ import com.inet.code.entity.slideshow.dto.SlideshowAmendDomain;
 import com.inet.code.entity.slideshow.dto.SlideshowIncreaseDomain;
 import com.inet.code.entity.type.dto.TypeAmendDoMain;
 import com.inet.code.entity.type.dto.TypeAppendDoMain;
+import com.inet.code.entity.user.dto.UserModifyDTO;
 import com.inet.code.entity.user.dto.UserRegisterDTO;
 import com.inet.code.realize.AdminBasedService;
 import com.inet.code.utils.Result;
@@ -278,6 +279,9 @@ public class AdminBasedController {
      * @return com.inet.code.utils.Result
     */
     @ApiOperation("近七天上传的项目的数据量")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="issue",value="状态",dataType="Boolean", paramType = "query",defaultValue = "1",example = "0"),
+    })
     @GetMapping("/listNewProduction")
     @RequiresRoles(value = {"admin"})
     public Result getListNewProduction(@RequestParam(value = "issue",defaultValue = "") Boolean issue){
@@ -328,10 +332,31 @@ public class AdminBasedController {
         return adminBasedService.getSaveRegistered(userRegisterDTO,"/scratch/based/registered");
     }
 
+    /**
+     * 分页查看普通用户
+     *
+     * @author HCY
+     * @since 2021/1/8 下午2:54
+     * @param current: 页数
+     * @param size: 条目数
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("分页查看普通用户")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="current",value="页数",dataType="Integer", paramType = "query",defaultValue = "1",example = "0"),
+            @ApiImplicitParam(name="size",value="条目数",dataType="Integer", paramType = "query",defaultValue = "10",example = "0"),
+    })
     @GetMapping("/listUsers")
+    @RequiresRoles(value = {"admin"})
     public Result getListUsers(@RequestParam(value = "current",defaultValue = "") Integer current,
                                @RequestParam(value = "size",defaultValue = "") Integer size){
         return adminBasedService.getListUsers(current,size,"/scratch/based/listUsers");
+    }
+
+    @ApiOperation("修改用户")
+    @PutMapping("/modifyUser")
+    public Result putModifyUser(@RequestBody UserModifyDTO userModifyDTO){
+        return null;
     }
 
 }
