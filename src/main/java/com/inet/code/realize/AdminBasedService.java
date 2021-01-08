@@ -225,4 +225,15 @@ public interface AdminBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getModifyUser(UserModifyDTO userModifyDTO, String path);
+
+    /**
+     * 删除用户
+     *
+     * @author HCY
+     * @since 2021/1/8 7:48 下午
+     * @param userId: 用户的序号
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result removeUser(String userId, String path);
 }

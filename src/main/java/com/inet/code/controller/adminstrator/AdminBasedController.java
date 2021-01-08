@@ -353,11 +353,23 @@ public class AdminBasedController {
         return adminBasedService.getListUsers(current,size,"/scratch/based/listUsers");
     }
 
-    @ApiOperation("修改用户")
+    /**
+     * 修改用户的密码
+     * @author HCY
+     * @since 2021/1/8 7:45 下午
+     * @param userModifyDTO: 修改密码的实体类
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("修改用户的密码")
     @PutMapping("/modifyUser")
     @RequiresRoles(value = {"admin"})
     public Result putModifyUser(@RequestBody UserModifyDTO userModifyDTO){
         return adminBasedService.getModifyUser(userModifyDTO,"/scratch/based/modifyUser");
+    }
+
+    @DeleteMapping("/remove")
+    public Result deleteRemove(@RequestParam(value = "userId",defaultValue = "") String userId){
+        return adminBasedService.removeUser(userId,"/scratch/based/remove");
     }
 
 }

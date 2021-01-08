@@ -514,4 +514,25 @@ public class AdminBasedServiceImpl implements AdminBasedService {
         return new Result().result500("密码修改失败",path);
     }
 
+    /**
+     * 删除用户
+     *
+     * @author HCY
+     * @since 2021/1/8 7:48 下午
+     * @param userId: 用户的序号
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
+    @Override
+    public Result removeUser(String userId, String path) {
+        User user = userService.getById(userId);
+        if ( user == null) {
+            return new Result().result404("未找到该用户",path);
+        }
+        if (userService.removeById(userId)) {
+            return new Result().result200("成功将" + user.getUserName() + "删除",path);
+        }
+        return new Result().result500("删除失败",path);
+    }
+
 }
