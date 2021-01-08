@@ -314,6 +314,13 @@ public class AdminBasedController {
         return adminBasedService.getListFiveUsers("/scratch/based/listFiveUsers");
     }
 
+    /**
+     * 注册用户
+     * @author HCY
+     * @since 2021/1/8 下午1:27
+     * @param userRegisterDTO: 管理员注册操作
+     * @return com.inet.code.utils.Result
+    */
     @ApiOperation("注册用户")
     @PostMapping("/registered")
     @RequiresRoles(value = {"admin"})

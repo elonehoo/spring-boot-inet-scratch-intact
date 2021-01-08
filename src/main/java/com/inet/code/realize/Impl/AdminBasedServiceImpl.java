@@ -2,6 +2,7 @@ package com.inet.code.realize.Impl;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.extra.pinyin.PinyinUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -11,7 +12,9 @@ import com.inet.code.entity.label.dto.LabelAmendDoMain;
 import com.inet.code.entity.label.dto.LabelAppendDoMain;
 import com.inet.code.entity.portrait.dto.PortraitIncreaseDomain;
 import com.inet.code.entity.portrait.po.Portrait;
+import com.inet.code.entity.power.po.Power;
 import com.inet.code.entity.production.vo.ProductionUserLikeFiveView;
+import com.inet.code.entity.role.po.Role;
 import com.inet.code.entity.slideshow.dto.SlideshowAmendDomain;
 import com.inet.code.entity.slideshow.dto.SlideshowIncreaseDomain;
 import com.inet.code.entity.slideshow.po.Slideshow;
@@ -66,6 +69,12 @@ public class AdminBasedServiceImpl implements AdminBasedService {
 
     @Resource
     private CipherService cipherService;
+
+    @Resource
+    private RoleService roleService;
+
+    @Resource
+    private PowerService powerService;
 
     /**
      * 标签的添加
@@ -435,7 +444,7 @@ public class AdminBasedServiceImpl implements AdminBasedService {
         String userEmail = PinyinUtil.getPinyin(userName, "");
         //判断假邮箱是否重复
         if (userService.getByEmail(userEmail) != null) {
-            userEmail += RandomUtil.randomNumbers(1);
+            userEmail += RandomUtil.randomNumbers(2);
         }
         //创建用户的实体类
         User user = new User();
@@ -452,10 +461,15 @@ public class AdminBasedServiceImpl implements AdminBasedService {
             //设置账号
             cipher.setCipherEmail(userEmail);
             //设置密码
-            cipher.setCipherPassword(userEmail);
+            cipher.setCipherPassword(DigestUtil.md5Hex(userEmail));
             //密码存储
             if (cipherService.save(cipher)) {
-                return new Result().result200("注册成功，账号名字为：" + userEmail,path);
+                Power power = new Power();
+                power.setPowerEmail(userEmail);
+                power.setPowerRole(roleService.getRoleName("member").getRoleUuid());
+                if (powerService.save(power)) {
+                    return new Result().result200("注册成功，账号名字为：" + userEmail,path);
+                }
             }
         }
         return new Result().result500("注册失败",path);

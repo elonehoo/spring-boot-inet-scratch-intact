@@ -101,7 +101,7 @@ public class BasedController {
      * @param email: 用户邮箱
      * @return com.inet.code.utils.Result
     */
-    @ApiOperation("通过邮箱发送验证码(验证码登陆)，不需要token")
+    @ApiOperation("通过邮箱发送验证码(验证码登陆)，不需要token，不能使用")
     @ApiImplicitParams({
             @ApiImplicitParam(name="email",value="邮箱",dataType="String", paramType = "query"),
     })
@@ -118,7 +118,7 @@ public class BasedController {
      * @param userLandingDomain: 邮箱验证码登陆
      * @return com.inet.code.utils.Result
     */
-    @ApiOperation("邮箱验证码登陆(不需要token)")
+    @ApiOperation("邮箱验证码登陆(不需要token)，不能使用")
     @PostMapping("/landing")
     public Result postLanding(@RequestBody UserLandingDomain userLandingDomain){
         return basedService.getLanding(
