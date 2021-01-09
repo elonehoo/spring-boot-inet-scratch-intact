@@ -377,7 +377,7 @@ public class AdminBasedController {
     */
     @ApiOperation("删除用户")
     @ApiImplicitParams({
-            @ApiImplicitParam(name="userId",value="用户的序号",dataType="String", paramType = "query",defaultValue = "",example = "0"),
+            @ApiImplicitParam(name="userId",value="用户的序号",dataType="String", paramType = "query",example = "0"),
     })
     @DeleteMapping("/remove")
     @RequiresRoles(value = {"admin"})
