@@ -205,7 +205,7 @@ public class AdminBasedController {
     */
     @ApiOperation("删除轮播图")
     @ApiImplicitParams({
-            @ApiImplicitParam(name="slideshowUuid",value="轮播图的uuid",dataType="String", paramType = "query",defaultValue = "",example = "0"),
+            @ApiImplicitParam(name="slideshowUuid",value="轮播图的uuid",dataType="String", paramType = "query",example = "0"),
     })
     @DeleteMapping("/removeSlideshow")
     @RequiresRoles(value = {"admin"})
