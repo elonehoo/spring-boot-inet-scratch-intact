@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.inet.code.entity.production.vo.ProductionUsersView;
 import com.inet.code.mapper.ProductionMapper;
+import com.inet.code.service.CipherService;
 import com.inet.code.utils.DateUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,6 +20,9 @@ class InetApplicationTests {
 
     @Resource
     private ProductionMapper productionMapper;
+
+    @Resource
+    private CipherService cipherService;
 
     @Test
     void test_1(){
@@ -134,5 +138,21 @@ class InetApplicationTests {
     @Test
     void test_12(){
         System.out.println(PinyinUtil.getPinyin("吴诗晴",""));
+    }
+
+    @Test
+    void test_13(){
+        System.out.println(DigestUtil.md5Hex("huchengye"));
+        // ebd8feabc3943da0f0aca6f1b3965543
+        // ebd8feabc3943da0f0aca6f1b3965543
+
+        if (!"ebd8feabc3943da0f0aca6f1b3965543".equals(DigestUtil.md5Hex("huchengye"))) {
+            System.out.println("123");
+        }
+    }
+
+    @Test
+    void test_14(){
+        System.out.println(cipherService.getByEmail("huchengye"));
     }
 }
