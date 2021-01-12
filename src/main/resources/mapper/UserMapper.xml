@@ -229,7 +229,6 @@
         ORDER BY likeTotal DESC , users.gmt_create DESC
             LIMIT 10;
     </select>
-
     <select id="getPage" resultType="com.inet.code.entity.user.po.User">
         SELECT
             users.user_uuid AS userUuid,
@@ -247,6 +246,23 @@
                 LEFT JOIN tbl_power AS power ON power.power_email = users.user_email
                 LEFT JOIN tbl_role AS role ON role.role_uuid = power.power_role
         WHERE role.role_name = "member"
+    </select>
+
+    <select id="getSearchUser" resultType="com.inet.code.entity.user.vo.UserSearchView">
+        SELECT
+            users.user_uuid AS userUuid,
+            users.user_buddha AS userBuddha,
+            users.user_name AS userNane,
+            (
+                SELECT COUNT(*) FROM tbl_production AS production WHERE production.production_user_email = users.user_email
+            ) AS productionUser,
+            (
+                SELECT COUNT(*) FROM tbl_assist AS assist WHERE assist.assist_user_email = users.user_email
+            ) AS fanUser
+        FROM
+            tbl_user AS users
+        WHERE
+            users.user_name LIKE #{userName};
     </select>
 
 </mapper>

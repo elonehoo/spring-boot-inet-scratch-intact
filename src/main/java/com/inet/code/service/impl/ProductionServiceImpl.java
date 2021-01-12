@@ -119,8 +119,16 @@ public class ProductionServiceImpl extends ServiceImpl<ProductionMapper, Product
         return productionMapper.getByEntity(production);
     }
 
+    /**
+     * 项目的名字搜索项目
+     *
+     * @author HCY
+     * @since 2021/1/12 6:59 PM
+     * @param productionName: 项目的名字
+     * @return java.util.List<com.inet.code.entity.production.vo.ProductionView>
+     */
     @Override
     public List<ProductionView> getSearchProduction(String productionName) {
-        return productionMapper.getSearchProduction(productionName);
+        return productionMapper.getSearchProduction("%" + productionName + "%");
     }
 }

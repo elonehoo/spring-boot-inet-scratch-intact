@@ -6,6 +6,7 @@ import com.inet.code.entity.user.dto.UserBaseDomain;
 import com.inet.code.entity.user.po.User;
 import com.inet.code.entity.user.vo.UserFanView;
 import com.inet.code.entity.user.vo.UserFiveLikeView;
+import com.inet.code.entity.user.vo.UserSearchView;
 import com.inet.code.mapper.UserMapper;
 import com.inet.code.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -183,6 +184,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public IPage<User> getPage(Page<User> userPage) {
         return userMapper.getPage(userPage);
+    }
+
+    /**
+     * 通过用户名字搜索用户
+     *
+     * @author HCY
+     * @since 2021/1/12 9:16 PM
+     * @param userName: 用户名字
+     * @return java.util.List<com.inet.code.entity.user.vo.UserSearchView>
+     */
+    @Override
+    public List<UserSearchView> getSearchUser(String userName) {
+        return userMapper.getSearchUser( "%" + userName + "%" );
     }
 
 

@@ -107,7 +107,7 @@
             tbl_production AS production
                 LEFT JOIN tbl_type AS types ON types.type_uuid = production.production_type_uuid
                 LEFT JOIN tbl_user AS users ON users.user_email = production.production_user_email
-        WHERE production.production_issue = TRUE AND production.production_name = #{productionName};
+        WHERE production.production_issue = TRUE AND production.production_name LIKE #{productionName};
     </select>
 
 

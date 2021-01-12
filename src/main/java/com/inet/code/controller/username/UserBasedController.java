@@ -336,10 +336,23 @@ public class UserBasedController {
         return userBasedService.getViewProduction(productionId,"/scratch/user/viewProduction");
     }
 
-
+    /**
+     * 通过名字搜索项目
+     *
+     * @author HCY
+     * @since 2021/1/12 6:56 PM
+     * @param productionName:  项目的名字
+     * @return com.inet.code.utils.Result
+    */
+    @ApiOperation("通过名字搜索项目，不需要token")
     @GetMapping("/searchProduction")
     public Result getSearchProduction(@RequestParam(value = "productionName",defaultValue = "") String productionName){
         return userBasedService.getSearchProduction(productionName,"/scratch/user/searchProduction");
+    }
+
+    @GetMapping("/searchUser")
+    public Result getSearchUser(@RequestParam(value = "userName",defaultValue = "") String userName){
+        return userBasedService.getSearchUser(userName,"/scratch/user/searchUser");
     }
 
 }

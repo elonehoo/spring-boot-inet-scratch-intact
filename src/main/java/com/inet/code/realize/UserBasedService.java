@@ -205,5 +205,25 @@ public interface UserBasedService {
     */
     Result getViewProduction(String productionId, String path);
 
+    /**
+     * 通过项目的名字进行搜索
+     *
+     * @author HCY
+     * @since 2021/1/12 6:58 PM
+     * @param productionName: 项目的名字
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
     Result getSearchProduction(String productionName, String path);
+
+    /**
+     * 通过用户的名字进行搜索
+     *
+     * @author HCY
+     * @since 2021/1/12 9:00 PM
+     * @param userName: 用户名字
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    Result getSearchUser(String userName, String path);
 }

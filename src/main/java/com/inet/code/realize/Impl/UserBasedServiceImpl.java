@@ -37,6 +37,7 @@ import com.inet.code.entity.user.dto.UserRegisterDomain;
 import com.inet.code.entity.user.po.User;
 import com.inet.code.entity.user.vo.UserFanView;
 import com.inet.code.entity.user.vo.UserFiveLikeView;
+import com.inet.code.entity.user.vo.UserSearchView;
 import com.inet.code.realize.UserBasedService;
 import com.inet.code.service.*;
 import com.inet.code.utils.BeanUtil;
@@ -637,11 +638,34 @@ public class UserBasedServiceImpl implements UserBasedService {
                 ,path);
     }
 
+    /**
+     * 通过项目的名字进行搜索
+     *
+     * @author HCY
+     * @since 2021/1/12 6:58 PM
+     * @param productionName: 项目的名字
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+     */
     @Override
     public Result getSearchProduction(String productionName, String path) {
-        //获取数据的集合 --> 修改实体类
-        List<ProductionView> lists = productionService.getSearchProduction(productionName);
-        return null;
+        return new Result().result200(
+                 productionService.getSearchProduction(productionName)
+                ,path);
+    }
+
+    /**
+     * 通过用户的名字进行搜索
+     *
+     * @author HCY
+     * @since 2021/1/12 9:01 PM
+     * @param userName: 用户名
+     * @param path: URL路径
+     * @return com.inet.code.utils.Result
+    */
+    @Override
+    public Result getSearchUser(String userName, String path) {
+        return new Result().result200(userService.getSearchUser(userName),path);
     }
 
     /**

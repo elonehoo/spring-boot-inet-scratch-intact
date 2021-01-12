@@ -7,6 +7,7 @@ import com.inet.code.entity.user.po.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.inet.code.entity.user.vo.UserFanView;
 import com.inet.code.entity.user.vo.UserFiveLikeView;
+import com.inet.code.entity.user.vo.UserSearchView;
 
 import java.util.List;
 
@@ -130,4 +131,14 @@ public interface UserMapper extends BaseMapper<User> {
      * @return com.baomidou.mybatisplus.core.metadata.IPage<com.inet.code.entity.user.po.User>
      */
     IPage<User> getPage(Page<User> userPage);
+
+    /**
+     * 通过用户名字搜索用户
+     *
+     * @author HCY
+     * @since 2021/1/12 9:22 PM
+     * @param userName: 用户名
+     * @return java.util.List<com.inet.code.entity.user.vo.UserSearchView>
+    */
+    List<UserSearchView> getSearchUser(String userName);
 }

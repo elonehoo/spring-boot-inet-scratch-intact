@@ -82,5 +82,13 @@ public interface ProductionService extends IService<Production> {
     */
     String getByEntity(Production production);
 
+    /**
+     * 项目的名字搜索项目
+     *
+     * @author HCY
+     * @since 2021/1/12 6:59 PM
+     * @param productionName: 项目的名字
+     * @return java.util.List<com.inet.code.entity.production.vo.ProductionView>
+    */
     List<ProductionView> getSearchProduction(String productionName);
 }
