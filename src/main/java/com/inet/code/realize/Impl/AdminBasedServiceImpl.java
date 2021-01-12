@@ -190,7 +190,9 @@ public class AdminBasedServiceImpl implements AdminBasedService {
         }
         //进行删除操作
         if (labelService.removeById(labelUuid)){
+            //删除项目操作
             editorService.removeByLabelUuid(labelUuid);
+            //返回操作
             return new Result().result200("删除成功",path);
 
         }
