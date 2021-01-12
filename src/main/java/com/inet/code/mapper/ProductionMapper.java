@@ -69,4 +69,6 @@ public interface ProductionMapper extends BaseMapper<Production> {
      * @return java.lang.String
      */
     String getByEntity(Production production);
+
+    List<ProductionView> getSearchProduction(String productionName);
 }

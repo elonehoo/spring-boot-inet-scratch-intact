@@ -92,6 +92,23 @@
             production.production_url = #{productionUrl}
         LIMIT 1;
     </select>
+    <!--通过用户名字搜索项目-->
+    <select id="getSearchProduction" resultType="com.inet.code.entity.production.vo.ProductionView">
+        SELECT
+            production.production_uuid AS productionUuid,
+            production.production_name AS productionName,
+            production.production_cover AS productionCover,
+            users.user_name AS userName,
+            users.user_buddha AS userBuddha,
+            (
+                SELECT COUNT(*) AS likeTotal FROM tbl_assist AS assist WHERE assist.assist_production_id = production.production_uuid
+            ) AS likeTotal
+        FROM
+            tbl_production AS production
+                LEFT JOIN tbl_type AS types ON types.type_uuid = production.production_type_uuid
+                LEFT JOIN tbl_user AS users ON users.user_email = production.production_user_email
+        WHERE production.production_issue = TRUE AND production.production_name = #{productionName};
+    </select>
 
 
 </mapper>

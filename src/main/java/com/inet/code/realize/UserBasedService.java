@@ -204,4 +204,6 @@ public interface UserBasedService {
      * @return com.inet.code.utils.Result
     */
     Result getViewProduction(String productionId, String path);
+
+    Result getSearchProduction(String productionName, String path);
 }

@@ -81,4 +81,6 @@ public interface ProductionService extends IService<Production> {
      * @return java.lang.String
     */
     String getByEntity(Production production);
+
+    List<ProductionView> getSearchProduction(String productionName);
 }

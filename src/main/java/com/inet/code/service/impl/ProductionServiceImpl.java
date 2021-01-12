@@ -118,4 +118,9 @@ public class ProductionServiceImpl extends ServiceImpl<ProductionMapper, Product
     public String getByEntity(Production production) {
         return productionMapper.getByEntity(production);
     }
+
+    @Override
+    public List<ProductionView> getSearchProduction(String productionName) {
+        return productionMapper.getSearchProduction(productionName);
+    }
 }

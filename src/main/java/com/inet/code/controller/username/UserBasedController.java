@@ -336,4 +336,10 @@ public class UserBasedController {
         return userBasedService.getViewProduction(productionId,"/scratch/user/viewProduction");
     }
 
+
+    @GetMapping("/searchProduction")
+    public Result getSearchProduction(@RequestParam(value = "productionName",defaultValue = "") String productionName){
+        return userBasedService.getSearchProduction(productionName,"/scratch/user/searchProduction");
+    }
+
 }

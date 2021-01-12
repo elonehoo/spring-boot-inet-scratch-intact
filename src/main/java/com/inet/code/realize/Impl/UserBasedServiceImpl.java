@@ -637,6 +637,13 @@ public class UserBasedServiceImpl implements UserBasedService {
                 ,path);
     }
 
+    @Override
+    public Result getSearchProduction(String productionName, String path) {
+        //获取数据的集合 --> 修改实体类
+        List<ProductionView> lists = productionService.getSearchProduction(productionName);
+        return null;
+    }
+
     /**
      * 判断用户或者关注的用户是否存在
      * 判断需要关注的用户是否存在
