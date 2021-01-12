@@ -208,7 +208,7 @@ public class UserBasedServiceImpl implements UserBasedService {
         //获取旧密码
         Cipher cipher = cipherService.getByEmail(userBaseDomain.getUserEmail());
         //判断旧密码是否相同
-        if (!cipher.getCipherPassword().equals(DigestUtil.md5Hex(cipherAmendDomain.getCipherPassword()))){
+        if (!cipher.getCipherPassword().equals(DigestUtil.md5Hex(cipherAmendDomain.getOldPassword()))){
             return new Result().result403("旧密码不正确",path);
         }
         //判断新密码是否合法

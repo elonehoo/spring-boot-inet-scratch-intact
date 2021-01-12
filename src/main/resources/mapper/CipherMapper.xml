@@ -13,7 +13,7 @@
         FROM
             tbl_cipher AS cipher
         WHERE
-            cipher.cipher_email = "2414776185@qq.com"
+            cipher.cipher_email = #{userEmail}
         LIMIT 1;
     </select>
 
